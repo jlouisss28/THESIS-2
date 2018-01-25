@@ -1,4 +1,3 @@
 <?php 
-$conn =mysqli_connect("localhost","root","");
-mysqli_select_db($conn, "itproject");
+$conn =mysqli_connect("localhost","root","", "itproject") or die('Error connecting to MySQL server.');
 ?>

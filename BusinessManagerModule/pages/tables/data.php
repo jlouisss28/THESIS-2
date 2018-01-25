@@ -369,7 +369,7 @@
                     <tr>
                         <th><button type="submit" class="btn btn-primary btn-block btn-info">Edit</button></th>
                         <th><button type="submit" class="btn btn-primary btn-block btn-warning" data-toggle="modal" data-target="#modal-info">Add</button>
-                        <form name="form1" method="post" action="">
+                        <form name="form1" method="post" action="php/medicalAdd.php" >
                         <div class="modal fade" id="modal-info">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
@@ -462,25 +462,8 @@
                                 </div>
                                 </form>
                             </th> 
+                              
 
-                                    <?php
-                                      if (isset($_POST['addSupply'])) {
-                                        require_once("../../../db.php");
-                                        $sql = $conn->prepare("INSERT INTO supplies (supplyDesc, unitInStock, unit, unitPrice) VALUES (?, ?, ?, ?)");  
-                                        $description=$_POST['Description'];
-                                        $quantity = $_POST['Quantity'];
-                                        $unit= $_POST['Unit'];
-                                        $priceUnit= $_POST['priceUnit'];
-                                        $sql->bind_param("ssss", $description, $quantity, $unit, $priceUnit); 
-                                        if($sql->execute()) {
-                                          $success_message = "Added Successfully";
-                                        } else {
-                                          $error_message = "Problem in Adding New Record";
-                                        }
-                                        $sql->close();   
-                                        $conn->close();
-                                      } 
-                                    ?>
                             <!--- END OF ADD -->
                         <th><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">
                             Delete</button>
@@ -599,6 +582,7 @@
             <div class="box-body">
         <table id="example1" class="table table-bordered table-striped">
           <?php
+            require_once("../../../db.php");
             $sql = "SELECT supplydesc, unitInStock, unit, unitPrice, reorderLevel FROM supplies WHERE supplyType='Medical' ";
             $result = $conn->query($sql);    
           ?>
@@ -612,9 +596,9 @@
                   <th>Quantity in Stock</th>
                   <th>Unit</th>
                   <th>Unit Price</th>
-             <!--    <th>Total Amount</th>
+             <!--    <th>Total Amount</th> -->
                   <th>Reorder Level</th>
-                  <th></th> -->
+                  <th></th>
             </tr>
         </thead>
         <tbody>
@@ -626,8 +610,8 @@
             <td><?php echo $row["unit"]; ?></td>
             <td><?php echo $row["unitPrice"]; ?></td>
             <td><?php echo $row["reorderLevel"]; ?></td>
-         <!--   <td><?php // echo $row[""]; ?></td>
             <td><?php // echo $row[""]; ?></td>
+           <!--  <td><?php // echo $row[""]; ?></td>
             <td><?php // echo $row[""]; ?></td>
             <td><?php // echo $row[""]; ?></td>
             <td><?php // echo $row[""]; ?></td>
@@ -648,9 +632,9 @@
             <th>Quantity in Stock</th>
             <th>Unit</th>
             <th>Unit Price</th>
-       <!--    <th>Total Amount</th>
+       <!--    <th>Total Amount</th> -->
             <th>Reorder Level</th>
-            <th></th> -->
+        <!--    <th></th> -->
         </tr> 
         </tfoot>
       </table>              
