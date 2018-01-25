@@ -1,3 +1,8 @@
+<?php 
+$conn =mysqli_connect("localhost","root","");
+mysqli_select_db($conn, "itproject");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -197,24 +202,24 @@
           </a>
           <ul class="treeview-menu">
 			<li><a href="data.html"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-			<li><a href="data2.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+			<li><a href="data2.html"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
     
         <!--------------------------------------------------- ISSUED SUPPLIES -------------------------------------------------->
-            <li><a href="data6.php">
+            <li><a href="data6.html">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
 		<!---------------------------------------------------- SUPPLIERS MENU -------------------------------------------------------------->
         <li class="active">
-          <a href="data3.php">
+          <a href="data3.html">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>
 		<!---------------------------------------------------- DEPARTMENTS MENU -------------------------------------------------------------->
         <li>
-          <a href="data4.php">
+          <a href="data4.html">
             <i class="fa fa-building"></i> <span>Departments</span>
           </a>
         </li>
@@ -305,147 +310,50 @@
             </div>
             <!-- /.box-header -->
               <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                <th>Supplier Name</th>
-                <th>Contact</th>
-                <th>Address</th>
-                <th>Product</th>
-                <th>Status</th>
-				<th>Remarks</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>Mercury Drug</td>
-                  <td>09456123874</td>
-                  <td>Baguio, City</td>
-                  <td>Medical Supplies</td>
-                  <td>
-                   <center><!-- Rounded switch -->
-                    <label class="switch">
-                      <input type="checkbox">
-                      <span class="slider round"></span>
-                    </label></center></td>
-                  <td> Did not followed the delivery date many times</td>
-                </tr>
-                <tr>
-                  <td>Laser Marketing</td>
-                  <td>09563456123</td>
-                  <td>Baguio, City</td>
-                  <td>Office Supplies</td>
-				   <td>
-                   <center><!-- Rounded switch -->
-                    <label class="switch">
-                      <input type="checkbox">
-                      <span class="slider round"></span>
-                    </label></center></td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td>Pandayan Bookshop</td>
-                  <td>09562314365</td>
-                  <td>Baguio, City</td>
-                  <td>Office Supplies</td>
-				  <td>
-                   <center><!-- Rounded switch -->
-                    <label class="switch">
-                      <input type="checkbox">
-                      <span class="slider round"></span>
-                    </label></center></td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td>The Generics Pharmacy</td>
-                  <td>09564217831</td>
-                  <td>Baguio, City</td>
-                  <td>Medical Supplies</td>
-				  <td>
-                   <center><!-- Rounded switch -->
-                    <label class="switch">
-                      <input type="checkbox">
-                      <span class="slider round"></span>
-                    </label></center></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>JCP Enterprise</td>
-                  <td>09456127831</td>
-                  <td>Baguio, City</td>
-                  <td>Office Supplies</td>
-				   <td>
-                   <center><!-- Rounded switch -->
-                    <label class="switch">
-                      <input type="checkbox">
-                      <span class="slider round"></span>
-                    </label></center></td>
-                  <td>Supplies Cactus Long Bond Paper </td>
-                </tr>
-                <tr>
-                  <td>Curamed Pharmacy</td>
-                  <td>09784563254</td>
-                  <td>Baguio, City</td>
-                  <td>Medical Supplies</td>
-				  <td>
-                   <center><!-- Rounded switch -->
-                    <label class="switch">
-                      <input type="checkbox">
-                      <span class="slider round"></span>
-                    </label></center></td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td>St. Joseph Pharmacy</td>
-                  <td>09231568927</td>
-                  <td>Baguio, City</td>
-                  <td>Medical Supplies</td>
-				  <td>
-                   <center><!-- Rounded switch -->
-                    <label class="switch">
-                      <input type="checkbox">
-                      <span class="slider round"></span>
-                    </label></center></td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td>Generika</td>
-                  <td>09965487569</td>
-                  <td>Baguio, City</td>
-                  <td>Medical Supplies</td>
-				  <td>
-                   <center><!-- Rounded switch -->
-                    <label class="switch">
-                      <input type="checkbox">
-                      <span class="slider round"></span>
-                    </label></center></td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td>UB Square</td>
-                  <td>09789887561</td>
-                  <td>Baguio, City</td>
-                  <td>Office Supplies</td>
-				  <td>
-                   <center><!-- Rounded switch -->
-                    <label class="switch">
-                      <input type="checkbox">
-                      <span class="slider round"></span>
-                    </label></center></td>
-                  <td> </td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                <th>Supplier Name</th>
-                <th>Contact</th>
-                <th>Address</th>
-                <th>Product</th>
-                <th>Status</th>
-				<th>Remarks</th>
-                </tr>
-              </tfoot>
-            </table>
+			    
+				<?php
+
+        $res = mysqli_query($conn, "SELECT companyName, supplierContact, supplierAddr, supplierStatus, supplierProduct, suppierRemarks FROM suppliers");
+        ?>
+        <table id="example1" class="table table-bordered table-striped">
+          <?php
+          echo "<thead>";
+          echo "<tr>";
+            echo "<th>"; echo "Supplier Name"; echo "</th>";
+            echo "<th>"; echo "Contact";       echo "</th>";
+            echo "<th>"; echo "Address";       echo "</th>";
+            echo "<th>"; echo "Product";       echo "</th>";
+            echo "<th>"; echo "Status";        echo "</th>";
+            echo "<th>"; echo "Remarks";       echo "</th>";
+          echo "</tr>";
+        echo "</thead>";
+        echo "<tbody>";
+        while($row = mysqli_fetch_array($res)) {
+          echo "<tr>";
+            echo "<td>"; echo $row['companyName'];      echo "</td>";
+            echo "<td>"; echo $row['supplierContact'];  echo "</td>";
+            echo "<td>"; echo $row['supplierAddr'];     echo "</td>";
+			      echo "<td>"; echo $row['supplierProduct'];  echo "</td>";
+            echo "<td>"; echo $row['supplierStatus'];   echo "</td>";
+            echo "<td>"; echo $row['suppierRemarks'];   echo "</td>";
+          echo "</tr>";
+        }
+
+        echo "</tbody>";
+        echo "<tfoot>";
+          echo "<tr>";
+            echo "<th>"; echo "Supplier Name"; echo "</th>";
+            echo "<th>"; echo "Contact";       echo "</th>";
+            echo "<th>"; echo "Address";       echo "</th>";
+            echo "<th>"; echo "Product";       echo "</th>";
+            echo "<th>"; echo "Status";        echo "</th>";
+            echo "<th>"; echo "Remarks";       echo "</th>";
+          echo "</tr>";
+        echo "</tfoot>";
+        echo "</table>";
+        mysqli_close($conn);
+      
+    ?>
          
             </div>
             <!-- /.box-body -->

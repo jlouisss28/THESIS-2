@@ -1,8 +1,3 @@
-<?php 
-$conn =mysqli_connect("localhost","root","");
-mysqli_select_db($conn, "itproject");
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -468,6 +463,7 @@ mysqli_select_db($conn, "itproject");
                     <tr>
                         <th><button type="submit" class="btn btn-primary btn-block btn-info">Edit</button></th>
                         <th><button type="submit" class="btn btn-primary btn-block btn-warning" data-toggle="modal" data-target="#modal-info">Add</button>
+                        <form name="form1" method="post" action="">
                         <div class="modal fade" id="modal-info">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
@@ -482,9 +478,8 @@ mysqli_select_db($conn, "itproject");
                                       <div class="modal-body">
                                         <div class="box-body">
 
-                                                  <form name = "form1" method="post">
                                                   <!-- DATE -->
-                                                 <div class="form-group">
+                                                <!-- <div class="form-group">
                                                     <label>Date Received</label>
                                                 <div class="input-group date"/>
                                                   <div class="input-group-addon">
@@ -492,10 +487,10 @@ mysqli_select_db($conn, "itproject");
                                                   </div>
                                                   <input type="date" class="form-control pull-right" id="datepicker" required />
                                                 </div>
-                                                <!-- /.input group -->
-                                              </div>
+                                                     /.input group
+                                              </div> -->
                                             
-                                            <!-- TIME -->
+                                            <!-- TIME 
                                                 <div class="bootstrap-timepicker">
                                                 <div class="form-group">
                                                   <label>Time Received</label>
@@ -507,34 +502,35 @@ mysqli_select_db($conn, "itproject");
                                                       <i class="fa fa-clock-o"></i>
                                                     </div>
                                                   </div>
-                                                  <!-- /.input group -->
+                                                       /.input group
                                                 </div>
-                                                <!-- /.form group -->
-                                              </div>
+                                                      /.form group
+                                              </div> -->
                                           <!-- /.form group -->
                                             <div class="form-group">
                                                   <label for="exampleInputEmail1">Description</label>
-                                                  <input type="text" class="form-control" required />
+                                                  <input type="text" class="form-control" name="Description" required />
                                                 </div>
-                                              <div class="form-group">
+                                              
+                                              <!-- <div class="form-group">
                                                   <label for="exampleInputEmail1">Supplier</label>
-                                                  <input type="text" class="form-control"
+                                                  <input type="text" class="form-control" name=Supplier""
                                                   required />
-                                                </div>
+                                                </div> -->
                                               <div class="form-group">
                                                   <label for="exampleInputEmail1">Quantity</label>
-                                                  <input type="text" class="form-control" required />
+                                                  <input type="number" class="form-control" name="Quantity" required />
                                                 </div>
                                               <div class="form-group">
                                                   <label for="exampleInputEmail1">Unit</label>
-                                                  <input type="text" class="form-control" required />
+                                                  <input type="text" class="form-control" name="Unit" required />
                                                 </div>
                                               <div class="form-group">
                                                   <label for="exampleInputEmail1">Unit Price</label>
-                                                  <input type="" class="form-control">
+                                                  <input type="number" class="form-control" name="priceUnit" required />
                                                 </div>
                                               <!-- Date and Time -->
-                                                 <div class="form-group">
+                                                <!-- <div class="form-group">
                                                     <label>Expiration Date</label>
 
                                                     <div class="input-group">
@@ -543,22 +539,43 @@ mysqli_select_db($conn, "itproject");
                                                       </div>
                                                       <input type="text" class="form-control pull-right" id="datepicker2">
                                                     </div>
-                                                    <!-- /.input group -->
-                                                  </div>
+                                                          /.input group 
+                                                  </div> -->
                                  
                                         </div>
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-primary">Save Supply</button>
+                                        <button type="submit" class="btn btn-primary" name="addSupply">Save Supply</button>
                                       </div>
                                     </div>
                                     <!-- /.modal-content -->
+                                    
                                   </div>
                                   <!-- /.modal-dialog -->
                                 </div>
-                              </form>
-                            </th> <!--- END OF ADD -->
+                                </form>
+                            </th> 
+
+                                    <?php
+                                      if (isset($_POST['addSupply'])) {
+                                        require_once("../../../db.php");
+                                        $sql = $conn->prepare("INSERT INTO supplies (supplyDesc, unitInStock, unit, unitPrice) VALUES (?, ?, ?, ?)");  
+                                        $description=$_POST['Description'];
+                                        $quantity = $_POST['Quantity'];
+                                        $unit= $_POST['Unit'];
+                                        $priceUnit= $_POST['priceUnit'];
+                                        $sql->bind_param("ssss", $description, $quantity, $unit, $priceUnit); 
+                                        if($sql->execute()) {
+                                          $success_message = "Added Successfully";
+                                        } else {
+                                          $error_message = "Problem in Adding New Record";
+                                        }
+                                        $sql->close();   
+                                        $conn->close();
+                                      } 
+                                    ?>
+                            <!--- END OF ADD -->
                         <th><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">
                             Delete</button>
                             <div class="modal modal-danger fade" id="modal-danger">
@@ -583,7 +600,7 @@ mysqli_select_db($conn, "itproject");
                             </div>
                             <!-- /.modal --></th>
                         
-    <!----------------------------------  ISSUE BUTTON -->
+                          <!---  ISSUE BUTTON -->
                         <th><button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
                                         Issue To
                                       </button>
@@ -676,60 +693,64 @@ mysqli_select_db($conn, "itproject");
             <div class="box-body">
         <table id="example1" class="table table-bordered table-striped">
           <?php
-        $res = mysqli_query($conn, "SELECT supplydesc, unitInStock, unit, unitPrice, reorderLevel FROM supplies WHERE supplyType='Medical' ");
-        
-          echo "<thead>";
-          echo "<tr>";
-           // echo "<th>"; echo "Date Received"; echo "</th>";
-           // echo "<th>"; echo "Time Received"; echo "</th>";
-           // echo "<th>"; echo "Expiration Date"; echo "</th>";
-            echo "<th>"; echo "Description"; echo "</th>";
-           // echo "<th>"; echo "Supplier"; echo "</th>";
-            echo "<th>"; echo "Quantity In Stock"; echo "</th>";
-            echo "<th>"; echo "Unit"; echo "</th>";
-            echo "<th>"; echo "Unit Price"; echo "</th>";
-           // echo "<th>"; echo "Total Amount"; echo "</th>";
-            echo "<th>"; echo "Reorder Level"; echo "</th>";
-          echo "</tr>";
-        echo "</thead>";
-        echo "<tbody>";
-        while($row = mysqli_fetch_array($res)) {
-          echo "<tr>";
-            echo "<td>"; echo $row['supplydesc']; echo "</td>";
-            echo "<td>"; echo $row['unitInStock']; echo "</td>";
-            echo "<td>"; echo $row['unit']; echo "</td>";
-            echo "<td>"; echo $row['unitPrice']; echo "</td>";
-            echo "<td>"; echo $row['reorderLevel']; echo "</td>";
-            // echo "<td>"; echo $row['']; echo "</td>";
-            // echo "<td>"; echo $row['']; echo "</td>";
-            // echo "<td>"; echo $row['']; echo "</td>";
-            // echo "<td>"; echo $row['']; echo "</td>";
-            // echo "<td>"; echo $row['']; echo "</td>";
-            // echo "<td>"; 
-            //        echo "<center>"; echo"<input type="checkbox">"; echo "</center>";
-            // echo "</td>";
-          echo "</tr>";
-        }
 
-        echo "</tbody>";
-        echo "<tfoot>";
-          echo "<tr>";
-            // echo "<th>"; echo "Date Received"; echo "</th>";
-           // echo "<th>"; echo "Time Received"; echo "</th>";
-           // echo "<th>"; echo "Expiration Date"; echo "</th>";
-            echo "<th>"; echo "Description"; echo "</th>";
-           // echo "<th>"; echo "Supplier"; echo "</th>";
-            echo "<th>"; echo "Quantity In Stock"; echo "</th>";
-            echo "<th>"; echo "Unit"; echo "</th>";
-            echo "<th>"; echo "Unit Price"; echo "</th>";
-           // echo "<th>"; echo "Total Amount"; echo "</th>";
-            echo "<th>"; echo "Reorder Level"; echo "</th>";
-          echo "</tr>";
-        echo "</tfoot>";
-        echo "</table>";
-        mysqli_close($conn);
-      
-    ?>
+            $sqlquery = "SELECT supplydesc, unitInStock, unit, unitPrice, reorderLevel FROM supplies WHERE supplyType='Medical' ";
+            $result = $conn->query($sqlquery);    
+          ?>
+          <thead>
+            <tr>
+             <!--     <th>Date Received</th>
+                  <th>Time Received</th>
+                  <th>Expiration Date</th> -->
+                  <th>Description</th>
+             <!--     <th>Supplier</th> -->
+                  <th>Quantity in Stock</th>
+                  <th>Unit</th>
+                  <th>Unit Price</th>
+             <!--    <th>Total Amount</th>
+                  <th>Reorder Level</th>
+                  <th></th> -->
+            </tr>
+        </thead>
+        <tbody>
+        <?php if ($result->num_rows > 0) {
+          while($row = $result->fetch_assoc()) { ?>
+            <tr>
+            <td><?php echo $row["supplydesc"]; ?></td>
+            <td><?php echo $row["unitInStock"]; ?></td>
+            <td><?php echo $row["unit"]; ?></td>
+            <td><?php echo $row["unitPrice"]; ?></td>
+            <td><?php echo $row["reorderLevel"]; ?></td>
+         <!--   <td><?php // echo $row[""]; ?></td>
+            <td><?php // echo $row[""]; ?></td>
+            <td><?php // echo $row[""]; ?></td>
+            <td><?php // echo $row[""]; ?></td>
+            <td><?php // echo $row[""]; ?></td>
+            <td><center><input type="checkbox"></center></td> -->
+            </tr>
+          <?php 
+              }
+            }
+          ?>
+
+        </tbody>
+        <tfoot>
+           <tr>
+            <!--     <th>Date Received</th>
+            <th>Time Received</th>
+            <th>Expiration Date</th> -->
+            <th>Description</th>
+       <!--     <th>Supplier</th> -->
+            <th>Quantity in Stock</th>
+            <th>Unit</th>
+            <th>Unit Price</th>
+       <!--    <th>Total Amount</th>
+            <th>Reorder Level</th>
+            <th></th> -->
+        </tr> 
+        </tfoot>
+      </table>
+      <?php $conn->close(); ?>   
               
             </div>
             <!-- /.box-body -->

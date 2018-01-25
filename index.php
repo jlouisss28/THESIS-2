@@ -7,15 +7,15 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="businessManagerModule/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="businessManagerModule/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="businessManagerModule/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="businessManagerModule/dist/css/AdminLTE.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
+  <link rel="stylesheet" href="businessManagerModule/plugins/iCheck/square/blue.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,21 +32,39 @@
   <?php
     require('db.php');
     session_start();
-    // If form submitted, insert values into the database.
+    
+
     if (isset($_POST['username'])){
-        
+      // If form submitted, insert values into the database.
         $username = stripslashes($_REQUEST['username']); // removes backslashes
         $username = mysqli_real_escape_string($conn,$username); //escapes special characters in a string
         $password = stripslashes($_REQUEST['password']);
         $password = mysqli_real_escape_string($conn,$password);
-        
+        $userType = stripslashes($_REQUEST['userType']);
     //Checking is user existing in the database or not
-        $query = "SELECT * FROM `users` WHERE username='$username' and password='$password'";
+        $query = "SELECT * FROM `users` WHERE username='$username' and password='$password' and  userType='businessManager' ";
         $result = mysqli_query($conn,$query) or die(mysql_error());
         $rows = mysqli_num_rows($result);
         if($rows == 1){
             $_SESSION['username'] = $username;
-            header("Location: dashboard.php"); // Redirect user to index.php
+            header("Location: BusinessManagerModule/dashboard.php"); // Redirect user to index.php
+            }else{
+                echo "<h3>Username/password is incorrect.</h3>";
+                }
+    }elseif (isset($_POST['username'])){
+      // If form submitted, insert values into the database.
+        $username = stripslashes($_REQUEST['username']); // removes backslashes
+        $username = mysqli_real_escape_string($conn,$username); //escapes special characters in a string
+        $password = stripslashes($_REQUEST['password']);
+        $password = mysqli_real_escape_string($conn,$password);
+        $userType = stripslashes($_REQUEST['userType']);
+    //Checking is user existing in the database or not
+        $query = "SELECT * FROM `users` WHERE username='$username' and password='$password' and  userType='assistant' ";
+        $result = mysqli_query($conn,$query) or die(mysql_error());
+        $rows = mysqli_num_rows($result);
+        if($rows == 1){
+            $_SESSION['username'] = $username;
+            header("Location: AssistantModule/dashboard.html"); // Redirect user to index.php
             }else{
                 echo "<h3>Username/password is incorrect.</h3>";
                 }
@@ -59,7 +77,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-      <center><img src="dist/img/user3-128x128.png" alt="User Image" style="width:160px;height:160px;"></center>
+      <center><img src="businessManagerModule/dist/img/user3-128x128.png" alt="User Image" style="width:160px;height:160px;"></center>
     <p class="login-box-msg">Sign in to start your session</p>
 
     <form name="form1" method="post">
@@ -172,11 +190,11 @@
 <!-- /.login-box -->
 
 <!-- jQuery 3 -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="businessManagerModule/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="businessManagerModule/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- iCheck -->
-<script src="plugins/iCheck/icheck.min.js"></script>
+<script src="businessManagerModule/plugins/iCheck/icheck.min.js"></script>
 <script>
   $(function () {
     $('input').iCheck({
