@@ -6,5 +6,5 @@
 	$sql->execute();
 	$sql->close(); 
 	$conn->close();
-	header('location:../data.php');		
+	header('location:../data2.php');		
 ?>
