@@ -57,7 +57,7 @@ $conn = new mysqli($server, $username, $password, $database);
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index.html" class="logo">
+    <a href="dashboard.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>MDC</span>
       <!-- logo for regular state and mobile devices -->
@@ -318,7 +318,7 @@ $conn = new mysqli($server, $username, $password, $database);
         <li class="header">Inventory System</li>
 	<!---------------------------------------------------- DASHBOARD MENU -------------------------------------------------------------->
         <li class= "active">
-          <a href="index.html">
+          <a href="dashboard.php">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
@@ -392,8 +392,8 @@ $conn = new mysqli($server, $username, $password, $database);
             </span>
           </a>
           <ul class="treeview-menu">
-			<li><a href="pages/tables/data.html"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-			<li><a href="pages/tables/data2.html"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+			<li><a href="pages/tables/data.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
+			<li><a href="pages/tables/data2.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
         <!--------------------------------------------------- PURCHASES -------------------------------------------------->
@@ -409,7 +409,7 @@ $conn = new mysqli($server, $username, $password, $database);
           </li>
 		<!---------------------------------------------------- SUPPLIERS MENU -------------------------------------------------------------->
         <li>
-          <a href="pages/tables/data3.html">
+          <a href="pages/tables/data3.php">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>

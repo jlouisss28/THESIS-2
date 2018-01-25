@@ -583,7 +583,7 @@
         <table id="example1" class="table table-bordered table-striped">
           <?php
             require_once("../../../db.php");
-            $sql = "SELECT supplydesc, unitInStock, unit, unitPrice, reorderLevel FROM supplies WHERE supplyType='Medical' ";
+            $sql = "SELECT supplydesc, unitInStock, unit, unitPrice, reorderLevel, supplyType FROM supplies WHERE supplyType='Medical' ";
             $result = $conn->query($sql);    
           ?>
           <thead>
@@ -610,10 +610,12 @@
             <td><?php echo $row["unit"]; ?></td>
             <td><?php echo $row["unitPrice"]; ?></td>
             <td><?php echo $row["reorderLevel"]; ?></td>
-            <td><form action="php/medicalDelete.php" method="get">
-                <button type="submit" class="btn btn-xs btn-danger">
-                <i class="fa fa-fw fa-trash"></i></button>
-            </form></td>
+            <td><form action="php/medicalDelete.php">
+                  <input type="text" name="medDelete" hidden value="'.$row['supplydesc'].'">
+                  <button type="submit" class="btn btn-xs btn-danger">
+                  <i class="fa fa-fw fa-trash"></i></button>
+                </form>
+            </td>
            <!--  <td><?php // echo $row[""]; ?></td>
             <td><?php // echo $row[""]; ?></td>
             <td><?php // echo $row[""]; ?></td>
