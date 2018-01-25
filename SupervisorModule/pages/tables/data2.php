@@ -1,7 +1,3 @@
-<?php 
-$conn =mysqli_connect("localhost","root","");
-mysqli_select_db($conn, "itproject");
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -132,62 +128,6 @@ mysqli_select_db($conn, "itproject");
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
-          <!-- <li class="treeview">
-          <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>Charts</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Layout Options</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-            <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="pages/widgets.html">
-            <i class="fa fa-th"></i> <span>Widgets</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
-            </span>
-          </a>
-        </li>
-       
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>UI Elements</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-            <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-            <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-            <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-            <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-          </ul>
-        </li> -->
 
 		<!---------------------------------------------------- SUPPLIES MENU -------------------------------------------------------------->
         <li class="active treeview">
@@ -237,44 +177,6 @@ mysqli_select_db($conn, "itproject");
             <i class="fa fa-lock"></i> <span>Lockscreen</span>
           </a>
         </li>
-        <!-- <li class="treeview">
-          <a href="#">
-            <i class="fa fa-share"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Level One
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                <li class="treeview">
-                  <a href="#"><i class="fa fa-circle-o"></i> Level Two
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-          </ul>
-        </li>
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-        <li class="header">LABELS</li>
-        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li> -->
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -309,62 +211,67 @@ mysqli_select_db($conn, "itproject");
               <!-- /.box-header -->
               <div class="box-body">
 
-              <table id="example1" class="table table-bordered table-striped">
-                <?php
-        $res = mysqli_query($conn, "SELECT supplydesc, unitInStock, unit, unitPrice, reorderLevel FROM supplies WHERE supplyType='Office' ");
-        
-          echo "<thead>";
-          echo "<tr>";
-           // echo "<th>"; echo "Date Received"; echo "</th>";
-           // echo "<th>"; echo "Time Received"; echo "</th>";
-           // echo "<th>"; echo "Expiration Date"; echo "</th>";
-            echo "<th>"; echo "Description"; echo "</th>";
-           // echo "<th>"; echo "Supplier"; echo "</th>";
-            echo "<th>"; echo "Quantity In Stock"; echo "</th>";
-            echo "<th>"; echo "Unit"; echo "</th>";
-            echo "<th>"; echo "Unit Price"; echo "</th>";
-           // echo "<th>"; echo "Total Amount"; echo "</th>";
-            echo "<th>"; echo "Reorder Level"; echo "</th>";
-            echo "<th>"; echo "</th>";
-          echo "</tr>";
-        echo "</thead>";
-        echo "<tbody>";
-        while($row = mysqli_fetch_array($res)) {
-          echo "<tr>";
-            echo "<td>"; echo $row['supplydesc']; echo "</td>";
-            echo "<td>"; echo $row['unitInStock']; echo "</td>";
-            echo "<td>"; echo $row['unit']; echo "</td>";
-            echo "<td>"; echo $row['unitPrice']; echo "</td>";
-            echo "<td>"; echo $row['reorderLevel']; echo "</td>";
-            // echo "<td>"; echo $row['']; echo "</td>";
-            // echo "<td>"; echo $row['']; echo "</td>";
-            // echo "<td>"; echo $row['']; echo "</td>";
-            // echo "<td>"; echo $row['']; echo "</td>";
-            // echo "<td>"; echo $row['']; echo "</td>";
-             echo(<td>.<center>.<input type="checkbox">.</center>.</td>);
-          echo "</tr>";
-        }
-
-        echo "</tbody>";
-        echo "<tfoot>";
-          echo "<tr>";
-            // echo "<th>"; echo "Date Received"; echo "</th>";
-           // echo "<th>"; echo "Time Received"; echo "</th>";
-           // echo "<th>"; echo "Expiration Date"; echo "</th>";
-            echo "<th>"; echo "Description"; echo "</th>";
-           // echo "<th>"; echo "Supplier"; echo "</th>";
-            echo "<th>"; echo "Quantity In Stock"; echo "</th>";
-            echo "<th>"; echo "Unit"; echo "</th>";
-            echo "<th>"; echo "Unit Price"; echo "</th>";
-           // echo "<th>"; echo "Total Amount"; echo "</th>";
-            echo "<th>"; echo "Reorder Level"; echo "</th>";
-            echo "<th>"; echo "</th>";
-          echo "</tr>";
-        echo "</tfoot>";
-        echo "</table>";
-        mysqli_close($conn);
-      
-    ?>
+             <table id="example1" class="table table-bordered table-striped">
+          <?php
+            require_once("../../../db.php");
+            $sql = "SELECT supplydesc, unitInStock, unit, unitPrice, reorderLevel FROM supplies WHERE supplyType='Medical' ";
+            $result = $conn->query($sql);    
+          ?>
+          <thead>
+            <tr>
+             <!--     <th>Date Received</th>
+                  <th>Time Received</th>
+                  <th>Expiration Date</th> -->
+                  <th>Description</th>
+             <!--     <th>Supplier</th> -->
+                  <th>Quantity in Stock</th>
+                  <th>Unit</th>
+                  <th>Unit Price</th>
+             <!--    <th>Total Amount</th> -->
+                  <th>Reorder Level</th>
+                  <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php if ($result->num_rows > 0) {
+          while($row = $result->fetch_assoc()) { ?>
+            <tr>
+            <td><?php echo $row["supplydesc"]; ?></td>
+            <td><?php echo $row["unitInStock"]; ?></td>
+            <td><?php echo $row["unit"]; ?></td>
+            <td><?php echo $row["unitPrice"]; ?></td>
+            <td><?php echo $row["reorderLevel"]; ?></td>
+            <td><form action="php/medicalDelete.php" method="get">
+                <button type="submit" class="btn btn-xs btn-danger">
+                <i class="fa fa-fw fa-trash"></i></button>
+            </form></td>
+           <!--  <td><?php // echo $row[""]; ?></td>
+            <td><?php // echo $row[""]; ?></td>
+            <td><?php // echo $row[""]; ?></td>
+            <td><?php // echo $row[""]; ?></td>
+            <td><center><input type="checkbox"></center></td> -->
+            </tr>
+          <?php 
+              }
+            }
+          ?>
+        </tbody>
+        <tfoot>
+           <tr>
+            <!--     <th>Date Received</th>
+            <th>Time Received</th>
+            <th>Expiration Date</th> -->
+            <th>Description</th>
+       <!--     <th>Supplier</th> -->
+            <th>Quantity in Stock</th>
+            <th>Unit</th>
+            <th>Unit Price</th>
+       <!--    <th>Total Amount</th> -->
+            <th>Reorder Level</th>
+            <th></th>
+        </tr> 
+        </tfoot>
+      </table>              
             </div>
             <!-- /.box-body -->
           </div>

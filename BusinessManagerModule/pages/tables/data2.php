@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <title>Business Manager | Data</title>
+ <title>Business Manager | Data2</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
     <!-- daterange picker -->
   <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
-      <!-- Bootstrap time Picker -->
+  <!-- Bootstrap time Picker -->
   <link rel="stylesheet" href="../../plugins/timepicker/bootstrap-timepicker.min.css">
     <!-- Select2 -->
       <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
@@ -36,29 +36,13 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
- <style>
-    .example-modal .modal {
-      position: relative;
-      top: auto;
-      bottom: auto;
-      right: auto;
-      left: auto;
-      display: block;
-      z-index: 1;
-    }
-
-    .example-modal .modal {
-      background: transparent !important;
-    }
-  </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-
 <div class="wrapper">
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index.html" class="logo">
+    <a href="../../dashboard.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>MDC</span>
       <!-- logo for regular state and mobile devices -->
@@ -76,15 +60,15 @@
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-         <li class= "user user-menu">
-                    <a class = "dropdown-toggle">
-                        <span class="hidden-xs" id="demo"></span>
-                        <script>
-                            var d = new Date();
-                            document.getElementById("demo").innerHTML = d.toUTCString();
-                        </script>
-                    </a>
-                </li>
+            <li class="user user-menu">
+                <a class="dropdown-toggle">
+                    <span class="hidden-xs" id="demo"></span>
+                    <script>
+                        var d = new Date();
+                        document.getElementById("demo").innerHTML = d.toUTCString();
+                    </script>
+                </a>
+            </li>
           <!-- Notifications: style can be found in dropdown.less -->
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -224,13 +208,13 @@
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
-            
+         
                 <div class="pull-right">
                   <a href="../examples/login.html" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
-          </li>    
+          </li>
         </ul>
       </div>
     </nav>
@@ -265,7 +249,7 @@
         <li class="header">Inventory System</li>
 	<!---------------------------------------------------- DASHBOARD MENU -------------------------------------------------------------->
          <li>
-          <a href="../../index.html">
+          <a href="../../dashboard.html">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
@@ -284,30 +268,30 @@
             </span>
           </a>
           <ul class="treeview-menu">
-			<li class ="active"><a href="data.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-			<li><a href="data2.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+			<li><a href="data.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
+			<li class ="active"><a href="data2.html"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
         <!--------------------------------------------------- PURCHASES -------------------------------------------------->
           <li>
-              <a href="data5.php">
+              <a href="data5.html">
                   <i class="fa fa-tags"></i><span>Purchases</span>  
               </a>
           </li>
         <!--------------------------------------------------- ISSUED SUPPLIES -------------------------------------------------->
-            <li><a href="data6.php">
+            <li><a href="data6.html">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
 		<!---------------------------------------------------- SUPPLIERS MENU -------------------------------------------------------------->
         <li>
-          <a href="data3.php">
+          <a href="data3.html">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>
 		<!---------------------------------------------------- DEPARTMENTS MENU -------------------------------------------------------------->
         <li>
-          <a href="data4.php">
+          <a href="data4.html">
             <i class="fa fa-building"></i> <span>Departments</span>
           </a>
         </li>
@@ -343,28 +327,30 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-          <b>Medical Supplies</b>
-        <!-- <small>Supplies</small> -->
+        <b>Office Supplies</b>
+        <!-- <small>advanced tables</small> -->
       </h1>
+        
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Medical Supplies</a></li>
+        <li><a href="#">Office Supplies</a></li>
         <li class="active">Data tables</li>
       </ol>
     </section>
 
     <!-- Main content -->
-    <section class="content">
+      <section class="content">
       <div class="row">
         <div class="col-xs-12">
-
+            
           <div class="box">
             <div class="box-header">
-              <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
+              <!-- <h3 class="box-title">Office Supplies</h3> -->
                 <table style="float: left;">
                     <tr>
+               
                     </tr>
-                </table>  
+                </table> 
                 <table style="float:right;">
                     <tr>
                         <th><button type="submit" class="btn btn-primary btn-block btn-info">Edit</button></th>
@@ -461,10 +447,7 @@
                                   <!-- /.modal-dialog -->
                                 </div>
                                 </form>
-                            </th> 
-                              
-
-                            <!--- END OF ADD -->
+                              </th>
                         <th><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">
                             Delete</button>
                             <div class="modal modal-danger fade" id="modal-danger">
@@ -487,9 +470,7 @@
                               </div>
                               <!-- /.modal-dialog -->
                             </div>
-                            <!-- /.modal --></th>
-                        
-                          <!---  ISSUE BUTTON -->
+                            <!-- /.modal --></th>   
                         <th><button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
                                         Issue To
                                       </button>
@@ -505,7 +486,7 @@
                                       </div>
                                         <!-- end of modal header -->
                                       <div class="modal-body">
-                                              <!-- Date and Time -->
+                                        <!-- Date and Time -->
                                                  <div class="form-group">
                                                     <label>Issue Date</label>
 
@@ -544,15 +525,19 @@
                                                 <span class="caret"></span>
                                                 <span class="sr-only">Toggle Dropdown</span>
                                               </button>
+                                      
                                               <ul class="dropdown-menu">
-                                              <li><a href="#">Cardiac</a></li>
-                                              <li><a href="#">Endoscopy</a></li>
-                                              <li><a href="#">Imaging</a></li>
-                                              <li><a href="#">Clinical Laboratory</a></li>
-                                              <li><a href="#">Management</a></li>
-                                              </ul>
+                                              <li><a href="#">Cardiac, Baguio City</a></li>
+                                              <li><a href="#">Endoscopy, Baguio City</a></li>
+                                              <li><a href="#">Imaging, Baguio City</a></li>
+                                              <li><a href="#">Clinical Laboratory, Baguio City</a></li>
+                                              <li><a href="#">Management, Baguio City</a></li>
+                                              <li><a href="#">Imaging, La Trinidad</a></li>
+                                              <li><a href="#">Clinical Laboratory, La Trinidad</a></li>
+                                              <li><a href="#">Endoscopy Unit, SLU Hospital</a></li>
+                                                  </ul>
                                           </div>
-                                          <div class="btn-group">
+                                                 <div class="btn-group">
                                               <button type="button" class="btn btn-default">Branch</button>
                                               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                                 <span class="caret"></span>
@@ -576,11 +561,11 @@
                                 </div>
                                 <!-- /.modal --></th>
                     </tr>
-                </table>      
+                </table> 
             </div>
-              
+            <!-- /.box-header -->
             <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+              <table id="example1" class="table table-bordered table-striped">
           <?php
             require_once("../../../db.php");
             $sql = "SELECT supplydesc, unitInStock, unit, unitPrice, reorderLevel FROM supplies WHERE supplyType='Medical' ";
@@ -610,7 +595,7 @@
             <td><?php echo $row["unit"]; ?></td>
             <td><?php echo $row["unitPrice"]; ?></td>
             <td><?php echo $row["reorderLevel"]; ?></td>
-            <td><form action="php/medicalDelete.php" method="get">
+            <td><form action="php/officeDelete.php" method="get">
                 <button type="submit" class="btn btn-xs btn-danger">
                 <i class="fa fa-fw fa-trash"></i></button>
             </form></td>
@@ -640,7 +625,7 @@
             <th></th>
         </tr> 
         </tfoot>
-      </table>              
+      </table>
             </div>
             <!-- /.box-body -->
           </div>
@@ -649,21 +634,19 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-            <!----------- PRINT AND PDF ----->
-              <div class="row no-print">
+                <div class="row no-print">
         <div class="col-xs-12">
-          <a href="../examples/invoice-print2.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+          <a href="../examples/invoice-print3.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
           <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
             <i class="fa fa-download"></i> Generate PDF
           </button>
         </div>
       </div>
-        <!--------- END OF PRINT AND PDF ----->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
+   <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
     </div>
@@ -687,39 +670,32 @@
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
 <!-- Select2 -->
 <script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- InputMask -->
 <script src="../../plugins/input-mask/jquery.inputmask.js"></script>
 <script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
-
+<!-- date-range-picker -->
+<script src="../../bower_components/moment/min/moment.min.js"></script>
+<script src="../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap datepicker -->
 <script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- bootstrap color picker -->
 <script src="../../bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 <!-- bootstrap time picker -->
 <script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-    <!-- bootstrap time picker -->
-<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- page script -->
-<script>
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
-    </script>
+
 <script>
 <!-- date and time -->
   $(function () {
@@ -730,11 +706,9 @@
     $('#datepicker').datepicker({
       autoclose: true
     })
-    //Date picker
     $('#datepicker2').datepicker({
       autoclose: true
     })
-    //Date picker
     $('#datepicker3').datepicker({
       autoclose: true
     })
@@ -742,6 +716,19 @@
     //Timepicker
     $('.timepicker').timepicker({
       showInputs: false
+    })
+  })
+</script>
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
     })
   })
 </script>
