@@ -199,7 +199,7 @@ $conn = new mysqli($server, $username, $password, $database);
                 </ul>
               </li>
               <li class="footer">
-                <a href="index.html">View all charts</a>
+                <a href="dashboard.php">View all charts</a>
               </li>
             </ul>
           </li>
@@ -225,7 +225,7 @@ $conn = new mysqli($server, $username, $password, $database);
               <li class="user-footer">
         
                 <div class="pull-right">
-                  <a href="pages/examples/login.html" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="pages/examples/index.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
                 <div class="pull-left">
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
@@ -415,7 +415,7 @@ $conn = new mysqli($server, $username, $password, $database);
         </li>
 		<!---------------------------------------------------- DEPARTMENTS MENU -------------------------------------------------------------->
         <li>
-          <a href="pages/tables/data4.html">
+          <a href="pages/tables/data4.php">
             <i class="fa fa-building"></i> <span>Departments</span>
           </a>
         </li>
