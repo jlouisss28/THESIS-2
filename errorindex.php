@@ -47,8 +47,10 @@
         <input type="password" class="form-control" name="password" placeholder="Password" required/>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+      <center><font color="red"><p>Username or Password is Incorrect!</p></font></center>
       <div class="row" style="display: flex; align-items: center; justify-content: center;">
         <!-- /.col -->
+
         <div class="col-xs-4">
           <button type="submit" name="S1" class="btn btn-primary btn-block btn-flat">Sign In</button>
         </div>

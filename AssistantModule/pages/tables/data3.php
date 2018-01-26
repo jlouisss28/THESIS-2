@@ -37,7 +37,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index.html" class="logo">
+    <a href="../../dashboard.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>MDC</span>
       <!-- logo for regular state and mobile devices -->
@@ -516,9 +516,9 @@
                       }
                   } 
                   $sql2 = "SELECT companyName, supplierContact, supplierAddr, supplierStatus, supplierProduct, suppierRemarks FROM suppliers WHERE supplierStatus = 'Inactive'";
-                  $result2 = mysqli_query($db, $sql);
-                  if ($result = mysqli_query($db, $sql)){
-                      while ($row = mysqli_fetch_row($result)){
+                  $result2 = mysqli_query($db, $sql2);
+                  if ($result2 = mysqli_query($db, $sql2)){
+                      while ($row = mysqli_fetch_row($result2)){
                           echo'
                             <tbody>
                                 <tr>

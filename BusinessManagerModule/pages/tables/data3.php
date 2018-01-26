@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Assistant | Suppliers</title>
+  <title>Business Manager | Suppliers</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
  
@@ -37,7 +37,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index.html" class="logo">
+    <a href="../../dashboard.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>MDC</span>
       <!-- logo for regular state and mobile devices -->
@@ -184,7 +184,7 @@
           <img src="../../dist/img/user2-128x128.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Assistant</p>
+          <p>Business Manager</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Active</a>
         </div>
       </div>
@@ -204,7 +204,7 @@
         <li class="header">Inventory System</li>
 	<!---------------------------------------------------- DASHBOARD MENU -------------------------------------------------------------->
          <li>
-          <a href="../../index.html">
+          <a href="../../dashboard.php">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
@@ -274,30 +274,30 @@
             </span>
           </a>
           <ul class="treeview-menu">
-			<li><a href="data.html"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-			<li><a href="data2.html"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+			<li><a href="data.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
+			<li><a href="data2.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
         <!--------------------------------------------------- PURCHASES -------------------------------------------------->
           <li>
-              <a href="data5.html">
+              <a href="data5.php">
                   <i class="fa fa-tags"></i><span>Purchases</span>  
               </a>
           </li>
         <!--------------------------------------------------- ISSUED SUPPLIES -------------------------------------------------->
-            <li><a href="data6.html">
+            <li><a href="data6.php">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
 		<!---------------------------------------------------- SUPPLIERS MENU -------------------------------------------------------------->
         <li class="active">
-          <a href="data3.html">
+          <a href="data3.php">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>
 		<!---------------------------------------------------- DEPARTMENTS MENU -------------------------------------------------------------->
         <li>
-          <a href="data4.html">
+          <a href="data4.php">
             <i class="fa fa-building"></i> <span>Departments</span>
           </a>
         </li>
@@ -389,6 +389,8 @@
              
                         <th><button type="submit" class="btn btn-primary btn-block btn-info">Edit</button></th>
                         <th><button type="submit" class="btn btn-primary btn-block btn-warning" data-toggle="modal" data-target="#modal-info">Add</button>
+                        
+                        <form name="form1" method="post" action="php/supplierAdd.php" >
                         <div class="modal fade" id="modal-info">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
@@ -415,19 +417,19 @@
                                             <tr>
                                               <td><div class="form-group">
                                                   <label for="exampleInputEmail1"></label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="text" class="form-control" name="suppName" required />
                                                 </div></td>
                                               <td><div class="form-group">
                                                   <label for="exampleInputEmail1"></label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="text" class="form-control" name="suppContact" required />
                                                 </div></td>
                                               <td><div class="form-group">
                                                   <label for="exampleInputEmail1"></label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="text" class="form-control" name="suppAddress" required />
                                                 </div></td>
                                               <td><div class="form-group">
                                                   <label for="exampleInputEmail1"></label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="text" class="form-control" name="suppProduct" required />
                                                 </div></td>
                                             </tr>
                                             </tbody>
@@ -436,13 +438,15 @@
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-primary">Add Suppliers</button>
+                                        <button type="submit" name="addSuppliers" class="btn btn-primary">Add Suppliers</button>
                                       </div>
                                     </div>
                                     <!-- /.modal-content -->
                                   </div>
                                   <!-- /.modal-dialog -->
-                                </div></th>
+                                </div>
+                              </form>
+                              </th>
                         <th><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">
                             Delete</button>
                             <div class="modal modal-danger fade" id="modal-danger">
@@ -516,9 +520,9 @@
                       }
                   } 
                   $sql2 = "SELECT companyName, supplierContact, supplierAddr, supplierStatus, supplierProduct, suppierRemarks FROM suppliers WHERE supplierStatus = 'Inactive'";
-                  $result2 = mysqli_query($conn, $sql);
-                  if ($result = mysqli_query($conn, $sql)){
-                      while ($row = mysqli_fetch_row($result)){
+                  $result2 = mysqli_query($conn, $sql2);
+                  if ($result2 = mysqli_query($conn, $sql2)){
+                      while ($row = mysqli_fetch_row($result2)){
                           echo'
                             <tbody>
                                 <tr>
@@ -662,10 +666,25 @@ input:checked + .slider:before {
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- Select2 -->
+<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
+<!-- InputMask -->
+<script src="../../plugins/input-mask/jquery.inputmask.js"></script>
+<script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
+
+<!-- bootstrap datepicker -->
+<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- bootstrap color picker -->
+<script src="../../bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- bootstrap time picker -->
+<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+    <!-- bootstrap time picker -->
+<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- page script -->
 <script>
   $(function () {
@@ -677,6 +696,31 @@ input:checked + .slider:before {
       'ordering'    : true,
       'info'        : true,
       'autoWidth'   : false
+    })
+  })
+    </script>
+<script>
+<!-- date and time -->
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    })
+    //Date picker
+    $('#datepicker2').datepicker({
+      autoclose: true
+    })
+    //Date picker
+    $('#datepicker3').datepicker({
+      autoclose: true
+    })
+      
+    //Timepicker
+    $('.timepicker').timepicker({
+      showInputs: false
     })
   })
 </script>
