@@ -478,9 +478,9 @@
               <table id="example1" class="table table-bordered table-striped">
                 <?php
                     require_once("../../../db.php");
-                    $sql = "SELECT suppliers_ID, companyName, supplierContact, supplierAddr, supplierStatus, supplierProduct, suppierRemarks FROM suppliers WHERE supplierStatus = 'Active'";
+                    $sql = "SELECT suppliers_ID, companyName, supplierContact, supplierAddr, supplierStatus, supplierProduct, supplierRemarks FROM suppliers WHERE supplierStatus = 'Active'";
                     $result = $conn->query($sql);
-                    $sql2 = "SELECT suppliers_ID, companyName, supplierContact, supplierAddr, supplierStatus, supplierProduct, suppierRemarks FROM suppliers WHERE supplierStatus = 'Inactive'";
+                    $sql2 = "SELECT suppliers_ID, companyName, supplierContact, supplierAddr, supplierStatus, supplierProduct, supplierRemarks FROM suppliers WHERE supplierStatus = 'Inactive'";
                     $result2 = $conn->query($sql2);
                 ?>
 
@@ -510,9 +510,9 @@
                                 </label>
                               </center>
                           </td>
-                          <td><?php echo $row["suppierRemarks"]; ?></td>
+                          <td><?php echo $row["supplierRemarks"]; ?></td>
                           <td><form action="php/supplierDelete.php">
-                                <input type="text" name="suppDelete" value="<?php echo $row["suppliers_ID"]; ?>">
+                                <input type="text" name="suppDelete" hidden value="<?php echo $row["suppliers_ID"]; ?>">
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">
                                 <i class="fa fa-fw fa-trash"></i></button>
                                 <div class="modal modal-danger fade" id="modal-danger">
@@ -559,9 +559,9 @@
                                 </label>
                               </center>
                           </td>
-                          <td><?php echo $row["suppierRemarks"]; ?></td>
+                          <td><?php echo $row["supplierRemarks"]; ?></td>
                           <td><form action="php/supplierDelete.php" method="get">
-                                <input type="text" name="suppDelete" value="<?php echo $row["suppliers_ID"]; ?>">
+                                <input type="text" name="suppDelete" hidden value="<?php echo $row["suppliers_ID"]; ?>">
                                 <button type="submit" class="btn-danger">
                                 <i class="fa fa-fw fa-trash"></i></button>
                               </form>
