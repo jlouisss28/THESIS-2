@@ -321,7 +321,7 @@
           </a>
           <ul class="treeview-menu">
 			<li><a href="data.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-			<li><a href="data2.html"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+			<li><a href="data2.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
         <!--------------------------------------------------- PURCHASES -------------------------------------------------->
@@ -530,35 +530,41 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                  <?php
-                  
-                  include ('../../../db.php');
-                  
-                  echo'
-                    <thead>
+                    require_once("../../../db.php");
+                    $sql = "SELECT * FROM departments";
+                    $result = $conn->query($sql);    
+                  ?>
+                 <thead>
                         <tr>
                             <th>Department Name</th>
                             <th>Branch Location</th>
+                            <th></th>
                         </tr>
-                    </thead>
-                  ';
-                  
-                  $sql = "SELECT departmentName, branchLocation FROM departments";
-                  $result = mysqli_query($conn, $sql);
-                  if ($result = mysqli_query($conn, $sql)){
-                      while ($row = mysqli_fetch_row($result)){
-                          echo'
-                            <tbody>
-                                <tr>
-                                    <td>'.$row[0].'</td>
-                                    <td>'.$row[1].'</td>
-                                </tr>
-                                
-                            </tbody>
-                          ';
-                      }
-                  }
-
-                  ?>
+                 </thead>
+                    <tbody>
+                      <?php if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) { ?>
+                        <tr>
+                        <td><?php echo $row["departmentName"]; ?></td>
+                        <td><?php echo $row["branchLocation"]; ?></td>
+                        <td>
+                            <form action="php/departmentDelete.php">
+                              <input type="text" name="depDelete" hidden value="<?php echo $row["department_ID"]; ?>">
+                              <button type="submit" class="btn btn-xs btn-danger">
+                              <i class="fa fa-fw fa-trash"></i></button>
+                            </form>
+                        </td>
+                       <!--  <td><?php // echo $row[""]; ?></td>
+                        <td><?php // echo $row[""]; ?></td>
+                        <td><?php // echo $row[""]; ?></td>
+                        <td><?php // echo $row[""]; ?></td>
+                        <td><center><input type="checkbox"></center></td> -->
+                        </tr>
+                      <?php 
+                          }
+                        }
+                      ?>
+                    </tbody>
               </table>
             </div>
             <!-- /.box-body -->
