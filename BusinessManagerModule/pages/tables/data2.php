@@ -355,7 +355,7 @@
                     <tr>
                         <th><button type="submit" class="btn btn-primary btn-block btn-info">Edit</button></th>
                         <th><button type="submit" class="btn btn-primary btn-block btn-warning" data-toggle="modal" data-target="#modal-info">Add</button>
-                        <form name="form1" method="post" action="php/medicalAdd.php" >
+                        <form name="form1" method="post" action="suppliesFunctions.php" >
                         <div class="modal fade" id="modal-info">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
@@ -438,7 +438,7 @@
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn btn-primary" name="addSupply">Save Supply</button>
+                                        <button type="submit" class="btn btn-primary" name="addOfficeSupply">Save Supply</button>
                                       </div>
                                     </div>
                                     <!-- /.modal-content -->
@@ -566,63 +566,53 @@
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
-          <?php
-            require_once("../../../db.php");
-            $sql = "SELECT supplydesc, unitInStock, unit, unitPrice, reorderLevel FROM supplies WHERE supplyType='Medical' ";
-            $result = $conn->query($sql);    
-          ?>
+          <?php // RETRIEVE or Display Medical Supplies
+         require_once("../../../db.php");
+          $sql = "SELECT * FROM supplies WHERE supplyType='Office' ";
+          $result = $conn->query($sql);  ?>
           <thead>
             <tr>
              <!--     <th>Date Received</th>
                   <th>Time Received</th>
-                  <th>Expiration Date</th> -->
+                  <th>Expiration Date</th> --> 
                   <th>Description</th>
-             <!--     <th>Supplier</th> -->
                   <th>Quantity in Stock</th>
                   <th>Unit</th>
                   <th>Unit Price</th>
              <!--    <th>Total Amount</th> -->
                   <th>Reorder Level</th>
-                  <th></th>
+             <!--     <th> Action</th> -->
             </tr>
         </thead>
         <tbody>
-        <?php if ($result->num_rows > 0) {
+        <?php
           while($row = $result->fetch_assoc()) { ?>
             <tr>
-            <td><?php echo $row["supplydesc"]; ?></td>
+            <!-- <td><?php // echo $row["expirationDate"]; ?></td> -->
+
+            <td><?php echo $row["supplyDesc"]; ?></td>
             <td><?php echo $row["unitInStock"]; ?></td>
             <td><?php echo $row["unit"]; ?></td>
             <td><?php echo $row["unitPrice"]; ?></td>
             <td><?php echo $row["reorderLevel"]; ?></td>
-            <td><form action="php/officeDelete.php" method="get">
-                <button type="submit" class="btn btn-xs btn-danger">
-                <i class="fa fa-fw fa-trash"></i></button>
-            </form></td>
-           <!--  <td><?php // echo $row[""]; ?></td>
-            <td><?php // echo $row[""]; ?></td>
-            <td><?php // echo $row[""]; ?></td>
-            <td><?php // echo $row[""]; ?></td>
-            <td><center><input type="checkbox"></center></td> -->
+           
             </tr>
           <?php 
               }
-            }
           ?>
         </tbody>
         <tfoot>
            <tr>
             <!--     <th>Date Received</th>
-            <th>Time Received</th>
-            <th>Expiration Date</th> -->
-            <th>Description</th>
-       <!--     <th>Supplier</th> -->
-            <th>Quantity in Stock</th>
-            <th>Unit</th>
-            <th>Unit Price</th>
-       <!--    <th>Total Amount</th> -->
-            <th>Reorder Level</th>
-            <th></th>
+                  <th>Time Received</th>
+                  <th>Expiration Date</th> --> 
+                  <th>Description</th>
+                  <th>Quantity in Stock</th>
+                  <th>Unit</th>
+                  <th>Unit Price</th>
+             <!--    <th>Total Amount</th> -->
+                  <th>Reorder Level</th>
+              <!--    <th> Action</th> -->
         </tr> 
         </tfoot>
       </table>

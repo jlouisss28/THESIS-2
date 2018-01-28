@@ -53,7 +53,6 @@
   </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-
 <div class="wrapper">
 
   <header class="main-header">
@@ -367,9 +366,9 @@
                 </table>  
                 <table style="float:right;">
                     <tr>
-                        <th><button type="submit" class="btn btn-primary btn-block btn-info">Edit</button></th>
                         <th><button type="submit" class="btn btn-primary btn-block btn-warning" data-toggle="modal" data-target="#modal-info">Add</button>
-                        <form name="form1" method="post" action="php/medicalAdd.php" >
+                        
+                        <form name="form1" method="post" action="suppliesFunctions.php">
                         <div class="modal fade" id="modal-info">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
@@ -452,7 +451,7 @@
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn btn-primary" name="addSupply">Save Supply</button>
+                                        <button type="submit" class="btn btn-primary" name="addMedSupply">Save Supply</button>
                                       </div>
                                     </div>
                                     <!-- /.modal-content -->
@@ -465,31 +464,7 @@
                               
 
                             <!--- END OF ADD -->
-                        <th><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">
-                            Delete</button>
-                            <div class="modal modal-danger fade" id="modal-danger">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Delete</h4>
-                                  </div>
-                                  <div class="modal-body">
-                                    <h4>Are you sure to delete the items?</h4>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-outline">Delete</button>
-                                  </div>
-                                </div>
-                                <!-- /.modal-content -->
-                              </div>
-                              <!-- /.modal-dialog -->
-                            </div>
-                            <!-- /.modal --></th>
-                        
-                          <!---  ISSUE BUTTON -->
+                        <!---  ISSUE BUTTON -->
                         <th><button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
                                         Issue To
                                       </button>
@@ -581,65 +556,53 @@
               
             <div class="box-body">
         <table id="example1" class="table table-bordered table-striped">
-          <?php
-            require_once("../../../db.php");
-            $sql = "SELECT supplydesc, unitInStock, unit, unitPrice, reorderLevel, supplyType FROM supplies WHERE supplyType='Medical' ";
-            $result = $conn->query($sql);    
-          ?>
+         <?php // RETRIEVE or Display Medical Supplies
+         require_once("../../../db.php");
+          $sql = "SELECT * FROM supplies WHERE supplyType='Medical' ";
+          $result = $conn->query($sql);  ?>
           <thead>
             <tr>
              <!--     <th>Date Received</th>
                   <th>Time Received</th>
-                  <th>Expiration Date</th> -->
+                  <th>Expiration Date</th> --> 
                   <th>Description</th>
-             <!--     <th>Supplier</th> -->
                   <th>Quantity in Stock</th>
                   <th>Unit</th>
                   <th>Unit Price</th>
              <!--    <th>Total Amount</th> -->
                   <th>Reorder Level</th>
-                  <th></th>
+             <!--     <th> Action</th> -->
             </tr>
         </thead>
         <tbody>
-        <?php if ($result->num_rows > 0) {
+        <?php
           while($row = $result->fetch_assoc()) { ?>
             <tr>
-            <td><?php echo $row["supplydesc"]; ?></td>
+            <!-- <td><?php // echo $row["expirationDate"]; ?></td> -->
+
+            <td><?php echo $row["supplyDesc"]; ?></td>
             <td><?php echo $row["unitInStock"]; ?></td>
             <td><?php echo $row["unit"]; ?></td>
             <td><?php echo $row["unitPrice"]; ?></td>
             <td><?php echo $row["reorderLevel"]; ?></td>
-            <td><form action="php/medicalDelete.php">
-                  <input type="text" name="medDelete" hidden value="'.$row['supplydesc'].'">
-                  <button type="submit" class="btn btn-xs btn-danger">
-                  <i class="fa fa-fw fa-trash"></i></button>
-                </form>
-            </td>
-           <!--  <td><?php // echo $row[""]; ?></td>
-            <td><?php // echo $row[""]; ?></td>
-            <td><?php // echo $row[""]; ?></td>
-            <td><?php // echo $row[""]; ?></td>
-            <td><center><input type="checkbox"></center></td> -->
+           
             </tr>
           <?php 
               }
-            }
           ?>
         </tbody>
         <tfoot>
            <tr>
             <!--     <th>Date Received</th>
-            <th>Time Received</th>
-            <th>Expiration Date</th> -->
-            <th>Description</th>
-       <!--     <th>Supplier</th> -->
-            <th>Quantity in Stock</th>
-            <th>Unit</th>
-            <th>Unit Price</th>
-       <!--    <th>Total Amount</th> -->
-            <th>Reorder Level</th>
-            <th></th>
+                  <th>Time Received</th>
+                  <th>Expiration Date</th> --> 
+                  <th>Description</th>
+                  <th>Quantity in Stock</th>
+                  <th>Unit</th>
+                  <th>Unit Price</th>
+             <!--    <th>Total Amount</th> -->
+                  <th>Reorder Level</th>
+              <!--    <th> Action</th> -->
         </tr> 
         </tfoot>
       </table>              
