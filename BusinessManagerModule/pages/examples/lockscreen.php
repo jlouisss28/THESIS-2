@@ -43,14 +43,13 @@
     <!-- /.lockscreen-image -->
 
     <!-- lockscreen credentials (contains the form) -->
-
-    <form class="lockscreen-credentials">
+    <form class="lockscreen-credentials" method="get" action="lockscreenLogin.php">
       <div class="input-group">
-        <input type="text" name="username" hidden value="Username">
-        <input type="password" class="form-control" placeholder="password">
+        <input type="text" name="username" placeholder="Username" hidden>
+        <input type="password" name="password" class="form-control" placeholder="Password" required/>
 
         <div class="input-group-btn">
-            <button type="button" class="btn"><a href="../../index.html"><i class="fa fa-arrow-right text-muted"></i></a></button>
+            <button type="submit" name="S2" class="btn"><a href="../../dashboard.php"><i class="fa fa-arrow-right text-muted"></i></a></button>
         </div>
       </div>
     </form>
@@ -62,7 +61,7 @@
     Enter your password to retrieve your session
   </div>
   <div class="text-center">
-    <a href="login.html">Or sign in as a different user</a>
+    <a href="../../../index.php"><u>Sign in as a Different User</u></a>
   </div>
   <div class="lockscreen-footer text-center">
     Copyright &copy; 2017-2018 <br/><b><a href="https://adminlte.io" class="text-black">K.Bigornia, F.Cabalse, <br/>N.Calimlim, J.Calub, <br/>E.Duco, J.Malong, <br/>R.Siapno, T.Soy</a></b><br>
