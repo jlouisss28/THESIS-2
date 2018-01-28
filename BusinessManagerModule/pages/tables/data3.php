@@ -60,7 +60,7 @@
                         <span class="hidden-xs" id="demo"></span>
                         <script>
                             var d = new Date();
-                            document.getElementById("demo").innerHTML = d.toUTCString();
+                            document.getElementById("demo").innerHTML = d.toString();
                         </script>
                     </a>
                 </li>
@@ -147,7 +147,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-128x128.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">Assistant</span>
+              <span class="hidden-xs">Business Manager</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -155,15 +155,15 @@
                 <img src="../../dist/img/user2-128x128.png" class="img-circle" alt="User Image">
 
                 <p>
-                 Assistant
-                  <small>Member since Oct. 2017</small>
+                 Business Manager
+                  <small>Member since </small>
                 </p>
                 </li>
               <!-- Menu Footer-->
               <li class="user-footer">
             
                 <div class="pull-right">
-                  <a href="../examples/login.html" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../../../index.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -477,88 +477,111 @@
               <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <?php
-                  
-                  include ('../../../db.php');
-                  
-                  echo'
-                    <thead>
-                        <tr>
-                            <th>Supplier Name</th>
-                            <th>Contact</th>
-                            <th>Address</th>
-                            <th>Product</th>
-                            <th>Status</th>
-                            <th>Remarks</th>
-                        </tr>
-                    </thead>
-                  ';
-                  
-                  $sql = "SELECT companyName, supplierContact, supplierAddr, supplierStatus, supplierProduct, suppierRemarks FROM suppliers WHERE supplierStatus = 'Active'";
-                  $result = mysqli_query($conn, $sql);
-                  if ($result = mysqli_query($conn, $sql)){
-                      while ($row = mysqli_fetch_row($result)){
-                          echo'
-                            <tbody>
-                                <tr>
-                                    <td>'.$row[0].'</td>
-                                    <td>'.$row[1].'</td>
-                                    <td>'.$row[2].'</td>
-                                    <td>'.$row[4].'</td>
-                                    <td>
-                                        <center>
-                                            <label class="switch">
-                                              <input type="checkbox" checked>
-                                              <span class="slider round"></span>
-                                            </label>
-                                        </center>
-                                    </td>
-                                    <td>'.$row[5].'</td>
-                                </tr>
-                                
-                            </tbody>
-                          ';
-                      }
-                  } 
-                  $sql2 = "SELECT companyName, supplierContact, supplierAddr, supplierStatus, supplierProduct, suppierRemarks FROM suppliers WHERE supplierStatus = 'Inactive'";
-                  $result2 = mysqli_query($conn, $sql2);
-                  if ($result2 = mysqli_query($conn, $sql2)){
-                      while ($row = mysqli_fetch_row($result2)){
-                          echo'
-                            <tbody>
-                                <tr>
-                                    <td>'.$row[0].'</td>
-                                    <td>'.$row[1].'</td>
-                                    <td>'.$row[2].'</td>
-                                    <td>'.$row[4].'</td>
-                                    <td>
-                                        <center>
-                                            <label class="switch">
-                                              <input type="checkbox">
-                                              <span class="slider round"></span>
-                                            </label>
-                                        </center>
-                                    </td>
-                                    <td>'.$row[5].'</td>
-                                </tr>
-                                
-                            </tbody>
-                          ';
-                      }
-                  }
-                  echo'
-                  <tfoot>
-                  <tr>
+                    require_once("../../../db.php");
+                    $sql = "SELECT suppliers_ID, companyName, supplierContact, supplierAddr, supplierStatus, supplierProduct, suppierRemarks FROM suppliers WHERE supplierStatus = 'Active'";
+                    $result = $conn->query($sql);
+                    $sql2 = "SELECT suppliers_ID, companyName, supplierContact, supplierAddr, supplierStatus, supplierProduct, suppierRemarks FROM suppliers WHERE supplierStatus = 'Inactive'";
+                    $result2 = $conn->query($sql2);
+                ?>
+
+                <thead>
+                    <tr>
                         <th>Supplier Name</th>
                         <th>Contact</th>
                         <th>Address</th>
                         <th>Product</th>
                         <th>Status</th>
                         <th>Remarks</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if ($result->num_rows > 0) {
+                      while($row = $result->fetch_assoc()) { ?>
+                        <tr>
+                          <td><?php echo $row["companyName"]; ?></td>
+                          <td><?php echo $row["supplierContact"]; ?></td>
+                          <td><?php echo $row["supplierAddr"]; ?></td>
+                          <td><?php echo $row["supplierProduct"]; ?></td>
+                          <td><center>
+                                <label class="switch">
+                                  <input type="checkbox" checked disabled readonly>
+                                  <span class="slider round"></span>
+                                </label>
+                              </center>
+                          </td>
+                          <td><?php echo $row["suppierRemarks"]; ?></td>
+                          <td><form action="php/supplierDelete.php">
+                                <input type="text" name="suppDelete" value="<?php echo $row["suppliers_ID"]; ?>">
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">
+                                <i class="fa fa-fw fa-trash"></i></button>
+                                <div class="modal modal-danger fade" id="modal-danger">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">Delete</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                        <h4>Are you sure to delete the items?</h4>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                                        <form action="php/supplierDelete.php">
+                                          <input type="text" name="suppDelete" hidden value="<?php echo $row["suppliers_ID"]; ?>">
+                                          <button type="submit" class="btn btn-outline">Delete</button>
+                                        </form>
+                                      </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                  </div>
+                                  <!-- /.modal-dialog -->
+                                </div>
+                              </form>
+                          </td>
+                        </tr>
+                    <?php 
+                        }
+                      }
+                    ?>
+                    <?php if ($result2->num_rows > 0) {
+                      while($row = $result2->fetch_assoc()) { ?>
+                        <tr>
+                          <td><?php echo $row["companyName"]; ?></td>
+                          <td><?php echo $row["supplierContact"]; ?></td>
+                          <td><?php echo $row["supplierAddr"]; ?></td>
+                          <td><?php echo $row["supplierProduct"]; ?></td>
+                          <td><center>
+                                <label class="switch">
+                                  <input type="checkbox" disabled readonly>
+                                  <span class="slider round"></span>
+                                </label>
+                              </center>
+                          </td>
+                          <td><?php echo $row["suppierRemarks"]; ?></td>
+                          <td><form action="php/supplierDelete.php" method="get">
+                                <input type="text" name="suppDelete" value="<?php echo $row["suppliers_ID"]; ?>">
+                                <button type="submit" class="btn-danger">
+                                <i class="fa fa-fw fa-trash"></i></button>
+                              </form>
+                          </td>
+                        </tr>
+                    <?php 
+                        }
+                      }
+                    ?>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th>Supplier Name</th>
+                    <th>Contact</th>
+                    <th>Address</th>
+                    <th>Product</th>
+                    <th>Status</th>
+                    <th>Remarks</th>
                   </tr>
-                  </tfoot>
-                  ';
-                  
-                  ?>
+                </tfoot>
             </table>
          
             </div>
