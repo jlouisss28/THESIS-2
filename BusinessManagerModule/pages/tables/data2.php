@@ -567,7 +567,7 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
           <?php // RETRIEVE or Display Medical Supplies
-         require_once("../../../db.php");
+         include("../../../db.php");
           $sql = "SELECT * FROM supplies WHERE supplyType='Office' ";
           $result = $conn->query($sql);  ?>
           <thead>
@@ -581,7 +581,7 @@
                   <th>Unit Price</th>
              <!--    <th>Total Amount</th> -->
                   <th>Reorder Level</th>
-             <!--     <th> Action</th> -->
+                  <th> Action</th> 
             </tr>
         </thead>
         <tbody>
@@ -595,7 +595,11 @@
             <td><?php echo $row["unit"]; ?></td>
             <td><?php echo $row["unitPrice"]; ?></td>
             <td><?php echo $row["reorderLevel"]; ?></td>
-           
+            <td><form action="suppliesFunctions.php">
+                <input type="text" name="officeDelete" hidden value="<?php echo $row["supply_ID"]; ?>">
+                <button type="submit" class="btn btn-xs btn-danger">
+                <i class="fa fa-fw fa-trash"></i></button>
+            </form></td>           
             </tr>
           <?php 
               }
@@ -612,7 +616,7 @@
                   <th>Unit Price</th>
              <!--    <th>Total Amount</th> -->
                   <th>Reorder Level</th>
-              <!--    <th> Action</th> -->
+                  <th> Action</th>
         </tr> 
         </tfoot>
       </table>
