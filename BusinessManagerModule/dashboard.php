@@ -199,7 +199,7 @@ $conn = new mysqli($server, $username, $password, $database);
                 </ul>
               </li>
               <li class="footer">
-                <a href="dashboard.php">View all charts</a>
+                <a href="index.html">View all charts</a>
               </li>
             </ul>
           </li>
@@ -225,7 +225,7 @@ $conn = new mysqli($server, $username, $password, $database);
               <li class="user-footer">
         
                 <div class="pull-right">
-                  <a href="pages/examples/index.php" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="pages/examples/login.html" class="btn btn-default btn-flat">Sign out</a>
                 </div>
                 <div class="pull-left">
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
@@ -438,7 +438,7 @@ $conn = new mysqli($server, $username, $password, $database);
         </li>
           <!---------------------------------------------------- LOCKSCREEN MENU -------------------------------------------------------------->
         <li>
-          <a href="pages/examples/lockscreen.html">
+          <a href="pages/examples/lockscreen.php">
             <i class="fa fa-lock"></i> <span>Lockscreen</span>
           </a>
         </li>
@@ -567,7 +567,12 @@ $conn = new mysqli($server, $username, $password, $database);
           <!-- TABLE FOR HIDDEN REORDER SUPPLIES TABLE -->
           <div id="Demo1" class="box-body w3-hide">
                 <table id="example1" class="table table-bordered table-striped">
-                <thead>
+                <?php
+                  require_once("../db.php");
+                  $sql = "SELECT supplyType, supplyDesc, brandName, unitInStock, unit, reorderLevel, companyName FROM supplies JOIN suppliers WHERE unitInStock <= reorderLevel+10";
+                  $result = $conn->query($sql);    
+                ?>
+                <thead> 
                 <tr>
                   <th>Supply Type</th>
                   <th>Brandname</th>
@@ -579,69 +584,21 @@ $conn = new mysqli($server, $username, $password, $database);
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>Office Supply</td>
-                  <td>Pilot Retractable Pen</td>
-                  <td>Ball Point Pen</td>
-                  <td>Jet Bookstore</td>
-                  <td>100</td>
-                  <td>pieces</td>
-                  <td>20 pieces</td>
-                </tr>
-                <tr>
-                  <td>Medical Supply</td>
-                  <td>JC Tubes</td>
-                  <td>Violet Tap Tubes</td>
-                  <td>The Generics Pharmacy</td>
-                  <td>1900</td>
-                  <td>pieces</td>
-                  <td>500 pieces</td>
-                </tr>
-                <tr>
-                  <td>Medical Supply</td>
-                  <td>KB Syringe</td>
-                  <td>3CC Syringe</td>
-                  <td>St. Joseph Drug Store</td>
-                  <td>2000 </td>
-                  <td>pieces</td>
-                  <td>400 pieces</td>
-                </tr>
-                <tr>
-                  <td>Medical Supply</td>
-                  <td>FC Syringe</td>
-                  <td>5CC Syringe</td>
-                  <td>Curamed Pharmacy</td>
-                  <td>1800</td>
-                  <td>pieces</td>
-                  <td>300 pieces</td>
-                </tr>
-                <tr>
-                  <td>Medical Supply</td>
-                  <td>ED Mask</td>
-                  <td>Face Mask</td>
-                  <td>Generika</td>
-                  <td>50</td>
-                  <td>boxes</td>
-                  <td>30 pieces</td>
-                </tr>
-                <tr>
-                  <td>Medical Supply</td>
-                  <td>NJ gloves</td>
-                  <td>Hand Gloves</td>
-                  <td>The Generics Pharmacy</td>
-                  <td>40</td>
-                  <td>boxes</td>
-                  <td>20 boxes</td>
-                </tr>
-                <tr>
-                  <td>Medical Supply</td>
-                  <td>TS drug</td>
-                  <td>HBA1C (glycohemoglobin)</td>
-                  <td>Mercury Drug</td>
-                  <td>1200</td>
-                  <td>pieces</td>
-                  <td>500 pieces</td>
-                </tr>
+                <?php if ($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()) { ?>
+                    <tr>
+                    <td><?php echo $row["supplyType"]; ?></td>
+                    <td><?php echo $row["brandName"]; ?></td>
+                    <td><?php echo $row["supplyDesc"]; ?></td>
+                    <td><?php echo $row["companyName"]; ?></td>
+                    <td><?php echo $row["unitInStock"]; ?></td>
+                    <td><?php echo $row["unit"]; ?></td>
+                    <td><?php echo $row["reorderLevel"]; ?></td>
+                    </tr>
+                  <?php 
+                      }
+                    }
+                  ?>
                 </tbody>
                 <tfoot>
                    <tr>
