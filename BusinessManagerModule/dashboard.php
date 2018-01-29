@@ -616,6 +616,11 @@ $conn = new mysqli($server, $username, $password, $database);
           <!-- TABLE FOR HIDDEN RETURNED SUPPLIES TABLE -->
           <div id="Demo2" class="box-body w3-hide">
               <table id="example3" class="table table-bordered table-striped">
+                <?php
+                  require_once("../db.php");
+                  $sql = "SELECT supplyType, returnDate, supplyDesc, brandName, companyName, unitInStock, unit, reason FROM returns JOIN supplies JOIN suppliers WHERE status ='Pending'";
+                  $result = $conn->query($sql);    
+                ?>
                 <thead>
                 <tr>
                   <th>Supply Type</th>
@@ -623,146 +628,56 @@ $conn = new mysqli($server, $username, $password, $database);
                   <th>Description</th>
                   <th>Brandname</th>
                   <th>Supplier</th>
-                  <th>Quantity in Stock</th>
+                  <th>Quantity</th>
                   <th>Unit</th>
                   <th>Reason</th>
-                  <th>Status</th>
+                  <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>Medical Supply</td>
-                  <td>2019-02-22</td>
-                  <td>Red Tap Tubes</td>
-                  <td>JC Tubes</td>
-                  <td>Mercury Drug</td>
-                  <td>800</td>
-                  <td>pieces</td>
-                  <td>Missing Cap</td>
-                  <td><div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Returned</a></li>
-                          <li><a href="#">Pending</a></li>
-                        </ul>
-                      </div></td>
-                </tr>
-                <tr>
-                  <td>Medical Supply</td>
-                  <td>2017-02-26</td>
-                  <td>Hand Gloves</td>
-                  <td>RS Gloves</td>
-                  <td>Generika</td>
-                  <td>200</td>
-                  <td>pieces</td>
-                  <td>Missing Pair</td>
-                  <td><div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Returned</a></li>
-                          <li><a href="#">Pending</a></li>
-                        </ul>
-                      </div></td>
-                </tr>
-                <tr>
-                  <td>Medical Supply</td>
-                  <td>2018-12-23</td>
-                  <td>Face Masks</td>
-                  <td>KB Mask</td>
-                  <td>St. Joseph Drug Store</td>
-                  <td>100</td>
-                  <td>pieces</td>
-                  <td>Missing String</td>
-                  <td><div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Returned</a></li>
-                          <li><a href="#">Pending</a></li>
-                        </ul>
-                      </div></td>
-                </tr>
-                <tr>
-                  <td>Office Supply</td>
-                  <td>2020-05-26</td>
-                  <td>Ball point pen</td>
-                  <td>HBW pen</td>
-                  <td>Eva Goods</td>
-                  <td>90</td>
-                  <td>pieces</td>
-                  <td>Missing Cap</td>
-                  <td><div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Returned</a></li>
-                          <li><a href="#">Pending</a></li>
-                        </ul>
-                      </div></td>
-                </tr>
-                <tr>
-                  <td>Medical Supply</td>
-                  <td>2019-10-28</td>
-                  <td>5CC Syringe</td>
-                  <td>ED Syringe</td>
-                  <td>Curamed Pharmacy</td>
-                  <td>300</td>
-                  <td>pieces</td>
-                  <td>Missing Cap</td>
-                  <td><div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Returned</a></li>
-                          <li><a href="#">Pending</a></li>
-                        </ul>
-                      </div></td>
-                </tr>
-                <tr>
-                 <td>Medical Supply</td>
-                  <td>2018-05-16</td>
-                  <td>3CC Syringe</td>
-                  <td>AF SYringe</td>
-                  <td>The Generics Pharmacy</td>
-                  <td>150</td>
-                  <td>pieces</td>
-                  <td>Missing Needle</td>
-                  <td><div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Returned</a></li>
-                          <li><a href="#">Pending</a></li>
-                        </ul>
-                      </div></td>
-                </tr>
+                <?php if ($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()) { ?>
+                    <tr>
+                      <td><?php echo $row["supplyType"]; ?></td>
+                      <td><?php echo $row["returnDate"]; ?></td>
+                      <td><?php echo $row["supplyDesc"]; ?></td>
+                      <td><?php echo $row["brandName"]; ?></td>
+                      <td><?php echo $row["companyName"]; ?></td>
+                      <td><?php echo $row["unitInStock"]; ?></td>
+                      <td><?php echo $row["unit"]; ?></td>
+                      <td><?php echo $row["reason"]; ?></td>
+                      <td>
+                        <button type="button" class="btn btn-success">Returned </button> 
+                      </td>
+                    </tr>
+                  <?php 
+                      }
+                    }
+                  ?>
                 </tbody>
                 <tfoot>
-                   <tr>
-                  <th>Supply Type</th>
-                  <th>Date Returned</th>
-                  <th>Description</th>
-                  <th>Brandname</th>
-                  <th>Supplier</th>
-                  <th>Quantity in Stock</th>
-                  <th>Unit</th>
-                  <th>Reason</th>
-                  <th>Status</th>
-                </tr> 
+                  <tr>
+                    <th>Supply Type</th>
+                    <th>Date Returned</th>
+                    <th>Description</th>
+                    <th>Brandname</th>
+                    <th>Supplier</th>
+                    <th>Quantity</th>
+                    <th>Unit</th>
+                    <th>Reason</th>
+                    <th></th>
+                  </tr> 
                 </tfoot>
               </table>
           </div>
           <!-- TABLE FOR HIDDEN DELIVERY TABLE -->
           <div id="Demo3" class="box-body w3-hide">
               <table id="example5" class="table table-bordered table-striped">
+                <?php
+                  require_once("../db.php");
+                  $sql = "SELECT deliveryDate, supplyDesc, brandName, companyName, grandTotal, unit, unitPrice, totalAmt, deliveryStatus FROM delivery JOIN supplies JOIN suppliers JOIN purchaseorder WHERE deliveryStatus = 'In Transit'";
+                  $result = $conn->query($sql);    
+                ?>
                 <thead>
                 <tr>
                   <th>Delivered Date</th>
@@ -779,160 +694,35 @@ $conn = new mysqli($server, $username, $password, $database);
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>2017-10-1</td>
-                  <td>Red Tap Tubes</td>
-                  <td>Tube</td>
-                  <td>Mercury Drug</td>
-                  <td>150</td>
-                  <td>pieces</td>
-                  <td>&#8369; 25.00</td>
-                  <td>&#8369; 5,000.00</td>
-                  <td><div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Full</a></li>
-                          <li><a href="#">Partial</a></li>
-                          <li><a href="#">Pending</a></li>
-                        </ul>
-                      </div></td>
-                    <td>150 pieces</td>
-                    <td>0 piece</td>
-                </tr>
-                <tr>
-                  <td>2017-10-3</td>
-                  <td>Red Tap Tubes</td>
-                  <td>NJ Tubes</td>
-                  <td>Mercury Drug</td>
-                  <td>100</td>
-                  <td>pieces</td>
-                  <td>&#8369; 50.00</td>
-                  <td>&#8369; 3,000.00</td>
-                  <td><div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Full</a></li>
-                          <li><a href="#">Partial</a></li>
-                          <li><a href="#">Pending</a></li>
-                        </ul>
-                      </div></td>
-                  <td>95 pieces</td>
-                  <td>5 pieces</td>
-                </tr>
-                <tr>
-                  <td>2017-10-5</td>
-                  <td>Hand Gloves</td>
-                  <td>RS Gloves</td>
-                  <td>St. Joseph Drug Store</td>
-                  <td>50</td>
-                  <td>pieces</td>
-                  <td>&#8369; 67.00</td>
-                  <td>&#8369; 2,000.00</td>
-                  <td><div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Full</a></li>
-                          <li><a href="#">Partial</a></li>
-                          <li><a href="#">Pending</a></li>
-                        </ul>
-                      </div></td>
-                  <td>46 pieces</td>
-                  <td>4 pieces</td>
-                </tr>
-                <tr>
-                  <td>2017-10-11</td>
-                  <td>Face Masks</td>
-                  <td>KB Masks</td>
-                  <td>Generika</td>
-                  <td>50</td>
-                  <td>pieces</td>
-                  <td>&#8369; 70.00</td>
-                  <td>&#8369; 3,000.00</td>
-                  <td><div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Full</a></li>
-                          <li><a href="#">Partial</a></li>
-                          <li><a href="#">Pending</a></li>
-                        </ul>
-                      </div></td>
-                  <td>49 pieces</td>
-                  <td>1 piece</td>
-                </tr>
-                <tr>
-                  <td>2017-10-23</td>
-                  <td>Ball point pen</td>
-                  <td>Pilot</td>
-                  <td>Jet Bookstore</td>
-                  <td>200</td>
-                  <td>pieces</td>
-                  <td>&#8369; 27.00</td>
-                  <td>&#8369; 1,000.00</td>
-                  <td><div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Full</a></li>
-                          <li><a href="#">Partial</a></li>
-                          <li><a href="#">Pending</a></li>
-                        </ul>
-                      </div></td>
-                  <td>200 pieces</td>
-                  <td>0 piece</td>
-                </tr>
-                <tr>
-                  <td>2017-10-25</td>
-                  <td>5CC Syringe</td>
-                  <td>Jc Syringe</td>
-                  <td>Curamed Pharmacy</td>
-                  <td>80</td>
-                  <td>pieces</td>
-                  <td>&#8369; 85.00</td>
-                  <td>&#8369; 4,000.00</td>
-                  <td><div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Full</a></li>
-                          <li><a href="#">Partial</a></li>
-                          <li><a href="#">Pending</a></li>
-                        </ul>
-                      </div></td>
-                  <td>80 pieces</td>
-                  <td>0 piece</td>
-                </tr>
-                <tr>
-                <td>2017-10-28 </td>
-                  <td>3CC Syringe</td>
-                  <td>JM Syringe</td>
-                  <td>Mercury Drug</td>
-                  <td>100</td>
-                  <td>pieces</td>
-                  <td>&#8369; 99.00</td>
-                  <td>&#8369; 5,000.00</td>
-                  <td><div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Full</a></li>
-                          <li><a href="#">Partial</a></li>
-                          <li><a href="#">Pending</a></li>
-                        </ul>
-                      </div></td>
-                  <td>98 pieces</td>
-                  <td>2 pieces</td>
-                </tr>
+                <?php if ($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()) { ?>
+                    <tr>
+                      <td><?php echo $row["deliveryDate"]; ?></td>
+                      <td><?php echo $row["supplyDesc"]; ?></td>
+                      <td><?php echo $row["brandName"]; ?></td>
+                      <td><?php echo $row["companyName"]; ?></td>
+                      <td><?php echo $row["grandTotal"]; ?></td>
+                      <td><?php echo $row["unit"]; ?></td>
+                      <td><?php echo $row["unitPrice"]; ?></td>
+                      <td><?php echo $row["totalAmt"]; ?></td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Full</a></li>
+                            <li><a href="#">Partial</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  <?php 
+                      }
+                    }
+                  ?>
                 </tbody>
                 <tfoot>
                    <tr>
@@ -954,6 +744,12 @@ $conn = new mysqli($server, $username, $password, $database);
           <!-- TABLE FOR HIDDEN EXPIRED SUPPLIES TABLE ------>
           <div id="Demo4" class="box-body w3-hide">
               <table id="example7" class="table table-bordered table-striped">
+                <?php
+                  require_once("../db.php");
+                  $date = date("Y/m/d");
+                  $sql = "SELECT expirationDate, supplyDesc, brandName, companyName, unitInStock, unit, shelfLife FROM supplies JOIN suppliers WHERE expirationDate <= $date";
+                  $result = $conn->query($sql);    
+                ?>
                 <thead>
                 <tr>
                   <th>Expiration Date</th>
@@ -962,65 +758,29 @@ $conn = new mysqli($server, $username, $password, $database);
                   <th>Supplier</th>
                   <th>Quantity</th>
                   <th>Unit</th>
+                  <th>Shelf Life</th>
+                  <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>2020-02-26</td>
-                  <td>Red Tap Tubes</td>
-                  <td>Tubes</td>
-                  <td>Mercury Drug</td>
-                  <td>1000</td>
-                  <td>pieces</td>
-                </tr>
-                <tr>
-                  <td>2017-02-26</td>
-                  <td>Red Tap Tubes</td>
-                  <td>Tubes</td>
-                  <td>Mercury Drug</td>
-                  <td>600</td>
-                  <td>pieces</td>
-                </tr>
-                <tr>
-                  <td>2017-12-26</td>
-                  <td>Hand Gloves</td>
-                  <td>KB gloves</td>
-                  <td>St. Joseph Drug Store</td>
-                  <td>2000 </td>
-                  <td>pieces</td>
-                </tr>
-                <tr>
-                  <td>2018-07-16</td>
-                  <td>Face Mask</td>
-                  <td>RS Mask</td>
-                  <td>The Generics Pharmacy</td>
-                  <td>2000</td>
-                  <td>pieces</td>
-                </tr>
-                <tr>
-                  <td>2019-02-15</td>
-                  <td>5CC Syringe</td>
-                  <td>NJ Syringe</td>
-                  <td>Curamed Pharmacy</td>
-                  <td>500</td>
-                  <td>pieces</td>
-                </tr>
-                <tr>
-                  <td>2019-09-17</td>
-                  <td>3CC Syringe</td>
-                  <td>ED Syringe</td>
-                  <td>Generika</td>
-                  <td>300</td>
-                  <td>pieces</td>
-                </tr>
-                <tr>
-                  <td>2020-07-26</td>
-                  <td>Tap Tubes</td>
-                  <td>AC Tubes</td>
-                  <td>Mercury Drug</td>
-                  <td>200</td>
-                  <td>pieces</td>
-                </tr>
+                  <?php if ($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()) { ?>
+                    <tr>
+                      <td><?php echo $row["expirationDate"]; ?></td>
+                      <td><?php echo $row["supplyDesc"]; ?></td>
+                      <td><?php echo $row["brandName"]; ?></td>
+                      <td><?php echo $row["companyName"]; ?></td>
+                      <td><?php echo $row["unitInStock"]; ?></td>
+                      <td><?php echo $row["unit"]; ?></td>
+                      <td><?php echo $row["shelfLife"]; ?></td>
+                      <td>
+                        <button type="button" class="btn btn-danger">Disposed </button> 
+                      </td>
+                    </tr>
+                  <?php 
+                      }
+                    }
+                  ?>
                 </tbody>
                 <tfoot>
                    <tr>
