@@ -367,8 +367,8 @@
                           <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                          <li><a href="#">All Supplies</a></li>
-                          <li><a href="php/totalQty.php">Total Quantity</a></li>
+                          <li><a href="../data.php">All Supplies</a></li>
+                          <li><a href="#">Total Quantity</a></li>
                         </ul>
                       </div></th>
                     </tr>
