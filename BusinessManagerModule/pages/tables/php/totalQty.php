@@ -7,24 +7,24 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../../bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- DataTables -->
-  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="../../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../../../dist/css/skins/_all-skins.min.css">
     <!-- daterange picker -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="../../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
       <!-- Bootstrap time Picker -->
-  <link rel="stylesheet" href="../../plugins/timepicker/bootstrap-timepicker.min.css">
+  <link rel="stylesheet" href="../../../plugins/timepicker/bootstrap-timepicker.min.css">
     <!-- Select2 -->
-      <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
+      <link rel="stylesheet" href="../../../bower_components/select2/dist/css/select2.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -57,7 +57,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index.html" class="logo">
+    <a href="../../../dashboard.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>MDC</span>
       <!-- logo for regular state and mobile devices -->
@@ -208,13 +208,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../../dist/img/user2-128x128.png" class="user-image" alt="User Image">
+              <img src="../../../dist/img/user2-128x128.png" class="user-image" alt="User Image">
               <span class="hidden-xs">Business Manager</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="../../dist/img/user2-128x128.png" class="img-circle" alt="User Image">
+                <img src="../../../dist/img/user2-128x128.png" class="img-circle" alt="User Image">
 
                 <p>
                  Business Manager
@@ -225,7 +225,7 @@
               <li class="user-footer">
             
                 <div class="pull-right">
-                  <a href="../examples/login.html" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../../examples/index.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -241,7 +241,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../../dist/img/user2-128x128.png" class="img-circle" alt="User Image">
+          <img src="../../../dist/img/user2-128x128.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Business Manager</p>
@@ -264,13 +264,13 @@
         <li class="header">Inventory System</li>
 	<!---------------------------------------------------- DASHBOARD MENU -------------------------------------------------------------->
          <li>
-          <a href="../../index.html">
+          <a href="../../../dashboard.php">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
 		<!---------------------------------------------------- MANAGE ACCOUNTS MENU -------------------------------------------------------------->
         <li>
-          <a href="../forms/general.php">
+          <a href="../../forms/general.php">
             <i class="fa fa-group"></i> <span>Manage Accounts</span>
           </a>
         </li>
@@ -283,36 +283,36 @@
             </span>
           </a>
           <ul class="treeview-menu">
-			<li class ="active"><a href="data.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-			<li><a href="data2.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+			<li class ="active"><a href="../data.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
+			<li><a href="../data2.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
         <!--------------------------------------------------- PURCHASES -------------------------------------------------->
           <li>
-              <a href="data5.html">
+              <a href="../data5.php">
                   <i class="fa fa-tags"></i><span>Purchases</span>  
               </a>
           </li>
         <!--------------------------------------------------- ISSUED SUPPLIES -------------------------------------------------->
-            <li><a href="data6.php">
+            <li><a href="../data6.php">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
 		<!---------------------------------------------------- SUPPLIERS MENU -------------------------------------------------------------->
         <li>
-          <a href="data3.php">
+          <a href="../data3.php">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>
 		<!---------------------------------------------------- DEPARTMENTS MENU -------------------------------------------------------------->
         <li>
-          <a href="data4.php">
+          <a href="../data4.php">
             <i class="fa fa-building"></i> <span>Departments</span>
           </a>
         </li>
 		<!---------------------------------------------------- CALENDAR MENU -------------------------------------------------------------->
         <li>
-          <a href="../calendar.html">
+          <a href="../../calendar.html">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red">3</small>
@@ -322,13 +322,13 @@
         </li>
 <!---------------------------------------------------- INVOICE MENU -------------------------------------------------------------->
         <li>
-          <a href="../examples/invoice.html">
+          <a href="../../examples/invoice.html">
             <i class="fa fa-print"></i> <span>Logs</span>
           </a>
         </li>
 <!---------------------------------------------------- LOCKSCREEN MENU -------------------------------------------------------------->
         <li>
-          <a href="../examples/lockscreen.html">
+          <a href="../../examples/lockscreen.php">
             <i class="fa fa-lock"></i> <span>Lockscreen</span>
           </a>
         </li>
@@ -555,7 +555,7 @@
             <div class="box-body">
         <table id="example1" class="table table-bordered table-striped">
          <?php // RETRIEVE or Display Medical Supplies
-         include("../../../db.php");
+         include("../../../../db.php");
           $sql = "SELECT * FROM supplies WHERE supplyType='Medical' ";
           $result = $conn->query($sql);  ?>
           <thead>
@@ -564,12 +564,8 @@
                   <th>Time Received</th>
                   <th>Expiration Date</th> --> 
                   <th>Description</th>
-                  <th>Quantity in Stock</th>
+                  <th>Total Quantity in Stock</th>
                   <th>Unit</th>
-                  <th>Unit Price</th>
-             <!--    <th>Total Amount</th> -->
-                  <th>Reorder Level</th>
-                  <th> Action</th> 
             </tr>
         </thead>
         <tbody>
@@ -580,14 +576,7 @@
 
             <td><?php echo $row["supplyDesc"]; ?></td>
             <td><?php echo $row["unitInStock"]; ?></td>
-            <td><?php echo $row["unit"]; ?></td>
-            <td align="right">&#8369; <?php echo $row["unitPrice"]; ?></td>
-            <td align="center"><?php echo $row["reorderLevel"]; ?></td>
-            <td><form action="suppliesFunctions.php">
-                <input type="text" name="medDelete" hidden value="<?php echo $row["supply_ID"]; ?>">
-                <button type="submit" class="btn btn-xs btn-danger">
-                <i class="fa fa-fw fa-trash"></i></button>
-            </form></td>           
+            <td><?php echo $row["unit"]; ?></td>          
             </tr>
           <?php 
               }
@@ -599,12 +588,8 @@
                   <th>Time Received</th>
                   <th>Expiration Date</th> --> 
                   <th>Description</th>
-                  <th>Quantity in Stock</th>
+                  <th> Total Quantity in Stock</th>
                   <th>Unit</th>
-                  <th>Unit Price</th>
-             <!--    <th>Total Amount</th> -->
-                  <th>Reorder Level</th>
-                  <th> Action</th>
         </tr> 
         </tfoot>
       </table>              
@@ -644,35 +629,35 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
-<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- DataTables -->
-<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="../../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
-<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<script src="../../../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- Select2 -->
-<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="../../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- InputMask -->
-<script src="../../plugins/input-mask/jquery.inputmask.js"></script>
-<script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="../../../plugins/input-mask/jquery.inputmask.js"></script>
+<script src="../../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="../../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
 
 <!-- bootstrap datepicker -->
-<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="../../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- bootstrap color picker -->
-<script src="../../bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<script src="../../../bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 <!-- bootstrap time picker -->
-<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="../../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
+<script src="../../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
+<script src="../../../dist/js/demo.js"></script>
     <!-- bootstrap time picker -->
-<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="../../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- page script -->
 <script>
   $(function () {
