@@ -783,14 +783,16 @@ $conn = new mysqli($server, $username, $password, $database);
                   ?>
                 </tbody>
                 <tfoot>
-                   <tr>
-                  <th>Expiration Date</th>
-                  <th>Description</th>
-                  <th>Brandname</th>
-                  <th>Supplier</th>
-                  <th>Quantity</th>
-                  <th>Unit</th>
-                </tr> 
+                  <tr>
+                      <th>Expiration Date</th>
+                      <th>Description</th>
+                      <th>Brandname</th>
+                      <th>Supplier</th>
+                      <th>Quantity</th>
+                      <th>Unit</th>
+                      <th>Shelf Life</th>
+                      <th></th>
+                  </tr> 
                 </tfoot>
               </table>
           </div>
