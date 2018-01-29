@@ -270,7 +270,7 @@
         </li>
 		<!---------------------------------------------------- MANAGE ACCOUNTS MENU -------------------------------------------------------------->
         <li>
-          <a href="../forms/general.html">
+          <a href="../forms/general.php">
             <i class="fa fa-group"></i> <span>Manage Accounts</span>
           </a>
         </li>
@@ -289,7 +289,7 @@
         </li>
         <!--------------------------------------------------- PURCHASES -------------------------------------------------->
           <li>
-              <a href="data5.php">
+              <a href="data5.html">
                   <i class="fa fa-tags"></i><span>Purchases</span>  
               </a>
           </li>
@@ -468,6 +468,7 @@
                         <th><button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
                                         Issue To
                                       </button>
+                                <form name ="form2" method="post" action="suppliesFunctions.php">
                                 <div class="modal fade" id="modal-default">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
@@ -483,72 +484,60 @@
                                               <!-- Date and Time -->
                                                  <div class="form-group">
                                                     <label>Issue Date</label>
-
                                                     <div class="input-group">
                                                       <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                       </div>
-                                                      <input type="text" class="form-control pull-right" id="datepicker3">
+                                                      <input type="text" class="form-control pull-right" id="datepicker3" name="date">
                                                     </div>
                                                     <!-- /.input group -->
                                                   </div>
                                           <!-- /.form group -->
                                               <div class="form-group">
                                                   <label for="exampleInputEmail1">Description</label>
-                                                  <input type="email" class="form-control">
-                                                </div>
-                                              <div class="form-group">
-                                                  <label for="exampleInputEmail1">Supplier</label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="email" class="form-control" name="description">
                                                 </div>
                                               <div class="form-group">
                                                   <label for="exampleInputEmail1">Quantity</label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="email" class="form-control" name="quantity">
                                                 </div>
                                               <div class="form-group">
                                                   <label for="exampleInputEmail1">Unit</label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="email" class="form-control" name="unit">
                                             </div>
                                             <div class="form-group">
                                                   <label for="exampleInputEmail1">Price</label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="email" class="form-control" name="price">
                                             </div>
-                                              <div class="btn-group">
+                                            <div class="btn-group">
                                               <button type="button" class="btn btn-default">Department</button>
                                               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                                 <span class="caret"></span>
                                                 <span class="sr-only">Toggle Dropdown</span>
                                               </button>
                                               <ul class="dropdown-menu">
-                                              <li><a href="#">Cardiac</a></li>
-                                              <li><a href="#">Endoscopy</a></li>
-                                              <li><a href="#">Imaging</a></li>
-                                              <li><a href="#">Clinical Laboratory</a></li>
-                                              <li><a href="#">Management</a></li>
+                                              <li><input type="radio" name="radio" value="radio0">Cardiac, Baguio City</li>
+                                              <li><input type="radio" name="radio" value="radio1">Cardiac, La Trinidad</li>
+                                              <li><input type="radio" name="radio" value="radio2">Endoscopy, SLU Baguio City</li>
+                                              <li><input type="radio" name="radio" value="radio3">Imaging, Baguio City</li>
+                                              <li><input type="radio" name="radio" value="radio4">Imaging, La Trinidad</li>
+                                              <li><input type="radio" name="radio" value="radio5">Clinical Laboratory, Baguio City</li>
+                                              <li><input type="radio" name="radio" value="radio6">Clinical Laboratory, La Trinidad</li>
+                                              <li><input type="radio" name="radio" value="radio7">Management, Baguio City</li>
                                               </ul>
                                           </div>
-                                          <div class="btn-group">
-                                              <button type="button" class="btn btn-default">Branch</button>
-                                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                                <span class="caret"></span>
-                                                <span class="sr-only">Toggle Dropdown</span>
-                                              </button>
-                                              <ul class="dropdown-menu">
-                                              <li><a href="#">Baguio City</a></li>
-                                              <li><a href="#">La Trinidad</a></li>
-                                                  <li><a href="#">SLU Hospital</a></li>
-                                                  </ul>
-                                          </div>
+                                          
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-primary">Issue Supplies</button>
+                                        <button type="button" class="btn btn-primary" name="medIssueTo">Issue Supplies</button>
                                       </div>
                                     </div>
                                     <!-- /.modal-content -->
                                   </div>
                                   <!-- /.modal-dialog -->
                                 </div>
+                              </form>
                                 <!-- /.modal --></th>
                     </tr>
                 </table>      
@@ -583,8 +572,8 @@
             <td><?php echo $row["supplyDesc"]; ?></td>
             <td><?php echo $row["unitInStock"]; ?></td>
             <td><?php echo $row["unit"]; ?></td>
-            <td><?php echo $row["unitPrice"]; ?></td>
-            <td><?php echo $row["reorderLevel"]; ?></td>
+            <td align="right">&#8369; <?php echo $row["unitPrice"]; ?></td>
+            <td align="center"><?php echo $row["reorderLevel"]; ?></td>
             <td><form action="suppliesFunctions.php">
                 <input type="text" name="medDelete" hidden value="<?php echo $row["supply_ID"]; ?>">
                 <button type="submit" class="btn btn-xs btn-danger">

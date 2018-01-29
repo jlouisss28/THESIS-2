@@ -593,8 +593,8 @@
             <td><?php echo $row["supplyDesc"]; ?></td>
             <td><?php echo $row["unitInStock"]; ?></td>
             <td><?php echo $row["unit"]; ?></td>
-            <td><?php echo $row["unitPrice"]; ?></td>
-            <td><?php echo $row["reorderLevel"]; ?></td>
+            <td align="right">&#8369; <?php echo $row["unitPrice"]; ?></td>
+            <td align="right"><?php echo $row["reorderLevel"]; ?></td>
             <td><form action="suppliesFunctions.php">
                 <input type="text" name="officeDelete" hidden value="<?php echo $row["supply_ID"]; ?>">
                 <button type="submit" class="btn btn-xs btn-danger">
