@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <title>Supervisor | Data</title>
+   <title>Supervisor | Issued Supplies</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -51,7 +51,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index.html" class="logo">
+    <a href="../../dashboard.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>MDC</span>
       <!-- logo for regular state and mobile devices -->
@@ -100,7 +100,7 @@
               <li class="user-footer">
              
                 <div class="pull-right">
-                  <a href="../examples/login.html" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../examples/login.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -139,7 +139,7 @@
         <li class="header">Inventory System</li>
 	<!---------------------------------------------------- DASHBOARD MENU -------------------------------------------------------------->
         <li>
-          <a href="../../index.html">
+          <a href="../../dashboard.php">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
@@ -209,7 +209,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-			<li><a href="data.html"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
+			<li><a href="data.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
 			<li><a href="data2.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
@@ -234,7 +234,7 @@
         </li>
 		<!---------------------------------------------------- CALENDAR MENU -------------------------------------------------------------->
         <li>
-          <a href="../calendar.html">
+          <a href="../calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red">3</small>
@@ -244,13 +244,13 @@
         </li>
 		<!---------------------------------------------------- INVOICE MENU -------------------------------------------------------------->
         <li>
-          <a href="../examples/invoice.html">
+          <a href="../examples/invoice.php">
             <i class="fa fa-print"></i> <span>Logs</span>
           </a>
         </li>
 <!---------------------------------------------------- LOCKSCREEN MENU -------------------------------------------------------------->
         <li>
-          <a href="../examples/lockscreen.html">
+          <a href="../examples/lockscreen.php">
             <i class="fa fa-lock"></i> <span>Lockscreen</span>
           </a>
         </li>
@@ -349,112 +349,38 @@
             </div>
              <!-- /.box-header -->
               
-  <div class="box-body">
+      <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Issue Date</th>
-                  <th>Issue Time</th>
-                  <th>Description</th>
-                  <th>Quantity In Stock</th>
-                  <th>Unit</th>
-                  <th>Total Price</th>
-                  <th>Department</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>2017-11-03</td>
-                  <td>05:15 P.M.</td>
-                  <td>3CC Syringe</td>
-                  <td>10</td>
-                  <td>pieces</td>
-                  <td align="right">&#8369; 500.00</td>
-				  <td>Cardiac Department</td>
-                </tr>
-                <tr>
-                  <td>2017-08-09</td>
-                  <td>11:49 A.M.</td>
-                  <td>5CC Syringe </td>
-                  <td>30</td>
-                  <td>pieces</td>
-                  <td align="right">&#8369; 900.00</td>
-				  <td>Imaging Department</td>
-                </tr>
-                <tr>
-                  <td>2017-09-13</td>
-                  <td>01:00 P.M.</td>
-                  <td>Masking Tape</td>
-                  <td>1</td>
-                  <td>box</td>
-                  <td align="right">&#8369; 10.00</td>
-				  <td>Endoscopy Department</td>
-                </tr>
-                <tr>
-                  <td>2017-10-25</td>
-                  <td>12:30 P.M.</td>
-                  <td>Ballpen</td>
-                  <td>2</td>
-                  <td>boxes</td>
-                  <td align="right">&#8369; 200.00</td>
-				  <td>Clinical Laboratory Department</td>
-                </tr>
-                <tr>
-                  <td>2017-06-06</td>
-                  <td>02:25 P.M.</td>
-                  <td>Bond Paper</td>
-                  <td>3</td>
-                  <td>rims</td>
-                  <td align="right">&#8369; 900.00</td>
-				  <td>Endoscopy Department</td>
-                </tr>
-                <tr>
-                  <td>2016-12-30</td>
-                  <td>10:09 A.M.</td>
-                  <td>CD</td>
-                  <td>120</td>
-                  <td>pieces</td>
-                  <td align="right">&#8369; 4,800.00</td>
-                  <td>Imaging Department</td>
-                </tr>
-                <tr>
-                  <td>2017-08-14</td>
-                  <td>01:25 P.M.</td>
-                  <td>Hand Gloves</td>
-                  <td>10</td>
-                  <td>pieces</td>
-                  <td align="right">&#8369; 250.00</td>
-				  <td>Cardiac Department </td>
-                </tr>
-                <tr>
-                  <td>2017-03-07</td>
-                  <td>06:50 P.M.</td>
-                  <td>Face Mask</td>
-                  <td>15</td>
-                  <td>boxes</td>
-                  <td align="right">&#8369; 20.00</td>
-				  <td>Clinical Laboratory Department</td>
-                </tr>
-                <tr>
-                  <td>2016-05-19</td>
-                  <td>08:50 A.M.</td>
-                  <td>Red Tap Tubes</td>
-                  <td>50</td>
-                  <td>pieces</td>
-                  <td align="right">&#8369; 700.00</td>
-				  <td>Imaging Department</td>
-                </tr>
-                
-                <tr>
-                  <td>2016-14-03</td>
-                  <td>07:30 A.M.</td>
-                  <td>Violet Tap Tubes</td>
-                  <td>100</td>
-                  <td>pieces</td>
-                  <td align="right">&#8369; 3,000.00</td>
-				  <td>Cardiac Deparment</td>
-                </tr>
-                </tbody>
+                <?php
+                    require_once("../../../db.php");
+                    $sql = "SELECT * FROM issuedsupplies";
+                    $result = $conn->query($sql);
+                  ?>
+                    <thead>
+                    <tr>
+                      <th>Request Date</th>
+                      <th>Issue Date</th>
+                      <th>Description</th>
+                      <th>Quantity In Stock</th>
+                      <th>Unit</th>
+                      <th>Total Price</th>
+                      <th>Department</th>
+                    </tr>
+                    </thead>
+                  <?php 
+                      while($row = $result->fetch_assoc()) { ?>
+                        <tr>
+                        <td><?php echo $row["requestdate"]; ?></td>
+                        <td><?php echo $row["issueddate"]; ?></td>
+                        <td><?php echo $row["supplydesc"]; ?></td>
+                        <td><?php echo $row["unitinstock"]; ?></td>
+                        <td><?php echo $row["unit"]; ?></td>
+                        <td>&#8369;<?php echo $row["unitprice"]; ?></td>
+                        <td><?php echo $row["departmentName"]; ?></td>
+                        </tr>
+                  <?php
+                    }
+                  ?>
                 <tfoot>
                 <tr>
                   <th>Issue Date</th>
@@ -478,7 +404,7 @@
         <!-- this row will not appear when printing -->
       <div class="row no-print">
         <div class="col-xs-12">
-          <a href="../examples/invoice-print6.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+          <a href="../examples/invoice-print6.php" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
           <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
             <i class="fa fa-download"></i> Generate PDF
           </button>

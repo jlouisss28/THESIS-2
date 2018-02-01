@@ -8,7 +8,7 @@ mysqli_select_db($conn, "itproject");
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <title>Business Manager | Data</title>
+   <title>Supervisor | Medical Supplies</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -63,7 +63,7 @@ mysqli_select_db($conn, "itproject");
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index.html" class="logo">
+    <a href="../../dashboard.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>MDC</span>
       <!-- logo for regular state and mobile devices -->
@@ -215,7 +215,7 @@ mysqli_select_db($conn, "itproject");
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-128x128.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">Business Manager</span>
+              <span class="hidden-xs">Supervisor</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -223,7 +223,7 @@ mysqli_select_db($conn, "itproject");
                 <img src="../../dist/img/user2-128x128.png" class="img-circle" alt="User Image">
 
                 <p>
-                 Business Manager
+                 Supervisor
                   <small>Member since Oct. 2017</small>
                 </p>
               </li>
@@ -231,7 +231,7 @@ mysqli_select_db($conn, "itproject");
               <li class="user-footer">
             
                 <div class="pull-right">
-                  <a href="../examples/login.html" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../examples/login.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -250,7 +250,7 @@ mysqli_select_db($conn, "itproject");
           <img src="../../dist/img/user2-128x128.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Business Manager</p>
+          <p>Supervisor</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Active</a>
         </div>
       </div>
@@ -270,7 +270,7 @@ mysqli_select_db($conn, "itproject");
         <li class="header">Inventory System</li>
 	<!---------------------------------------------------- DASHBOARD MENU -------------------------------------------------------------->
          <li>
-          <a href="../../index.html">
+          <a href="../../index.php">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
@@ -331,11 +331,13 @@ mysqli_select_db($conn, "itproject");
           </ul>
         </li> -->
 		<!---------------------------------------------------- MANAGE ACCOUNTS MENU -------------------------------------------------------------->
+<!--
         <li>
           <a href="../forms/general.html">
             <i class="fa fa-group"></i> <span>Manage Accounts</span>
           </a>
         </li>
+-->
 		<!---------------------------------------------------- SUPPLIES MENU -------------------------------------------------------------->
         <li class="active treeview">
           <a href="#">
@@ -345,36 +347,36 @@ mysqli_select_db($conn, "itproject");
             </span>
           </a>
           <ul class="treeview-menu">
-			<li class ="active"><a href="data.html"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-			<li><a href="data2.html"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+			<li class ="active"><a href="data.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
+			<li><a href="data2.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
         <!--------------------------------------------------- PURCHASES -------------------------------------------------->
           <li>
-              <a href="data5.html">
+              <a href="data5.php">
                   <i class="fa fa-tags"></i><span>Purchases</span>  
               </a>
           </li>
         <!--------------------------------------------------- ISSUED SUPPLIES -------------------------------------------------->
-            <li><a href="data6.html">
+            <li><a href="data6.php">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
 		<!---------------------------------------------------- SUPPLIERS MENU -------------------------------------------------------------->
         <li>
-          <a href="data3.html">
+          <a href="data3.php">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>
 		<!---------------------------------------------------- DEPARTMENTS MENU -------------------------------------------------------------->
         <li>
-          <a href="data4.html">
+          <a href="data4.php">
             <i class="fa fa-building"></i> <span>Departments</span>
           </a>
         </li>
 		<!---------------------------------------------------- CALENDAR MENU -------------------------------------------------------------->
         <li>
-          <a href="../calendar.html">
+          <a href="../calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red">3</small>
@@ -384,13 +386,13 @@ mysqli_select_db($conn, "itproject");
         </li>
 <!---------------------------------------------------- INVOICE MENU -------------------------------------------------------------->
         <li>
-          <a href="../examples/invoice.html">
+          <a href="../examples/invoice.php">
             <i class="fa fa-print"></i> <span>Logs</span>
           </a>
         </li>
 <!---------------------------------------------------- LOCKSCREEN MENU -------------------------------------------------------------->
         <li>
-          <a href="../examples/lockscreen.html">
+          <a href="../examples/lockscreen.php">
             <i class="fa fa-lock"></i> <span>Lockscreen</span>
           </a>
         </li>
@@ -458,221 +460,13 @@ mysqli_select_db($conn, "itproject");
         <div class="col-xs-12">
 
           <div class="box">
-            <div class="box-header">
-              <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
-                <table style="float: left;">
-                    <tr>
-                    </tr>
-                </table>  
-                <table style="float:right;">
-                    <tr>
-                        <th><button type="submit" class="btn btn-primary btn-block btn-info">Edit</button></th>
-                        <th><button type="submit" class="btn btn-primary btn-block btn-warning" data-toggle="modal" data-target="#modal-info">Add</button>
-                        <div class="modal fade" id="modal-info">
-                                  <div class="modal-dialog">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span></button>
-                                        <div class="margin">
-                                            <h3>Add Supply</h3>
-                                          </div>
-                                      </div>
-                                        <!-- end of modal header -->
-                                      <div class="modal-body">
-                                        <div class="box-body">
-                                 <!-- DATE -->
-                                                 <div class="form-group">
-                                                    <label>Date Received</label>
-                                                <div class="input-group date">
-                                                  <div class="input-group-addon">
-                                                    <i class="fa fa-calendar"></i>
-                                                  </div>
-                                                  <input type="text" class="form-control pull-right" id="datepicker">
-                                                </div>
-                                                <!-- /.input group -->
-                                              </div>
-                                            
-                                            <!-- TIME -->
-                                                <div class="bootstrap-timepicker">
-                                                <div class="form-group">
-                                                  <label>Time Received</label>
-
-                                                  <div class="input-group">
-                                                    <input type="text" class="form-control timepicker">
-
-                                                    <div class="input-group-addon">
-                                                      <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                  </div>
-                                                  <!-- /.input group -->
-                                                </div>
-                                                <!-- /.form group -->
-                                              </div>
-                                          <!-- /.form group -->
-                                            <div class="form-group">
-                                                  <label for="exampleInputEmail1">Description</label>
-                                                  <input type="email" class="form-control">
-                                                </div>
-                                              <div class="form-group">
-                                                  <label for="exampleInputEmail1">Supplier</label>
-                                                  <input type="email" class="form-control">
-                                                </div>
-                                              <div class="form-group">
-                                                  <label for="exampleInputEmail1">Quantity</label>
-                                                  <input type="email" class="form-control">
-                                                </div>
-                                              <div class="form-group">
-                                                  <label for="exampleInputEmail1">Unit</label>
-                                                  <input type="email" class="form-control">
-                                                </div>
-                                              <div class="form-group">
-                                                  <label for="exampleInputEmail1">Unit Price</label>
-                                                  <input type="email" class="form-control">
-                                                </div>
-                                              <!-- Date and Time -->
-                                                 <div class="form-group">
-                                                    <label>Expiration Date</label>
-
-                                                    <div class="input-group">
-                                                      <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                      </div>
-                                                      <input type="text" class="form-control pull-right" id="datepicker2">
-                                                    </div>
-                                                    <!-- /.input group -->
-                                                  </div>
-                                 
-                                        </div>
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-primary">Save Supply</button>
-                                      </div>
-                                    </div>
-                                    <!-- /.modal-content -->
-                                  </div>
-                                  <!-- /.modal-dialog -->
-                                </div></th>
-                        <th><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">
-                            Delete</button>
-                            <div class="modal modal-danger fade" id="modal-danger">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Delete</h4>
-                                  </div>
-                                  <div class="modal-body">
-                                    <h4>Are you sure to delete the items?</h4>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-outline">Delete</button>
-                                  </div>
-                                </div>
-                                <!-- /.modal-content -->
-                              </div>
-                              <!-- /.modal-dialog -->
-                            </div>
-                            <!-- /.modal --></th>
-                        
-    <!----------------------------------  ISSUE BUTTON -->
-                        <th><button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
-                                        Issue To
-                                      </button>
-                                <div class="modal fade" id="modal-default">
-                                  <div class="modal-dialog">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span></button>
-                                        <div class="margin">
-                                            <h3>Issue Supplies</h3>
-                                          </div>
-                                      </div>
-                                        <!-- end of modal header -->
-                                      <div class="modal-body">
-                                              <!-- Date and Time -->
-                                                 <div class="form-group">
-                                                    <label>Issue Date</label>
-
-                                                    <div class="input-group">
-                                                      <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                      </div>
-                                                      <input type="text" class="form-control pull-right" id="datepicker3">
-                                                    </div>
-                                                    <!-- /.input group -->
-                                                  </div>
-                                          <!-- /.form group -->
-                                              <div class="form-group">
-                                                  <label for="exampleInputEmail1">Description</label>
-                                                  <input type="email" class="form-control">
-                                                </div>
-                                              <div class="form-group">
-                                                  <label for="exampleInputEmail1">Supplier</label>
-                                                  <input type="email" class="form-control">
-                                                </div>
-                                              <div class="form-group">
-                                                  <label for="exampleInputEmail1">Quantity</label>
-                                                  <input type="email" class="form-control">
-                                                </div>
-                                              <div class="form-group">
-                                                  <label for="exampleInputEmail1">Unit</label>
-                                                  <input type="email" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                  <label for="exampleInputEmail1">Price</label>
-                                                  <input type="email" class="form-control">
-                                            </div>
-                                              <div class="btn-group">
-                                              <button type="button" class="btn btn-default">Department</button>
-                                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                                <span class="caret"></span>
-                                                <span class="sr-only">Toggle Dropdown</span>
-                                              </button>
-                                              <ul class="dropdown-menu">
-                                              <li><a href="#">Cardiac</a></li>
-                                              <li><a href="#">Endoscopy</a></li>
-                                              <li><a href="#">Imaging</a></li>
-                                              <li><a href="#">Clinical Laboratory</a></li>
-                                              <li><a href="#">Management</a></li>
-                                              </ul>
-                                          </div>
-                                          <div class="btn-group">
-                                              <button type="button" class="btn btn-default">Branch</button>
-                                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                                <span class="caret"></span>
-                                                <span class="sr-only">Toggle Dropdown</span>
-                                              </button>
-                                              <ul class="dropdown-menu">
-                                              <li><a href="#">Baguio City</a></li>
-                                              <li><a href="#">La Trinidad</a></li>
-                                                  <li><a href="#">SLU Hospital</a></li>
-                                                  </ul>
-                                          </div>
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-primary">Issue Supplies</button>
-                                      </div>
-                                    </div>
-                                    <!-- /.modal-content -->
-                                  </div>
-                                  <!-- /.modal-dialog -->
-                                </div>
-                                <!-- /.modal --></th>
-                    </tr>
-                </table>      
-            </div>
               
             <div class="box-body">
-              <?php
-
+              
+        <?php
         $res = mysqli_query($conn, "SELECT supplydesc, unitInStock, unit, unitPrice, reorderLevel FROM supplies WHERE supplyType='Medical' ");
         ?>
+                
         <table id="example1" class="table table-bordered table-striped">
           <?php
           echo "<thead>";
@@ -739,7 +533,7 @@ mysqli_select_db($conn, "itproject");
             <!----------- PRINT AND PDF ----->
               <div class="row no-print">
         <div class="col-xs-12">
-          <a href="../examples/invoice-print2.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+          <a href="../examples/invoice-print2.php" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
           <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
             <i class="fa fa-download"></i> Generate PDF
           </button>
