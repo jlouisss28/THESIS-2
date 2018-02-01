@@ -1,8 +1,3 @@
-<?php 
-$conn =mysqli_connect("localhost","root","");
-mysqli_select_db($conn, "itproject");
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -310,51 +305,53 @@ mysqli_select_db($conn, "itproject");
             </div>
             <!-- /.box-header -->
               <div class="box-body">
-			    
-				<?php
-
-        $res = mysqli_query($conn, "SELECT companyName, supplierContact, supplierAddr, supplierStatus, supplierProduct, suppierRemarks FROM suppliers");
+			   <table id="example1" class="table table-bordered table-striped">
+            
+        <?php
+            require_once("../../../db.php");
+            $sql = "SELECT companyName, supplierContact, supplierAddr, supplierStatus, supplierProduct, supplierRemarks FROM suppliers";
+            $result = $conn->query($sql);
         ?>
-        <table id="example1" class="table table-bordered table-striped">
-          <?php
-          echo "<thead>";
-          echo "<tr>";
-            echo "<th>"; echo "Supplier Name"; echo "</th>";
-            echo "<th>"; echo "Contact";       echo "</th>";
-            echo "<th>"; echo "Address";       echo "</th>";
-            echo "<th>"; echo "Product";       echo "</th>";
-            echo "<th>"; echo "Status";        echo "</th>";
-            echo "<th>"; echo "Remarks";       echo "</th>";
-          echo "</tr>";
-        echo "</thead>";
-        echo "<tbody>";
-        while($row = mysqli_fetch_array($res)) {
-          echo "<tr>";
-            echo "<td>"; echo $row['companyName'];      echo "</td>";
-            echo "<td>"; echo $row['supplierContact'];  echo "</td>";
-            echo "<td>"; echo $row['supplierAddr'];     echo "</td>";
-			      echo "<td>"; echo $row['supplierProduct'];  echo "</td>";
-            echo "<td>"; echo $row['supplierStatus'];   echo "</td>";
-            echo "<td>"; echo $row['suppierRemarks'];   echo "</td>";
-          echo "</tr>";
-        }
+            
+        <thead>
+         <tr>
+            <th>Supplier Name</th>
+            <th>Contact</th>
+            <th>Address</th>
+            <th>Product</th>
+            <th>Status</th>
+            <th>Remarks</th>
+        </tr>
+        </thead>
+        <tbody>
+            
+        <?php
+        
+            while($row = $result->fetch_assoc()){ ?>
 
-        echo "</tbody>";
-        echo "<tfoot>";
-          echo "<tr>";
-            echo "<th>"; echo "Supplier Name"; echo "</th>";
-            echo "<th>"; echo "Contact";       echo "</th>";
-            echo "<th>"; echo "Address";       echo "</th>";
-            echo "<th>"; echo "Product";       echo "</th>";
-            echo "<th>"; echo "Status";        echo "</th>";
-            echo "<th>"; echo "Remarks";       echo "</th>";
-          echo "</tr>";
-        echo "</tfoot>";
-        echo "</table>";
-        mysqli_close($conn);
-      
-    ?>
-         
+            <tr>
+                <td><?php echo $row["companyName"]; ?></td>
+                <td><?php echo $row["supplierContact"]; ?></td>
+                <td><?php echo $row["supplierAddr"]; ?></td>
+                <td><?php echo $row["supplierProduct"]; ?></td>
+                <td><?php echo $row["supplierStatus"]; ?></td>
+                <td><?php echo $row["supplierRemarks"]; ?></td>
+            </tr>
+            <?php
+        } ?>
+      </tbody>
+            
+        <tfoot>
+          <tr>
+            <th>Supplier Name</th>
+            <th>Contact</th>
+            <th>Address</th>
+            <th>Product</th>
+            <th>Status</th>
+            <th>Remarks</th>
+          </tr>
+        </tfoot>
+        </table>
             </div>
             <!-- /.box-body -->
           </div>
