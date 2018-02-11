@@ -367,8 +367,8 @@
                           <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                          <li><a href="#">All Supplies</a></li>
-                          <li><a href="php/totalQty.php">Total Quantity</a></li>
+                          <li><a href="#"><b>All Supplies</b></a></li>
+                          <li><a href="php/medTotalQty.php">Total Quantity</a></li>
                         </ul>
                       </div></th>
                     </tr>
@@ -504,42 +504,55 @@
                                           <!-- /.form group -->
                                               <div class="form-group">
                                                   <label for="exampleInputEmail1">Description</label>
-                                                  <input type="email" class="form-control" name="description">
+                                                  <input type="text" class="form-control" name="description">
                                                 </div>
                                               <div class="form-group">
                                                   <label for="exampleInputEmail1">Quantity</label>
-                                                  <input type="email" class="form-control" name="quantity">
+                                                  <input type="number" class="form-control" name="quantity">
                                                 </div>
                                               <div class="form-group">
                                                   <label for="exampleInputEmail1">Unit</label>
-                                                  <input type="email" class="form-control" name="unit">
+                                                  <input type="text" class="form-control" name="unit">
                                             </div>
                                             <div class="form-group">
                                                   <label for="exampleInputEmail1">Price</label>
-                                                  <input type="email" class="form-control" name="price">
+                                                  <input type="number" class="form-control" name="price">
                                             </div>
-                                            <div class="btn-group">
-                                              <button type="button" class="btn btn-default">Department</button>
-                                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                                <span class="caret"></span>
-                                                <span class="sr-only">Toggle Dropdown</span>
-                                              </button>
-                                              <ul class="dropdown-menu">
-                                              <li><input type="radio" name="radio" value="radio0">Cardiac, Baguio City</li>
-                                              <li><input type="radio" name="radio" value="radio1">Cardiac, La Trinidad</li>
-                                              <li><input type="radio" name="radio" value="radio2">Endoscopy, SLU Baguio City</li>
-                                              <li><input type="radio" name="radio" value="radio3">Imaging, Baguio City</li>
-                                              <li><input type="radio" name="radio" value="radio4">Imaging, La Trinidad</li>
-                                              <li><input type="radio" name="radio" value="radio5">Clinical Laboratory, Baguio City</li>
-                                              <li><input type="radio" name="radio" value="radio6">Clinical Laboratory, La Trinidad</li>
-                                              <li><input type="radio" name="radio" value="radio7">Management, Baguio City</li>
-                                              </ul>
+                                            <div class="department">
+                                                <select name = "department">
+                                                <option value="">Select a Department</option>
+                                                <?php
+                                                  require("../../../db.php");
+                                                  $sql = "SELECT * FROM departments";
+                                                  $results = mysqli_query($conn, $sql);
+
+                                                  foreach($results as $department) { 
+                                                ?>
+                                                <option value="<?php echo $department["department_id"]; ?>" name="dep"><?php echo $department["department_name"]; ?></option>
+                                                <?php 
+                                                  }
+                                                ?>
+                                              </select>
+
+                                              <select name = "department">
+                                                <option value="">Select a branch</option>
+                                                <?php
+                                                  require("../../../db.php");
+                                                  $sql = "SELECT * FROM departments";
+                                                  $results = mysqli_query($conn, $sql);
+
+                                                  foreach($results as $branch) { 
+                                                ?>
+                                                <option value="<?php echo $branch["department_id"]; ?>" name="brn"><?php echo $branch["branch_location"]; ?></option>
+                                                <?php 
+                                                  }
+                                                ?>
+                                              </select>
                                           </div>
-                                          
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-primary" name="medIssueTo">Issue Supplies</button>
+                                        <button type="submit" class="btn btn-primary" name="medIssueTo">Issue Supplies</button>
                                       </div>
                                     </div>
                                     <!-- /.modal-content -->
@@ -556,19 +569,21 @@
         <table id="example1" class="table table-bordered table-striped">
          <?php // RETRIEVE or Display Medical Supplies
          include("../../../db.php");
-          $sql = "SELECT * FROM supplies WHERE supplyType='Medical' ";
+          $sql = "SELECT * FROM supplies WHERE supply_type='Medical' ";
           $result = $conn->query($sql);  ?>
           <thead>
             <tr>
              <!--     <th>Date Received</th>
-                  <th>Time Received</th>
-                  <th>Expiration Date</th> --> 
+                  <th>Time Received</th> -->
+                  <th>Expiration Date</th> 
                   <th>Description</th>
                   <th>Quantity in Stock</th>
                   <th>Unit</th>
                   <th>Unit Price</th>
              <!--    <th>Total Amount</th> -->
                   <th>Reorder Level</th>
+                  <th>Good Condition</th>
+                  <th>Damaged</th>
                   <th> Action</th> 
             </tr>
         </thead>
@@ -576,15 +591,16 @@
         <?php
           while($row = $result->fetch_assoc()) { ?>
             <tr>
-            <!-- <td><?php // echo $row["expirationDate"]; ?></td> -->
-
-            <td><?php echo $row["supplyDesc"]; ?></td>
-            <td><?php echo $row["unitInStock"]; ?></td>
+            <td><?php echo $row["expiration_date"]; ?></td>
+            <td><?php echo $row["supply_description"]; ?></td>
+            <td align="right"><?php echo $row["quantity_in_stock"]; ?></td>
             <td><?php echo $row["unit"]; ?></td>
-            <td align="right">&#8369; <?php echo $row["unitPrice"]; ?></td>
-            <td align="center"><?php echo $row["reorderLevel"]; ?></td>
+            <td align="right">&#8369; <?php echo $row["unit_price"]; ?> </td>
+            <td align="center"><?php echo $row["reorder_level"]; ?></td>
+            <td><?php echo $row["good_condition"]; ?></td>
+            <td><?php echo $row["damaged"]; ?></td>
             <td><form action="suppliesFunctions.php">
-                <input type="text" name="medDelete" hidden value="<?php echo $row["supply_ID"]; ?>">
+                <input type="text" name="medDelete" hidden value="<?php echo $row["supply_id"]; ?>">
                 <button type="submit" class="btn btn-xs btn-danger">
                 <i class="fa fa-fw fa-trash"></i></button>
             </form></td>           
@@ -596,15 +612,17 @@
         <tfoot>
            <tr>
             <!--     <th>Date Received</th>
-                  <th>Time Received</th>
-                  <th>Expiration Date</th> --> 
+                  <th>Time Received</th> -->
+                  <th>Expiration Date</th> 
                   <th>Description</th>
                   <th>Quantity in Stock</th>
                   <th>Unit</th>
                   <th>Unit Price</th>
              <!--    <th>Total Amount</th> -->
                   <th>Reorder Level</th>
-                  <th> Action</th>
+                  <th>Good Condition</th>
+                  <th>Damaged</th>
+                  <th> Action</th> 
         </tr> 
         </tfoot>
       </table>              
@@ -673,6 +691,7 @@
 <script src="../../dist/js/demo.js"></script>
     <!-- bootstrap time picker -->
 <script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
+
 <!-- page script -->
 <script>
   $(function () {

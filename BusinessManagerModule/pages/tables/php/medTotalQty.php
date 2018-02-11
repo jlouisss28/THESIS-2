@@ -368,7 +368,7 @@
                         </button>
                         <ul class="dropdown-menu">
                           <li><a href="../data.php">All Supplies</a></li>
-                          <li><a href="#">Total Quantity</a></li>
+                          <li><b>Total Quantity</b></li>
                         </ul>
                       </div></th>
                     </tr>
@@ -556,7 +556,9 @@
         <table id="example1" class="table table-bordered table-striped">
          <?php // RETRIEVE or Display Medical Supplies
          include("../../../../db.php");
-          $sql = "SELECT * FROM supplies WHERE supplyType='Medical' ";
+          $sql = "SELECT supply_description, unit, SUM(quantity_in_stock) AS 'Total Quantity', SUM(unit_price*quantity_in_stock) AS 'Total Amount'
+                  FROM supplies WHERE supply_type='Medical' AND quantity_in_stock IS NOT NULL
+                  GROUP BY supply_description; ";
           $result = $conn->query($sql);  ?>
           <thead>
             <tr>
@@ -566,6 +568,7 @@
                   <th>Description</th>
                   <th>Total Quantity in Stock</th>
                   <th>Unit</th>
+                  <th>Total Amount </th>
             </tr>
         </thead>
         <tbody>
@@ -574,9 +577,10 @@
             <tr>
             <!-- <td><?php // echo $row["expirationDate"]; ?></td> -->
 
-            <td><?php echo $row["supplyDesc"]; ?></td>
-            <td><?php echo $row["unitInStock"]; ?></td>
-            <td><?php echo $row["unit"]; ?></td>          
+            <td><?php echo $row["supply_description"]; ?></td>
+            <td align="right"><?php echo $row["Total Quantity"]; ?></td>
+            <td><?php echo $row["unit"]; ?></td>
+            <td align="right">&#8369;<?php echo $row["Total Amount"]; ?></td>
             </tr>
           <?php 
               }
@@ -590,6 +594,7 @@
                   <th>Description</th>
                   <th> Total Quantity in Stock</th>
                   <th>Unit</th>
+                  <th>Total Amount</th>
         </tr> 
         </tfoot>
       </table>              
