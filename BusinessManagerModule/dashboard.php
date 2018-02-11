@@ -76,8 +76,9 @@ $conn = new mysqli($server, $username, $password, $database);
                 <a class="dropdown-toggle">
                     <span class="hidden-xs" id="demo"></span>
                     <script>
-                        var d = new Date();
-                        document.getElementById("demo").innerHTML = d.toUTCString();
+                        var d = new Date().toString();
+                        d=d.split(' ').slice(0, 6).join(' ');
+                        document.getElementById("demo").innerHTML = d;
                     </script>
                 </a>
             </li>
@@ -225,7 +226,7 @@ $conn = new mysqli($server, $username, $password, $database);
               <li class="user-footer">
         
                 <div class="pull-right">
-                  <a href="pages/examples/login.html" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../index.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
                 <div class="pull-left">
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
@@ -380,7 +381,7 @@ $conn = new mysqli($server, $username, $password, $database);
         </li> -->
 		<!---------------------------------------------------- MANAGE ACCOUNTS MENU -------------------------------------------------------------->
         <li>
-          <a href="pages/forms/general.html">
+          <a href="pages/forms/general.php">
               <i class="fa fa-group"></i> <span>Manage Accounts</span> </a>
         </li>
 		<!---------------------------------------------------- SUPPLIES MENU -------------------------------------------------------------->
@@ -398,12 +399,12 @@ $conn = new mysqli($server, $username, $password, $database);
         </li>
         <!--------------------------------------------------- PURCHASES -------------------------------------------------->
           <li>
-              <a href="pages/tables/data5.html">
+              <a href="pages/tables/data5.php">
                   <i class="fa fa-tags"></i><span>Purchases</span>  
               </a>
           </li>
         <!--------------------------------------------------- ISSUED SUPPLIES -------------------------------------------------->
-            <li><a href="pages/tables/data6.html">
+            <li><a href="pages/tables/data6.php">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
@@ -421,7 +422,7 @@ $conn = new mysqli($server, $username, $password, $database);
         </li>
 		<!---------------------------------------------------- CALENDAR MENU -------------------------------------------------------------->
         <li>
-          <a href="pages/calendar.html">
+          <a href="pages/calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red">3</small>
@@ -432,7 +433,7 @@ $conn = new mysqli($server, $username, $password, $database);
 		
 		<!---------------------------------------------------- INVOICE MENU -------------------------------------------------------------->
         <li>
-          <a href="pages/examples/invoice.html">
+          <a href="pages/examples/invoice.php">
             <i class="fa fa-print"></i> <span>Logs</span>
           </a>
         </li>
@@ -506,7 +507,18 @@ $conn = new mysqli($server, $username, $password, $database);
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>
+              <?php
+                  require_once("../db.php");
+                  $sql = "SELECT COUNT(*) AS total FROM supplies JOIN suppliers WHERE quantity_in_stock <= reorder_level+10";
+                  $result = $conn->query($sql);    
+              ?>
+                <?php if ($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()) { ?>
+                    <h3><?php echo $row["total"]; ?></h3>
+                  <?php 
+                      }
+                    }
+                  ?>
 
               <p>Reorder Supplies</p>
             </div>
@@ -522,7 +534,18 @@ $conn = new mysqli($server, $username, $password, $database);
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53</h3>
+              <?php
+                  require_once("../db.php");
+                  $sql = "SELECT COUNT(*) AS total FROM returns JOIN supplies JOIN suppliers WHERE status ='Pending'";
+                  $result = $conn->query($sql);    
+              ?>
+                <?php if ($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()) { ?>
+                    <h3><?php echo $row["total"]; ?></h3>
+                  <?php 
+                      }
+                    }
+                  ?>
 
               <p>Returned Supplies</p>
             </div>
@@ -537,7 +560,18 @@ $conn = new mysqli($server, $username, $password, $database);
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+              <?php
+                  require_once("../db.php");
+                  $sql = "SELECT COUNT(*) AS total FROM deliveries JOIN purchase_orders po JOIN supplies JOIN suppliers ON suppliers.suppliers_id = deliveries.supplier_id WHERE delivery_status = 'In Transit'";
+                  $result = $conn->query($sql);    
+              ?>
+                <?php if ($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()) { ?>
+                    <h3><?php echo $row["total"]; ?></h3>
+                  <?php 
+                      }
+                    }
+                  ?>
 
               <p>Delivery</p>
             </div>
@@ -552,7 +586,19 @@ $conn = new mysqli($server, $username, $password, $database);
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>65</h3>
+              <?php
+                  require_once("../db.php");
+                  $date = date("Y/m/d");
+                  $sql = "SELECT COUNT(*) AS total FROM supplies JOIN suppliers WHERE expiration_date <= $date";
+                  $result = $conn->query($sql);    
+                ?>
+                <?php if ($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()) { ?>
+                    <h3><?php echo $row["total"]; ?></h3>
+                  <?php 
+                      }
+                    }
+                  ?>
 
               <p>Expired Supplies</p>
             </div>
@@ -569,7 +615,7 @@ $conn = new mysqli($server, $username, $password, $database);
                 <table id="example1" class="table table-bordered table-striped">
                 <?php
                   require_once("../db.php");
-                  $sql = "SELECT supplyType, supplyDesc, brandName, unitInStock, unit, reorderLevel, companyName FROM supplies JOIN suppliers WHERE unitInStock <= reorderLevel+10";
+                  $sql = "SELECT supply_type, supply_description, brand_name, quantity_in_stock, unit, reorder_level, company_name FROM supplies JOIN suppliers WHERE quantity_in_stock <= reorder_level+10";
                   $result = $conn->query($sql);    
                 ?>
                 <thead> 
@@ -587,13 +633,13 @@ $conn = new mysqli($server, $username, $password, $database);
                 <?php if ($result->num_rows > 0) {
                   while($row = $result->fetch_assoc()) { ?>
                     <tr>
-                    <td><?php echo $row["supplyType"]; ?></td>
-                    <td><?php echo $row["brandName"]; ?></td>
-                    <td><?php echo $row["supplyDesc"]; ?></td>
-                    <td><?php echo $row["companyName"]; ?></td>
-                    <td><?php echo $row["unitInStock"]; ?></td>
+                    <td><?php echo $row["supply_type"]; ?></td>
+                    <td><?php echo $row["brand_name"]; ?></td>
+                    <td><?php echo $row["supply_description"]; ?></td>
+                    <td><?php echo $row["company_name"]; ?></td>
+                    <td><?php echo $row["quantity_in_stock"]; ?></td>
                     <td><?php echo $row["unit"]; ?></td>
-                    <td><?php echo $row["reorderLevel"]; ?></td>
+                    <td><?php echo $row["reorder_level"]; ?></td>
                     </tr>
                   <?php 
                       }
@@ -618,7 +664,7 @@ $conn = new mysqli($server, $username, $password, $database);
               <table id="example3" class="table table-bordered table-striped">
                 <?php
                   require_once("../db.php");
-                  $sql = "SELECT supplyType, returnDate, supplyDesc, brandName, companyName, unitInStock, unit, reason FROM returns JOIN supplies JOIN suppliers WHERE status ='Pending'";
+                  $sql = "SELECT return_id, supply_type, return_date, supply_description, brand_name, company_name, quantity_in_stock, unit, reason, status FROM returns JOIN supplies JOIN suppliers WHERE status ='Pending'";
                   $result = $conn->query($sql);    
                 ?>
                 <thead>
@@ -638,16 +684,21 @@ $conn = new mysqli($server, $username, $password, $database);
                 <?php if ($result->num_rows > 0) {
                   while($row = $result->fetch_assoc()) { ?>
                     <tr>
-                      <td><?php echo $row["supplyType"]; ?></td>
-                      <td><?php echo $row["returnDate"]; ?></td>
-                      <td><?php echo $row["supplyDesc"]; ?></td>
-                      <td><?php echo $row["brandName"]; ?></td>
-                      <td><?php echo $row["companyName"]; ?></td>
-                      <td><?php echo $row["unitInStock"]; ?></td>
+                      <td><?php echo $row["supply_type"]; ?></td>
+                      <td><?php echo $row["return_date"]; ?></td>
+                      <td><?php echo $row["supply_description"]; ?></td>
+                      <td><?php echo $row["brand_name"]; ?></td>
+                      <td><?php echo $row["company_name"]; ?></td>
+                      <td><?php echo $row["quantity_in_stock"]; ?></td>
                       <td><?php echo $row["unit"]; ?></td>
                       <td><?php echo $row["reason"]; ?></td>
                       <td>
-                        <button type="button" class="btn btn-success">Returned </button> 
+                          
+                        <form action="return.php" method="get">
+                          <input type="text" name="returnSupp" hidden value="<?php echo $row["status"]; ?>">
+                          <input type="text" name="returnID" hidden value="<?php echo $row["return_id"]; ?>">
+                          <button type="submit" class="btn btn-success">Returned </button>
+                        </form> 
                       </td>
                     </tr>
                   <?php 
@@ -675,7 +726,7 @@ $conn = new mysqli($server, $username, $password, $database);
               <table id="example5" class="table table-bordered table-striped">
                 <?php
                   require_once("../db.php");
-                  $sql = "SELECT deliveryDate, supplyDesc, brandName, companyName, grandTotal, unit, unitPrice, totalAmt, deliveryStatus FROM delivery JOIN supplies JOIN suppliers JOIN purchaseorder WHERE deliveryStatus = 'In Transit'";
+                  $sql = "SELECT distinct delivery_date, supply_description, brand_name, company_name, grand_total, unit, unit_price, po.total_amount, delivery_status, good_condition, damaged FROM deliveries JOIN purchase_orders po JOIN supplies JOIN suppliers ON suppliers.suppliers_id = deliveries.supplier_id WHERE delivery_status = 'In Transit'";
                   $result = $conn->query($sql);    
                 ?>
                 <thead>
@@ -697,14 +748,14 @@ $conn = new mysqli($server, $username, $password, $database);
                 <?php if ($result->num_rows > 0) {
                   while($row = $result->fetch_assoc()) { ?>
                     <tr>
-                      <td><?php echo $row["deliveryDate"]; ?></td>
-                      <td><?php echo $row["supplyDesc"]; ?></td>
-                      <td><?php echo $row["brandName"]; ?></td>
-                      <td><?php echo $row["companyName"]; ?></td>
-                      <td><?php echo $row["grandTotal"]; ?></td>
+                      <td><?php echo $row["delivery_date"]; ?></td>
+                      <td><?php echo $row["supply_description"]; ?></td>
+                      <td><?php echo $row["brand_name"]; ?></td>
+                      <td><?php echo $row["company_name"]; ?></td>
+                      <td><?php echo $row["grand_total"]; ?></td>
                       <td><?php echo $row["unit"]; ?></td>
-                      <td><?php echo $row["unitPrice"]; ?></td>
-                      <td><?php echo $row["totalAmt"]; ?></td>
+                      <td><?php echo $row["unit_price"]; ?></td>
+                      <td><?php echo $row["total_amount"]; ?></td>
                       <td>
                         <div class="btn-group">
                           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -716,8 +767,8 @@ $conn = new mysqli($server, $username, $password, $database);
                           </ul>
                         </div>
                       </td>
-                      <td></td>
-                      <td></td>
+                      <td><?php echo $row["good_condition"]; ?></td>
+                      <td><?php echo $row["damaged"]; ?></td>
                     </tr>
                   <?php 
                       }
@@ -747,7 +798,7 @@ $conn = new mysqli($server, $username, $password, $database);
                 <?php
                   require_once("../db.php");
                   $date = date("Y/m/d");
-                  $sql = "SELECT expirationDate, supplyDesc, brandName, companyName, unitInStock, unit, shelfLife FROM supplies JOIN suppliers WHERE expirationDate <= $date";
+                  $sql = "SELECT supply_id, expiration_date, supply_description, brand_name, company_name, quantity_in_stock, unit FROM supplies JOIN suppliers WHERE expiration_date <= $date";
                   $result = $conn->query($sql);    
                 ?>
                 <thead>
@@ -758,7 +809,6 @@ $conn = new mysqli($server, $username, $password, $database);
                   <th>Supplier</th>
                   <th>Quantity</th>
                   <th>Unit</th>
-                  <th>Shelf Life</th>
                   <th></th>
                 </tr>
                 </thead>
@@ -766,16 +816,20 @@ $conn = new mysqli($server, $username, $password, $database);
                   <?php if ($result->num_rows > 0) {
                   while($row = $result->fetch_assoc()) { ?>
                     <tr>
-                      <td><?php echo $row["expirationDate"]; ?></td>
-                      <td><?php echo $row["supplyDesc"]; ?></td>
-                      <td><?php echo $row["brandName"]; ?></td>
-                      <td><?php echo $row["companyName"]; ?></td>
-                      <td><?php echo $row["unitInStock"]; ?></td>
+                      <td><?php echo $row["expiration_date"]; ?></td>
+                      <td><?php echo $row["supply_description"]; ?></td>
+                      <td><?php echo $row["brand_name"]; ?></td>
+                      <td><?php echo $row["company_name"]; ?></td>
+                      <td><?php echo $row["quantity_in_stock"]; ?></td>
                       <td><?php echo $row["unit"]; ?></td>
-                      <td><?php echo $row["shelfLife"]; ?></td>
                       <td>
-                        <button type="button" class="btn btn-danger">Disposed </button> 
+                         
+                        <form action="dispose.php" method="get">
+                          <input type="text" name="disposeSupp" hidden value="<?php echo $row["supply_id"]; ?>">
+                          <button type="submit" class="btn btn-danger">Disposed </button>
+                        </form> 
                       </td>
+                      
                     </tr>
                   <?php 
                       }
@@ -790,7 +844,6 @@ $conn = new mysqli($server, $username, $password, $database);
                       <th>Supplier</th>
                       <th>Quantity</th>
                       <th>Unit</th>
-                      <th>Shelf Life</th>
                       <th></th>
                   </tr> 
                 </tfoot>

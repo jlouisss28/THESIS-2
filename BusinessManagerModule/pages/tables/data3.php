@@ -59,8 +59,9 @@
                     <a class = "dropdown-toggle">
                         <span class="hidden-xs" id="demo"></span>
                         <script>
-                            var d = new Date();
-                            document.getElementById("demo").innerHTML = d.toString();
+                          var d = new Date().toString();
+                          d=d.split(' ').slice(0, 6).join(' ');
+                          document.getElementById("demo").innerHTML = d;
                         </script>
                     </a>
                 </li>
@@ -303,7 +304,7 @@
         </li>
 		<!---------------------------------------------------- CALENDAR MENU -------------------------------------------------------------->
         <li>
-          <a href="../calendar.html">
+          <a href="../calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red">3</small>
@@ -314,7 +315,7 @@
 
 <!---------------------------------------------------- LOCKSCREEN MENU -------------------------------------------------------------->
         <li>
-          <a href="../examples/lockscreen.html">
+          <a href="../examples/lockscreen.php">
             <i class="fa fa-lock"></i> <span>Lockscreen</span>
           </a>
         </li>
@@ -478,9 +479,9 @@
               <table id="example1" class="table table-bordered table-striped">
                 <?php
                     require_once("../../../db.php");
-                    $sql = "SELECT suppliers_ID, companyName, supplierContact, supplierAddr, supplierStatus, supplierProduct, supplierRemarks FROM suppliers WHERE supplierStatus = 'Active'";
+                    $sql = "SELECT suppliers_id, company_name, supplier_contact, address, supplier_status, supplier_product, supplierRemarks FROM suppliers WHERE supplier_status = 'Active'";
                     $result = $conn->query($sql);
-                    $sql2 = "SELECT suppliers_ID, companyName, supplierContact, supplierAddr, supplierStatus, supplierProduct, supplierRemarks FROM suppliers WHERE supplierStatus = 'Inactive'";
+                    $sql2 = "SELECT suppliers_id, company_name, supplier_contact, address, supplier_status, supplier_product, supplierRemarks FROM suppliers WHERE supplier_status = 'Inactive'";
                     $result2 = $conn->query($sql2);
                 ?>
 
@@ -499,10 +500,10 @@
                     <?php if ($result->num_rows > 0) {
                       while($row = $result->fetch_assoc()) { ?>
                         <tr>
-                          <td><?php echo $row["companyName"]; ?></td>
-                          <td><?php echo $row["supplierContact"]; ?></td>
-                          <td><?php echo $row["supplierAddr"]; ?></td>
-                          <td><?php echo $row["supplierProduct"]; ?></td>
+                          <td><?php echo $row["company_name"]; ?></td>
+                          <td><?php echo $row["supplier_contact"]; ?></td>
+                          <td><?php echo $row["address"]; ?></td>
+                          <td><?php echo $row["supplier_product"]; ?></td>
                           <td><center>
                                 <label class="switch">
                                   <input type="checkbox" checked disabled readonly>
@@ -512,7 +513,7 @@
                           </td>
                           <td><?php echo $row["supplierRemarks"]; ?></td>
                           <td><form action="php/supplierDelete.php">
-                                <input type="text" name="suppDelete" hidden value="<?php echo $row["suppliers_ID"]; ?>">
+                                <input type="text" name="suppDelete" hidden value="<?php echo $row["suppliers_id"]; ?>">
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">
                                 <i class="fa fa-fw fa-trash"></i></button>
                                 <div class="modal modal-danger fade" id="modal-danger">
@@ -529,7 +530,7 @@
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
                                         <form action="php/supplierDelete.php">
-                                          <input type="text" name="suppDelete" hidden value="<?php echo $row["suppliers_ID"]; ?>">
+                                          <input type="text" name="suppDelete" hidden value="<?php echo $row["suppliers_id"]; ?>">
                                           <button type="submit" class="btn btn-outline">Delete</button>
                                         </form>
                                       </div>
@@ -548,10 +549,10 @@
                     <?php if ($result2->num_rows > 0) {
                       while($row = $result2->fetch_assoc()) { ?>
                         <tr>
-                          <td><?php echo $row["companyName"]; ?></td>
-                          <td><?php echo $row["supplierContact"]; ?></td>
-                          <td><?php echo $row["supplierAddr"]; ?></td>
-                          <td><?php echo $row["supplierProduct"]; ?></td>
+                          <td><?php echo $row["company_name"]; ?></td>
+                          <td><?php echo $row["supplier_contact"]; ?></td>
+                          <td><?php echo $row["address"]; ?></td>
+                          <td><?php echo $row["supplier_product"]; ?></td>
                           <td><center>
                                 <label class="switch">
                                   <input type="checkbox" disabled readonly>
@@ -561,7 +562,7 @@
                           </td>
                           <td><?php echo $row["supplierRemarks"]; ?></td>
                           <td><form action="php/supplierDelete.php" method="get">
-                                <input type="text" name="suppDelete" hidden value="<?php echo $row["suppliers_ID"]; ?>">
+                                <input type="text" name="suppDelete" hidden value="<?php echo $row["suppliers_id"]; ?>">
                                 <button type="submit" class="btn-danger">
                                 <i class="fa fa-fw fa-trash"></i></button>
                               </form>
@@ -594,8 +595,8 @@
       <!-- /.row -->
           <div class="row no-print">
         <div class="col-xs-12">
-          <a href="../examples/invoice-print4.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
+          <a href="../examples/printSuppliers.php" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+          <button type="button" class="btn btn-primary pull-right" style=s"margin-right: 5px;">
             <i class="fa fa-download"></i> Generate PDF
           </button>
         </div>

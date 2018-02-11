@@ -3,7 +3,7 @@ $connection =mysqli_connect("localhost","root","");
 mysqli_select_db($connection, "itproject");
 
   if (isset($_POST['addSuppliers'])) {
-  $sql = $connection->prepare("INSERT INTO suppliers (companyName, supplierContact, supplierAddr, supplierProduct) VALUES (?, ?, ?, ?)");  
+  $sql = $connection->prepare("INSERT INTO suppliers (company_name, supplier_contact, address, supplier_product) VALUES (?, ?, ?, ?)");  
   $suppName = $_POST['suppName'];
   $suppContact = $_POST['suppContact'];
   $suppAddress = $_POST['suppAddress'];
