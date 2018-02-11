@@ -465,7 +465,7 @@
                         </ul>
                       </div></th>
                         <th> <div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Suppliers
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Issued To
                           <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
@@ -502,13 +502,13 @@
                     if ($result->num_rows > 0) {
                       while($row = $result->fetch_assoc()) { ?>
                         <tr>
-                        <td><?php echo $row["requestdate"]; ?></td>
-                        <td><?php echo $row["issueddate"]; ?></td>
-                        <td><?php echo $row["supplydesc"]; ?></td>
-                        <td><?php echo $row["unitinstock"]; ?></td>
+                        <td><?php echo $row["request_date"]; ?></td>
+                        <td><?php echo $row["issued_date"]; ?></td>
+                        <td><?php echo $row["supply_description"]; ?></td>
+                        <td><?php echo $row["quantity_in_stock"]; ?></td>
                         <td><?php echo $row["unit"]; ?></td>
-                        <td>&#8369;<?php echo $row["unitprice"]; ?></td>
-                        <td><?php echo $row["departmentName"]; ?></td>
+                        <td>&#8369;<?php echo $row["unit_price"]; ?></td>
+                        <td><?php echo $row["department_name"]; ?></td>
                         </tr>
                   <?php
                     }
