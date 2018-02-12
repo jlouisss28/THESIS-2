@@ -26,7 +26,7 @@
   }
   $sql->close();   
   $connection->close();
-  header("Location: data.php");
+  header("Location: ../data.php");
   } 
 
   //CREATE or ADD OFFICE SUPPLY
@@ -45,7 +45,7 @@
   }
   $sql->close();   
   $connection->close();
-  header("Location: data.php");
+  header("Location: ../data2.php");
   } 
 
   // DELETE FOR MEDICAL SUPPLIES
@@ -55,7 +55,7 @@
   $sql->execute();
   $sql->close(); 
   $conn->close();
-  header('location: data.php'); 
+  header('location: ../data.php'); 
 
   // DELETE FOR OFFICE SUPPLIES
   $desc_id = $_GET['officeDelete'];
@@ -64,7 +64,7 @@
   $sql->execute();
   $sql->close(); 
   $conn->close();
-  header('location: data2.php');   
+  header('location: ../data2.php');   
 
   // ISSUE TO FOR MEDICAL SUPPLIES
    if (isset($_POST['medIssueTo'])) {
@@ -85,6 +85,6 @@
   }
   $sql->close();   
   $connection->close();
-  header("Location: data.php");
+  header("Location: ../data.php");
   } 
 ?>

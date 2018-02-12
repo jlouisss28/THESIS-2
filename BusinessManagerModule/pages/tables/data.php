@@ -24,7 +24,8 @@
       <!-- Bootstrap time Picker -->
   <link rel="stylesheet" href="../../plugins/timepicker/bootstrap-timepicker.min.css">
     <!-- Select2 -->
-      <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
+  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -362,14 +363,14 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
                 <table style="float: left;">
                     <tr>
-                        <th> <div class="btn-group">
+                        <th> <div class="dropdownButton">
+                        <select name="dropdown" onchange="location =this.value;">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Supplies
                           <span class="caret"></span>
                         </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#"><b>All Supplies</b></a></li>
-                          <li><a href="php/medTotalQty.php">Total Quantity</a></li>
-                        </ul>
+                          <option><b>All Supplies</b></option>
+                          <option value="php/medTotalQty.php">Total Quantity</optiom>
+                        </select>
                       </div></th>
                     </tr>
                 </table> 
@@ -377,7 +378,7 @@
                     <tr>
                         <th><button type="submit" class="btn btn-primary btn-block btn-warning" data-toggle="modal" data-target="#modal-info">Add</button>
                         
-                        <form name="form1" method="post" action="suppliesFunctions.php">
+                        <form name="form1" method="post" action="php/suppliesFunctions.php">
                         <div class="modal fade" id="modal-info">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
@@ -460,7 +461,7 @@
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn btn-primary" name="addMedSupply">Save Supply</button>
+                                        <button type="button" class="btn btn-primary" class="btn btn-success" data-toggle="modal" data-target="#modal-success">Save Supply</button>
                                       </div>
                                     </div>
                                     <!-- /.modal-content -->
@@ -468,6 +469,28 @@
                                   </div>
                                   <!-- /.modal-dialog -->
                                 </div>
+
+                                <div class="modal modal-success fade" id="modal-success">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <h3>Are you sure to add this item?&hellip;</h3>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                                          <button type="submit" class="btn btn-outline" name="addMedSupply">Save changes</button>
+
+                                        </div>
+                                      </div>
+                                      <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                  </div>
+                                  <!-- /.modal -->
                                 </form>
                             </th> 
                               
@@ -566,10 +589,10 @@
             </div>
               
             <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+        <table id="tabledit" class="table table-bordered table-striped">
          <?php // RETRIEVE or Display Medical Supplies
          include("../../../db.php");
-          $sql = "SELECT * FROM supplies WHERE supply_type='Medical' ";
+          $sql = "SELECT supply_id, supply_description, quantity_in_stock, expiration_date, unit, CONCAT(reorder_level,' ', unit) AS 'Reorder Level', unit_price, good_condition, damaged FROM supplies WHERE supply_type='Medical' ORDER BY supply_description ASC";
           $result = $conn->query($sql);  ?>
           <thead>
             <tr>
@@ -596,14 +619,38 @@
             <td align="right"><?php echo $row["quantity_in_stock"]; ?></td>
             <td><?php echo $row["unit"]; ?></td>
             <td align="right">&#8369; <?php echo $row["unit_price"]; ?> </td>
-            <td align="center"><?php echo $row["reorder_level"]; ?></td>
+            <td align="center"><?php echo $row["Reorder Level"]; ?></td>
             <td><?php echo $row["good_condition"]; ?></td>
             <td><?php echo $row["damaged"]; ?></td>
-            <td><form action="suppliesFunctions.php">
-                <input type="text" name="medDelete" hidden value="<?php echo $row["supply_id"]; ?>">
-                <button type="submit" class="btn btn-xs btn-danger">
-                <i class="fa fa-fw fa-trash"></i></button>
-            </form></td>           
+            <td>
+                <form action="suppliesFunctions.php">
+                <button type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modal-danger">
+                <i class="fa fa-fw fa-trash"> </i>
+                </button>
+        
+                <div class="modal modal-danger fade" id="modal-danger">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span></button>
+                      </div>
+                      <div class="modal-body">
+                        <h3>Are you sure to delete the item?&hellip;</h3>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-outline">
+                        <input type="text" name="medDelete" hidden value="<?php echo $row["supply_id"]; ?>">Delete</button>
+                      </div>
+                    </div>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+                </form>
+            </td>           
             </tr>
           <?php 
               }
@@ -634,16 +681,16 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-            <!----------- PRINT AND PDF ----->
+            <!--- PRINT AND PDF -->
               <div class="row no-print">
         <div class="col-xs-12">
-          <a href="../examples/invoice-print2.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+          <a href="../examples/medicalSuppliesPrint.php" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
           <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
             <i class="fa fa-download"></i> Generate PDF
           </button>
         </div>
       </div>
-        <!--------- END OF PRINT AND PDF ----->
+        <!-- END OF PRINT AND PDF -->
     </section>
     <!-- /.content -->
   </div>
@@ -692,10 +739,12 @@
     <!-- bootstrap time picker -->
 <script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 
+
+
 <!-- page script -->
 <script>
   $(function () {
-    $('#example1').DataTable()
+    $('#tabledit').DataTable()
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': false,
@@ -706,6 +755,8 @@
     })
   })
     </script>
+
+
 <script>
 <!-- date and time -->
   $(function () {

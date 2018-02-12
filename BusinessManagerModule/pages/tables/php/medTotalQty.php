@@ -363,13 +363,10 @@
                 <table style="float: left;">
                     <tr>
                         <th> <div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Supplies
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="../data.php">All Supplies</a></li>
-                          <li><b>Total Quantity</b></li>
-                        </ul>
+                        <select name="dropdown" onchange="location =this.value;">
+                          <option><b>Total Quantity</b></optiom>
+                          <option value="../data.php">All Supplies</option>
+                        </select>
                       </div></th>
                     </tr>
                 </table> 
