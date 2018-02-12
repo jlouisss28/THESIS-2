@@ -459,9 +459,9 @@
                           <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                          <li><a href="php/issuedBaguio.php">Baguio City</a></li>
-                          <li><a href="php/branchLA.php">La Trinidad</a></li>
-                        <li><a href="php/issuedSLU.php">SLU Hospital</a></li>
+                          <li><a href="../php/branchBaguio.php">Baguio City</a></li>
+                          <li><a href="../php/issuedLA.php">La Trinidad</a></li>
+                        <li><a href="../php/issuedSLU.php">SLU Hospital</a></li>
                         </ul>
                       </div></th>
                         <th> <div class="btn-group">
@@ -484,7 +484,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <?php
                     require_once("../../../db.php");
-                    $sql = "SELECT * FROM issuedsupplies";
+                    $sql = "SELECT * FROM issuedsupplies where branch_location like '%SLU%'";
                     $result = $conn->query($sql);
                   ?>
                     <thead>

@@ -7,22 +7,22 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../../bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- DataTables -->
-  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="../../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../../../dist/css/skins/_all-skins.min.css">
              <!-- Bootstrap time Picker -->
-  <link rel="stylesheet" href="../../plugins/timepicker/bootstrap-timepicker.min.css">
+  <link rel="stylesheet" href="../../../plugins/timepicker/bootstrap-timepicker.min.css">
     <!-- Select2 -->
-      <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
+      <link rel="stylesheet" href="../../../bower_components/select2/dist/css/select2.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -55,7 +55,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../dashboard.html" class="logo">
+    <a href="../../../dashboard.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>MDC</span>
       <!-- logo for regular state and mobile devices -->
@@ -198,7 +198,7 @@
                 </ul>
               </li>
               <li class="footer">
-                <a href="../../dashboard.html">View all charts</a>
+                <a href="../../../dashboard.html">View all charts</a>
               </li>
             </ul>
           </li>
@@ -261,7 +261,7 @@
         <li class="header">Inventory System</li>
 	<!---------------------------------------------------- DASHBOARD MENU -------------------------------------------------------------->
         <li>
-          <a href="../../dashboard.html">
+          <a href="../../../dashboard.html">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
@@ -459,9 +459,9 @@
                           <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                          <li><a href="php/issuedBaguio.php">Baguio City</a></li>
-                          <li><a href="php/branchLA.php">La Trinidad</a></li>
-                        <li><a href="php/issuedSLU.php">SLU Hospital</a></li>
+                          <li><a href="../php/branchBaguio.php">Baguio City</a></li>
+                          <li><a href="../php/issuedLA.php">La Trinidad</a></li>
+                        <li><a href="../php/issuedSLU.php">SLU Hospital</a></li>
                         </ul>
                       </div></th>
                         <th> <div class="btn-group">
@@ -484,7 +484,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <?php
                     require_once("../../../db.php");
-                    $sql = "SELECT * FROM issuedsupplies";
+                    $sql = "SELECT * FROM issuedsupplies where branch_location like '%La%'";
                     $result = $conn->query($sql);
                   ?>
                     <thead>
