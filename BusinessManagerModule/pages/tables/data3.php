@@ -209,62 +209,12 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
-          <!-- <li class="treeview">
-          <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>Charts</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Layout Options</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-            <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-          </ul>
-        </li>
+  <!---------------------------------------------------- USER ACCOUNTS MENU -------------------------------------------------------------->
         <li>
-          <a href="pages/widgets.html">
-            <i class="fa fa-th"></i> <span>Widgets</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
-            </span>
-          </a>
-        </li>
-       
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>UI Elements</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-            <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-            <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-            <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-            <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-          </ul>
-        </li> -->
+              <a href="../forms/general.php">
+                  <i class="fa fa-tags"></i><span>Manage Accounts</span>  
+              </a>
+          </li>
 	
 		<!---------------------------------------------------- SUPPLIES MENU -------------------------------------------------------------->
         <li class ="treeview">
@@ -319,44 +269,7 @@
             <i class="fa fa-lock"></i> <span>Lockscreen</span>
           </a>
         </li>
-        <!-- <li class="treeview">
-          <a href="#">
-            <i class="fa fa-share"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Level One
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                <li class="treeview">
-                  <a href="#"><i class="fa fa-circle-o"></i> Level Two
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-          </ul>
-        </li>
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-        <li class="header">LABELS</li>
-        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li> -->
+        
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -388,7 +301,12 @@
                 <table style="float:right;">
                     <tr>
              
-                        <th><button type="submit" class="btn btn-primary btn-block btn-info">Edit</button></th>
+                        <th>
+
+                        <form name="form1" method="post" action="editSuppliers.php" >
+                        <button type="submit" class="btn btn-primary btn-block btn-info">Edit</button></th>
+                        </form>
+                        
                         <th><button type="submit" class="btn btn-primary btn-block btn-warning" data-toggle="modal" data-target="#modal-info">Add</button>
                         
                         <form name="form1" method="post" action="php/supplierAdd.php" >
@@ -490,7 +408,7 @@
                         <th>Supplier Name</th>
                         <th>Contact</th>
                         <th>Address</th>
-                        <th>Product</th>
+                        <th>Supplier Type</th>
                         <th>Status</th>
                         <th>Remarks</th>
                         <th></th>
@@ -512,13 +430,104 @@
                               </center>
                           </td>
                           <td><?php echo $row["supplierRemarks"]; ?></td>
-                          <td><form action="php/supplierDelete.php">
-                                <input type="text" name="suppDelete" hidden value="<?php echo $row["suppliers_id"]; ?>">
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">
-                                <i class="fa fa-fw fa-trash"></i></button>
-                                <div class="modal modal-danger fade" id="modal-danger">
+                          <td>
+                            <!-- EDIT -->
+
+                            <input type="text" name="suppEdit" hidden value="<?php echo $row["suppliers_id"]; ?>">
+                                <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#modal-info2">
+                                <i class="fa fa-fw fa-pencil-square-o"></i></button>
+                                <!-- EDIT MODAL -->
+                                <form action="php/supplierEdit.php" method="post">
+                                <div class="modal fade" id="modal-info2">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
+                                      
+                                      <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span></button>
+                                        <div class="margin">
+                                            <h3>Edit</h3>
+                                          </div>
+                                      </div>
+                                        <!-- end of modal header -->
+                                        
+                                      <div class="modal-body">
+                                        <div class="box-body">
+
+                                          <table class="table table-bordered">
+                                            
+                                              <tr>
+                                                <th>Supplier Name: </th>
+                                              
+                                                <td>
+                                                  <input type="text" name="compName" value="<?php echo $row["company_name"]; ?>" placeholder="Supplier Name" required>
+                                                </td>
+
+                                              </tr>
+                                              <tr>
+                                                <th>Contact: </th>
+                                                
+                                                <td>
+                                                  <input type="text" name="compContact" value="<?php echo $row["supplier_contact"]; ?>" placeholder="Contact Number" required>
+                                                </td>
+                                              </tr>
+                                              <tr>  
+                                                <th>Address: </th>
+
+                                                <td>
+                                                  <input type="text" name="compAddress" value="<?php echo $row["address"]; ?>" placeholder="Supplier Address" required>
+                                                </td>
+                                              </tr>
+                                              <tr>  
+                                                <th>Supplier Type: </th>
+
+                                                <td>
+                                                  <input type="text" name="compProduct" value="<?php echo $row["supplier_product"]; ?>" placeholder="Supplier Type" required>
+                                                </td>
+                                              </tr>
+                                              <tr>  
+                                                <th>Status: </th>
+
+                                                <td>
+                                                  <label class="switch">
+                                                    <input type="checkbox" name="compStatus" checked required>
+                                                    <span class="slider round"></span>
+                                                  </label>
+                                                </td>
+                                              </tr>
+                                               <tr>  
+                                                <th>Remarks: </th>
+
+                                                <td>
+                                                  <input type="text" name="compRemarks" value="<?php echo $row["supplierRemarks"]; ?>" placeholder="Remarks">
+                                                </td>
+                                              </tr>
+                                            </table>
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                                        <button type="submit" name="editSuppliers" class="btn btn-primary">Edit</button>
+                                      </div>
+                                    </form>
+                                      
+                                    </div>
+                                    <!-- /.modal-content -->
+                                  </div>
+                                  <!-- /.modal-dialog -->
+                                </div>
+
+                              <!-- DELETE -->
+                              
+                                <input type="text" name="suppDelete" hidden value="<?php echo $row["suppliers_id"]; ?>">
+                                <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger2">
+                                <i class="fa fa-fw fa-trash"></i></button>
+                                <!-- DELETE MODAL -->
+                                <form action="php/supplierDelete.php" method="get">
+                                <div class="modal modal-danger fade" id="modal-danger2">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      
                                       <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                           <span aria-hidden="true">&times;</span></button>
@@ -529,22 +538,22 @@
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                                        <form action="php/supplierDelete.php">
+                                    
                                           <input type="text" name="suppDelete" hidden value="<?php echo $row["suppliers_id"]; ?>">
                                           <button type="submit" class="btn btn-outline">Delete</button>
-                                        </form>
+                                        </div>
+                                        
+                                      </div>
                                       </div>
                                     </div>
-                                    <!-- /.modal-content -->
-                                  </div>
-                                  <!-- /.modal-dialog -->
-                                </div>
-                              </form>
+                                  </form>
                           </td>
                         </tr>
+
                     <?php 
                         }
                       }
+
                     ?>
                     <?php if ($result2->num_rows > 0) {
                       while($row = $result2->fetch_assoc()) { ?>
@@ -561,7 +570,15 @@
                               </center>
                           </td>
                           <td><?php echo $row["supplierRemarks"]; ?></td>
-                          <td><form action="php/supplierDelete.php" method="get">
+                          <td>
+                            <form action="php/supplierEdit.php" method="get">
+                                <input type="text" name="suppEdit" hidden value="<?php echo $row["suppliers_id"]; ?>">
+                                <button type="submit" class="btn-info">
+                                <i class="fa fa-fw fa-pencil-square-o"></i></button>
+                              </form>
+
+
+                            <form action="php/supplierDelete.php" method="get">
                                 <input type="text" name="suppDelete" hidden value="<?php echo $row["suppliers_id"]; ?>">
                                 <button type="submit" class="btn-danger">
                                 <i class="fa fa-fw fa-trash"></i></button>
@@ -578,14 +595,17 @@
                     <th>Supplier Name</th>
                     <th>Contact</th>
                     <th>Address</th>
-                    <th>Product</th>
+                    <th>Supplier Type</th>
                     <th>Status</th>
                     <th>Remarks</th>
                   </tr>
                 </tfoot>
             </table>
+
+                                
          
             </div>
+
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
