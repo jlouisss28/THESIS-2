@@ -522,7 +522,7 @@
                     </thead>
                   ';
                   
-                  $sql = "SELECT departmentName, branchLocation FROM departments WHERE branchLocation LIKE '%LA%'";
+                  $sql = "SELECT department_name, branch_location FROM departments WHERE branch_location LIKE '%LA%'";
                   $result = mysqli_query($conn, $sql);
                   if ($result = mysqli_query($conn, $sql)){
                       while ($row = mysqli_fetch_row($result)){

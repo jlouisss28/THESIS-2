@@ -205,7 +205,7 @@
               <li class="user-footer">
           
                 <div class="pull-right">
-                  <a href="../examples/login.html" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../index.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -245,7 +245,7 @@
         <li class="header">Inventory System</li>
 	<!---------------------------------------------------- DASHBOARD MENU -------------------------------------------------------------->
          <li>
-          <a href="../../dashboard.html">
+          <a href="../../dashboard.php">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
@@ -307,7 +307,7 @@
         </li> -->
 		<!---------------------------------------------------- MANAGE ACCOUNTS MENU -------------------------------------------------------------->
         <li>
-          <a href="../forms/general.html">
+          <a href="../forms/general.php">
             <i class="fa fa-group"></i> <span>Manage Accounts</span>
           </a>
         </li>
@@ -326,18 +326,18 @@
         </li>
         <!--------------------------------------------------- PURCHASES -------------------------------------------------->
           <li>
-              <a href="data5.html">
+              <a href="data5.php">
                   <i class="fa fa-tags"></i><span>Purchases</span>  
               </a>
           </li>
         <!--------------------------------------------------- ISSUED SUPPLIES -------------------------------------------------->
-            <li><a href="data6.html">
+            <li><a href="data6.php">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
 		<!---------------------------------------------------- SUPPLIERS MENU -------------------------------------------------------------->
         <li>
-          <a href="data3.html">
+          <a href="data3.php">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>
@@ -359,13 +359,13 @@
         </li>
 		<!---------------------------------------------------- INVOICE MENU -------------------------------------------------------------->
         <li>
-          <a href="../examples/invoice.html">
+          <a href="../examples/invoice.php">
             <i class="fa fa-print"></i> <span>Logs</span>
           </a>
         </li>
 <!---------------------------------------------------- LOCKSCREEN MENU -------------------------------------------------------------->
         <li>
-          <a href="../examples/lockscreen.html">
+          <a href="../examples/lockscreen.php">
             <i class="fa fa-lock"></i> <span>Lockscreen</span>
           </a>
         </li>
@@ -450,9 +450,7 @@
                     </tr>
                 </table> 
                 <table style="float:right;">
-                    <tr>
-   
-                        <th><button type="submit" class="btn btn-primary btn-block btn-info">Edit</button></th>
+                    <tr>                    
                         <th><button type="submit" class="btn btn-primary btn-block btn-warning" data-toggle="modal" data-target="#modal-info">Add</button>
                         <form name="form1" method="post" action="php/departmentsAdd.php" >
                         <div class="modal fade" id="modal-info">
@@ -500,29 +498,6 @@
                                 </div>
                                 </form>
                                 </th>
-                        <th><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">
-                            Delete</button>
-                            <div class="modal modal-danger fade" id="modal-danger">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Delete</h4>
-                                  </div>
-                                  <div class="modal-body">
-                                    <h4>Are you sure to delete the items?</h4>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-outline">Delete</button>
-                                  </div>
-                                </div>
-                                <!-- /.modal-content -->
-                              </div>
-                              <!-- /.modal-dialog -->
-                            </div>
-                            <!-- /.modal --></th>
                     </tr>
                 </table> 
             </div>
@@ -545,14 +520,94 @@
                       <?php if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) { ?>
                         <tr>
-                        <td><?php echo $row["departmentName"]; ?></td>
-                        <td><?php echo $row["branchLocation"]; ?></td>
+                        <td><?php echo $row["department_name"]; ?></td>
+                        <td><?php echo $row["branch_location"]; ?></td>
                         <td>
-                            <form action="php/departmentDelete.php">
-                              <input type="text" name="depDelete" hidden value="<?php echo $row["department_ID"]; ?>">
+                            <!--<form action="php/departmentDelete.php">
+                              <input type="text" name="depDelete" hidden value="<?php echo $row["department_id"]; ?>">
                               <button type="submit" class="btn btn-xs btn-danger">
                               <i class="fa fa-fw fa-trash"></i></button>
-                            </form>
+                            </form>-->
+                            <!--DITO SIMULA-->
+                            <!-- EDIT -->
+                            <input type="text" name="dep_Edit" hidden value="<?php echo $row["department_id"]; ?>">
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-info2">
+                                <i class="fa fa-fw fa-pencil-square-o"></i></button>
+                            <div class="modal fade" id="modal-info2">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <form action="php/departmentEdit.php" method="get">
+                                      <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span></button>
+                                        <div class="margin">
+                                            <h3>Edit</h3>
+                                          </div>
+                                      </div>
+                                        <!-- end of modal header -->
+                                        
+                                      <div class="modal-body">
+                                        <div class="box-body">
+
+                                          <table class="table table-bordered">
+                                            
+                                              <tr>
+                                                <th>Department Name: </th>
+                                              
+                                                <td>
+                                                  <input type="text" name="deptName" value="<?php echo $row["department_name"]; ?>" placeholder="Department Name" required>
+                                                </td>
+
+                                              </tr>
+                                              <tr>
+                                                <th>Branch Location: </th>
+                                                
+                                                <td>
+                                                  <input type="text" name="braLoc" value="<?php echo $row["branch_location"]; ?>" placeholder="Company Contact" required>
+                                                </td>
+                                              </tr>
+                                            </table>
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                                        <button type="submit" name="editDepartment" class="btn btn-primary">Save</button>
+                                      </div>
+                                      </form>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                  </div>
+                                  <!-- /.modal-dialog -->
+                                </div>
+
+                              <!-- DELETE -->
+                                <input type="text" name="depDelete" hidden value="<?php echo $row["department_id"]; ?>">
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger2">
+                                <i class="fa fa-fw fa-trash"></i></button>
+                                <div class="modal modal-danger fade" id="modal-danger2">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <form action="php/departmentDelete.php" method="get">
+                                      <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">Delete</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                        <h4>Are you sure to delete the items?</h4>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                                    
+                                          <input type="text" name="dDelete" hidden value="<?php echo $row["department_id"]; ?>">
+                                          <button type="submit" class="btn btn-outline">Delete</button>
+                                        </div>
+                                        </form>
+                                      </div>
+                                      </div>
+                                    </div>
+                            <!--DITO END-->
+
                         </td>
                        <!--  <td><?php // echo $row[""]; ?></td>
                         <td><?php // echo $row[""]; ?></td>
