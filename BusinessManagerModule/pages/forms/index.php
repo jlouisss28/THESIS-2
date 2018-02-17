@@ -20,22 +20,32 @@
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
     <script src="js/jquery-1.12.4.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-  <script src="js/jquery.dataTables.min.js"></script>
-  <script src="js/dataTables.bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+    <!-- datatable lib -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+   <style>
+    .example-modal .modal {
+      position: relative;
+      top: auto;
+      bottom: auto;
+      right: auto;
+      left: auto;
+      display: block;
+      z-index: 1;
+    }
+
+    .example-modal .modal {
+      background: transparent !important;
+    }
+  </style>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body>
+    <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
   <header class="main-header">
@@ -241,7 +251,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Inventory System</li>
-	<!---------------------------------------------------- DASHBOARD MENU -------------------------------------------------------------->
+    <!---------------------------------------------------- DASHBOARD MENU -------------------------------------------------------------->
         <li>
           <a href="../../index.html">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
@@ -303,13 +313,13 @@
             <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
           </ul>
         </li> -->
-		<!---------------------------------------------------- MANAGE ACCOUNTS MENU -------------------------------------------------------------->
+        <!---------------------------------------------------- MANAGE ACCOUNTS MENU -------------------------------------------------------------->
         <li class="active">
           <a href="general.html">
             <i class="fa fa-group"></i> <span>Manage Accounts</span>
           </a>
         </li>
-		<!---------------------------------------------------- SUPPLIES MENU -------------------------------------------------------------->
+        <!---------------------------------------------------- SUPPLIES MENU -------------------------------------------------------------->
         <li class = "treeview">
           <a href="#">
             <i class="fa fa-briefcase"></i> <span>Supplies</span>
@@ -318,8 +328,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-			<li><a href="../tables/data.html"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-			<li><a href="../tables/data2.html"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+            <li><a href="../tables/data.html"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
+            <li><a href="../tables/data2.html"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
         <!--------------------------------------------------- PURCHASES -------------------------------------------------->
@@ -333,19 +343,19 @@
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
-		<!---------------------------------------------------- SUPPLIERS MENU -------------------------------------------------------------->
+        <!---------------------------------------------------- SUPPLIERS MENU -------------------------------------------------------------->
         <li>
           <a href="../tables/data3.html">
             <i class="fa fa-user"></i> <span>Suppliers</span>
             </a>
         </li>
-		<!---------------------------------------------------- DEPARTMENTS MENU -------------------------------------------------------------->
+        <!---------------------------------------------------- DEPARTMENTS MENU -------------------------------------------------------------->
         <li>
           <a href="../tables/data4.html">
             <i class="fa fa-building"></i> <span>Departments</span>
           </a>
         </li>
-		<!---------------------------------------------------- CALENDAR MENU -------------------------------------------------------------->
+        <!---------------------------------------------------- CALENDAR MENU -------------------------------------------------------------->
         <li>
           <a href="../calendar.html">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -355,7 +365,7 @@
             </span>
           </a>
         </li>
-		<!---------------------------------------------------- INVOICE MENU -------------------------------------------------------------->
+        <!---------------------------------------------------- INVOICE MENU -------------------------------------------------------------->
         <li>
           <a href="../examples/invoice.html">
             <i class="fa fa-print"></i> <span>Logs</span>
@@ -424,49 +434,100 @@
       </ol>
     </section>
 
-    <!-- Main content -->
+     <!-- Main content -->
     <section class="content">
       <div class="row">
           <div class="col-xs-12">
-              
+              <table style="float:right;">
+                    <tr>
+                        <th><button type="submit" class="btn btn-primary btn-block btn-warning" data-toggle="modal" data-target="#modal-info">Add</button>
+                        
+                        <form name="form1" method="post" action="suppliesFunctions.php">
+                        <div class="modal fade" id="modal-info">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span></button>
+                                        <div class="margin">
+                                            <h3>Add User Account</h3>
+                                          </div>
+                                      </div>
+                                        <!-- end of modal header -->
+                                      <div class="modal-body">
+                                        <div class="box-body">
+                                               <div class="form-group">
+                                                  <label for="exampleInputEmail1">Username</label>
+                                                  <input type="text" class="form-control" name="username" required />
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="exampleInputEmail1">First Name</label>
+                                                  <input type="text" class="form-control" name="fname" required />
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="exampleInputEmail1">Last Name</label>
+                                                  <input type="text" class="form-control" name="lname" required />
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="exampleInputEmail1">Contact Number</label>
+                                                  <input type="number" class="form-control" name="user_contact" required />
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="exampleInputEmail1">Password</label>
+                                                  <input type="password" class="form-control" name="password" required />
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="exampleInputEmail1">Email</label>
+                                                  <input type="email" class="form-control" name="email" required />
+                                                </div>
+                     
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-primary" name="addUser">Save User Account</button>
+                                      </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                    
+                                  </div>
+                                  <!-- /.modal-dialog -->
+                                </div>
+                                </form>
+                            </th> 
           <div class="box">
- <br>
-    <div align="right">
-     <button type="submit" name="add" id="add" class="btn btn-info">Add</button>
-    </div>
-    <br />
-    <div id="alert_message"></div>
-    <table id="user_data" class="table table-bordered table-striped">
-     <thead>
-      <tr>
-       <th>Username</th>
-       <th>First Name</th>
-       <th>LastName</th>
-       <th>User Contact</th>
-       <th>Password</th>
-       <th>Email</th>
-       <center><th></th></center>
-      </tr>
-     </thead>
-     <tfoot>
-      <tr>
-       <th>Username</th>
-       <th>First Name</th>
-       <th>LastName</th>
-       <th>User Contact</th>
-       <th>Password</th>
-       <th>Email</th>
-       <th></th>
-      </tr>
-    </tfoot>
-    </table>
+    <div class="container">
 
 
+<br>
+        <table id="example" class="display" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>Userame</th>
+                <th>Password</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Contact Number</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <th>Userame</th>
+                <th>Password</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Contact Number</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+            </tfoot>
+        </table>
+         
+<style>
 
-                      
-         <style>
-
-                /* The switch - the box around the slider */
+/* The switch - the box around the slider */
 .switch {
   position: relative;
   display: inline-block;
@@ -559,114 +620,85 @@ input:checked + .slider:before {
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-<script type="text/javascript" language="javascript" >
- $(document).ready(function(){
-  
-  fetch_data();
 
-  function fetch_data()
-  {
-   var dataTable = $('#user_data').DataTable({
-    "processing" : true,
-    "serverSide" : true,
-    "order" : [],
-    "ajax" : {
-     url:"fetch.php",
-     type:"POST"
-    }
-   });
-  }
-  
-  function update_data(id, column_name, value)
-  {
-   $.ajax({
-    url:"update.php",
-    method:"POST",
-    data:{id:id, column_name:column_name, value:value},
-    success:function(data)
-    {
-     $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
-     $('#user_data').DataTable().destroy();
-     fetch_data();
-    }
-   });
-   setInterval(function(){
-    $('#alert_message').html('');
-   }, 5000);
-  }
+        <!--create modal dialog for display detail info for edit on button cell click-->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div id="content-data"></div>
+            </div>
+        </div>
+    </div>
+   
 
-  $(document).on('blur', '.update', function(){
-   var id = $(this).data("id");
-   var column_name = $(this).data("column");
-   var value = $(this).text();
-   update_data(id, column_name, value);
-  });
-  
-  $('#add').click(function(){
-   var html = '<tr>';
-   html += '<td contenteditable id="data1"></td>';
-   html += '<td contenteditable id="data2"></td>';
-      html += '<td contenteditable id="data3"></td>';
-         html += '<td contenteditable id="data4"></td>';
-            html += '<td contenteditable id="data5"></td>';
-               html += '<td contenteditable id="data6"></td>';
-   html += '<td><button type="button" name="insert" id="insert" class="btn btn-success btn-xs">Insert</button></td>';
-   html += '</tr>';
-   $('#user_data tbody').prepend(html);
-  });
-  
-  $(document).on('click', '#insert', function(){
-   var username = $('#data1').text();
-   var fname = $('#data2').text();
-   var lname = $('#data3').text();
-   var user_contact = $('#data4').text();
-   var password = $('#data5').text();
-   var email = $('#data6').text();
-   if(username != '' && fname != ''  && lname != ''  && user_contact != ''  && password != ''  && email != '')
-   {
-    $.ajax({
-     url:"insert.php",
-     method:"POST",
-     data:{username:username, fname:fname, lname:lname, user_contact:user_contact, password:password, email:email},
-     success:function(data)
-     {
-      $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
-      $('#user_data').DataTable().destroy();
-      fetch_data();
-     }
-    });
-    setInterval(function(){
-     $('#alert_message').html('');
-    }, 5000);
-   }
-   else
-   {
-    alert("Both Fields is required");
-   }
-  });
-  
-  $(document).on('click', '.delete', function(){
-   var id = $(this).attr("id");
-   if(confirm("Are you sure you want to remove this?"))
-   {
-    $.ajax({
-     url:"delete.php",
-     method:"POST",
-     data:{id:id},
-     success:function(data){
-      $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
-      $('#user_data').DataTable().destroy();
-      fetch_data();
-     }
-    });
-    setInterval(function(){
-     $('#alert_message').html('');
-    }, 5000);
-   }
-  });
- });
-</script>
+    <script>
+        $(document).ready(function(){
+            var dataTable=$('#example').DataTable({
+                "processing": true,
+                "serverSide":true,
+                "ajax":{
+                    url:"fetch.php",
+                    type:"post"
+                }
+            });
+        });
+    </script>
 
-
+    <!--script js for get edit data-->
+    <script>
+        $(document).on('click','#getEdit',function(e){
+            e.preventDefault();
+            var per_id=$(this).data('id');
+            //alert(per_id);
+            $('#content-data').html('');
+            $.ajax({
+                url:'editdata.php',
+                type:'POST',
+                data:'id='+per_id,
+                dataType:'html'
+            }).done(function(data){
+                $('#content-data').html('');
+                $('#content-data').html(data);
+            }).fial(function(){
+                $('#content-data').html('<p>Error</p>');
+            });
+        });
+    </script>
 </body>
 </html>
+
+<?php
+$con=mysqli_connect('localhost','root','','itproject');
+if(isset($_POST['btnEdit'])){
+    $new_id=mysqli_real_escape_string($con,$_POST['txtid']);
+    $new_username=mysqli_real_escape_string($con,$_POST['txtusername']);
+    $new_password=mysqli_real_escape_string($con,$_POST['txtpassword']);
+    $new_lname=mysqli_real_escape_string($con,$_POST['txtlname']);
+    $new_fname=mysqli_real_escape_string($con,$_POST['txtfname']);
+    $new_usercontact=mysqli_real_escape_string($con,$_POST['txtuser_contact']);
+    $new_email=mysqli_real_escape_string($con,$_POST['txtemail']);
+
+    $sqlupdate="UPDATE users SET username='$new_username',
+                password='$new_password', lname='$new_lname', fname='$new_fname', user_contact='$new_usercontact', email='$new_email' WHERE user_id='$new_id' ";
+    $result_update=mysqli_query($con,$sqlupdate);
+
+    if($result_update){
+        echo '<script>window.location.href="index.php"</script>';
+    }
+    else{
+        echo '<script>alert("Update Failed")</script>';
+    }
+}
+
+if(isset($_GET['delete'])){
+    $id=$_GET['delete'];
+    $sqldelete="DELETE FROM users WHERE user_id='$id'";
+    $result_delete=mysqli_query($con,$sqldelete);
+    if($result_delete){
+        echo'<script>window.location.href="index.php"</script>';
+    }
+    else{
+        echo'<script>alert("Delete Failed")</script>';
+    }
+}
+?>
+
