@@ -58,8 +58,9 @@
                     <a class = "dropdown-toggle">
                         <span class="hidden-xs" id="demo"></span>
                         <script>
-                            var d = new Date();
-                            document.getElementById("demo").innerHTML = d.toUTCString();
+                            var d = new Date().toString();
+							d=d.split(' ').slice(0, 6).join(' ');
+							document.getElementById("demo").innerHTML = d;
                         </script>
                     </a>
                 </li>
