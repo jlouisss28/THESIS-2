@@ -12,5 +12,5 @@
 
 	}
 	}
-	header("Location:../data.php");
+	header("Location:../data2.php");
 ?>

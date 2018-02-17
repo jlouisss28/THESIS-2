@@ -27,7 +27,7 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-blue sidebar-mini" onload="window.print();">
+<body onload="window.print();">
 <div class="wrapper">
   <!-- Main content -->
   <section class="invoice">
@@ -35,7 +35,7 @@
     <div class="row">
       <div class="col-xs-12">
         <h2 class="page-header">
-          <i class="fa fa-globe"></i> Assumption Medical Diagnostic Center Inc.
+          <img src="../../dist/img/user3-128x128.png" alt="User Image" style="width:20px;height:20px;"> Assumption Medical Diagnostic Center Inc. </img>
           <small class="pull-right"><?php $date = new DateTime(); echo $date->format("F j, Y  h:i A") . "\n"; ?></small>
         </h2>
       </div>
@@ -55,54 +55,50 @@
               <table id="example1" class="table table-bordered table-striped">
          <?php // RETRIEVE or Display Medical Supplies
          include("../../../db.php");
-          $sql = "SELECT supply_id, supply_description, quantity_in_stock, expiration_date, unit, CONCAT(reorder_level,' ', unit) AS 'Reorder Level', unit_price, good_condition, damaged FROM supplies WHERE supply_type='Medical' ORDER BY supply_description ASC";
+          $sql = "SELECT supply_description, unit, SUM(quantity_in_stock) AS 'Total Quantity', SUM(unit_price*quantity_in_stock) AS 'Total Amount'
+                  FROM supplies WHERE supply_type='Medical' AND quantity_in_stock IS NOT NULL
+                  GROUP BY supply_description; ";
           $result = $conn->query($sql);  ?>
           <thead>
             <tr>
-             <!-- <th>Date Received</th>
-                  <th>Time Received</th> -->
-                  <th>Expiration Date</th> 
+             <!--     <th>Date Received</th>
+                  <th>Time Received</th>
+                  <th>Expiration Date</th> --> 
                   <th>Description</th>
-                  <th>Quantity in Stock</th>
+                  <th>Total Quantity in Stock</th>
                   <th>Unit</th>
-                  <th>Unit Price</th>
-             <!-- <th>Total Amount</th> -->
-                  <th>Reorder Level</th>
-                  <th>Good Condition</th>
-                  <th>Damaged</th> 
+                  <th>Total Amount </th>
             </tr>
         </thead>
         <tbody>
         <?php
           while($row = $result->fetch_assoc()) { ?>
             <tr>
-              <td>                      <?php echo $row["expiration_date"]; ?>   </td>
-              <td>                      <?php echo $row["supply_description"]; ?></td>
-              <td align="right">        <?php echo $row["quantity_in_stock"]; ?> </td>
-              <td>                      <?php echo $row["unit"]; ?>              </td>
-              <td align="right">&#8369; <?php echo $row["unit_price"]; ?>        </td>
-              <td align="center">       <?php echo $row["Reorder Level"]; ?>     </td>
-              <td>                      <?php echo $row["good_condition"]; ?>    </td>
-              <td>                      <?php echo $row["damaged"]; ?>           </td>
+            <!-- <td><?php // echo $row["expirationDate"]; ?></td> -->
+
+            <td><?php echo $row["supply_description"]; ?></td>
+            <td align="right"><?php echo $row["Total Quantity"]; ?></td>
+            <td><?php echo $row["unit"]; ?></td>
+            <td align="right">&#8369;<?php echo $row["Total Amount"]; ?></td>
             </tr>
           <?php 
               }
           ?>
         </tbody>
-      </table> 
-
+      </table>              
             </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
     <!-- /.row -->
   </section>
   <!-- /.content -->
 </div>
 <!-- ./wrapper -->
 
-<style type="text/css">
-  html{
-    overflow: hidden;
-  }
-</style>
 
 <!-- DataTables -->
 <script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>

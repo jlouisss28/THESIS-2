@@ -75,6 +75,7 @@
                                             <div class="form-group">
                                                   <label for="exampleInputEmail1">Username</label>
                                                   <input type="email" class="form-control" placeholder="Enter Username  ">
+                                                  <
                                                 </div>
                                         </div>
                                       </div>
@@ -87,7 +88,7 @@
                                   </div>
                                   <!-- /.modal-dialog -->
                                 </div>
-                                <!-- MODAL ------>
+                                <!-- MODAL -->
                                           <div class="modal fade" id="modal-default">
                                           <div class="modal-dialog">
                                             <div class="modal-content">

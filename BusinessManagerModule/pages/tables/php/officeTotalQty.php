@@ -262,19 +262,19 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Inventory System</li>
-	<!---------------------------------------------------- DASHBOARD MENU -------------------------------------------------------------->
+	<!-- DASHBOARD MENU -->
          <li>
           <a href="../../../dashboard.php">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
-		<!---------------------------------------------------- MANAGE ACCOUNTS MENU -------------------------------------------------------------->
+		<!-- MANAGE ACCOUNTS MENU -->
         <li>
           <a href="../../forms/general.php">
             <i class="fa fa-group"></i> <span>Manage Accounts</span>
           </a>
         </li>
-		<!---------------------------------------------------- SUPPLIES MENU -------------------------------------------------------------->
+		<!-- SUPPLIES MENU -->
         <li class="active treeview">
           <a href="#">
             <i class="fa fa-briefcase"></i> <span>Supplies</span>
@@ -283,34 +283,34 @@
             </span>
           </a>
           <ul class="treeview-menu">
-			<li><a href="../data.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-			<li class ="active"><a href="../data2.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+			<li><a href="../medicalSupplies.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
+			<li class ="active"><a href="../officeSupplies.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
-        <!--------------------------------------------------- PURCHASES -------------------------------------------------->
+        <!-- PURCHASES -->
           <li>
               <a href="../data5.php">
                   <i class="fa fa-tags"></i><span>Purchases</span>  
               </a>
           </li>
-        <!--------------------------------------------------- ISSUED SUPPLIES -------------------------------------------------->
+        <!-- ISSUED SUPPLIES -->
             <li><a href="../data6.php">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
-		<!---------------------------------------------------- SUPPLIERS MENU -------------------------------------------------------------->
+		<!-- SUPPLIERS MENU -->
         <li>
           <a href="../data3.php">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>
-		<!---------------------------------------------------- DEPARTMENTS MENU -------------------------------------------------------------->
+		<!-- DEPARTMENTS MENU -->
         <li>
           <a href="../data4.php">
             <i class="fa fa-building"></i> <span>Departments</span>
           </a>
         </li>
-		<!---------------------------------------------------- CALENDAR MENU -------------------------------------------------------------->
+		<!-- CALENDAR MENU -->
         <li>
           <a href="../../calendar.html">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -320,13 +320,13 @@
             </span>
           </a>
         </li>
-<!---------------------------------------------------- INVOICE MENU -------------------------------------------------------------->
+<!-- INVOICE MENU -->
         <li>
           <a href="../../examples/invoice.html">
             <i class="fa fa-print"></i> <span>Logs</span>
           </a>
         </li>
-<!---------------------------------------------------- LOCKSCREEN MENU -------------------------------------------------------------->
+<!-- LOCKSCREEN MENU -->
         <li>
           <a href="../../examples/lockscreen.php">
             <i class="fa fa-lock"></i> <span>Lockscreen</span>
@@ -593,16 +593,16 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-            <!----------- PRINT AND PDF ----->
+            <!-- PRINT AND PDF -->
               <div class="row no-print">
         <div class="col-xs-12">
-          <a href="../examples/invoice-print2.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+          <a href="../../examples/officeSuppliesTotalQtyPrint.php" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
           <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
             <i class="fa fa-download"></i> Generate PDF
           </button>
         </div>
       </div>
-        <!--------- END OF PRINT AND PDF ----->
+        <!-- END OF PRINT AND PDF -->
     </section>
     <!-- /.content -->
   </div>
