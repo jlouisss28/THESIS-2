@@ -315,36 +315,22 @@
                                         <!-- end of modal header -->
                                       <div class="modal-body">
                                         <div class="box-body">
-                                          <table class="table table-bordered table-striped">
-                                            <thead>
-                                            <tr>
-                                              <th>Supplier Name</th>
-                                              <th>Contact</th>
-                                              <th>Address</th>
-                                              <th>Product</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                              <td><div class="form-group">
-                                                  <label for="exampleInputEmail1"></label>
-                                                  <input type="text" class="form-control" name="suppName" required />
-                                                </div></td>
-                                              <td><div class="form-group">
-                                                  <label for="exampleInputEmail1"></label>
-                                                  <input type="text" class="form-control" name="suppContact" required />
-                                                </div></td>
-                                              <td><div class="form-group">
-                                                  <label for="exampleInputEmail1"></label>
-                                                  <input type="text" class="form-control" name="suppAddress" required />
-                                                </div></td>
-                                              <td><div class="form-group">
-                                                  <label for="exampleInputEmail1"></label>
-                                                  <input type="text" class="form-control" name="suppProduct" required />
-                                                </div></td>
-                                            </tr>
-                                            </tbody>
-                                          </table>
+                                          <div class="form-group">
+                                              <label for="exampleInputEmail1">Supplier Name : </label>
+                                              <input type="text" class="form-control" name="suppName" required />
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="exampleInputEmail1">Contact No. : </label>
+                                              <input type="number" class="form-control" name="suppContact" required />
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="exampleInputEmail1">Address : </label>
+                                              <input type="text" class="form-control" name="suppAddress" required />
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="exampleInputEmail1">Product Type : </label>
+                                              <input type="text" class="form-control" name="suppProduct" required />
+                                            </div>   
                                         </div>
                                       </div>
                                       <div class="modal-footer">
@@ -373,7 +359,7 @@
                         <th>Supplier Type</th>
                         <th>Status</th>
                         <th>Remarks</th>
-                        <th></th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 
@@ -385,7 +371,7 @@
                     <th>Supplier Type</th>
                     <th>Status</th>
                     <th>Remarks</th>
-                    <th></th>
+                    <th>Action</th>
                   </tr>
                 </tfoot>
             </table>
@@ -601,7 +587,7 @@ if(isset($_POST['btnEdit'])){
     $result_update=mysqli_query($con,$sqlupdate);
 
     if($result_update){
-        echo '<script>window.location.href="data3.php"</script>';
+        echo '<script>window.location.href="suppliers.php"</script>';
     }
     else{
         echo '<script>alert("Update Failed")</script>';
@@ -613,7 +599,7 @@ if(isset($_GET['delete'])){
     $sqldelete="DELETE FROM suppliers WHERE suppliers_id='$id'";
     $result_delete=mysqli_query($con,$sqldelete);
     if($result_delete){
-        echo'<script>window.location.href="data3.php"</script>';
+        echo'<script>window.location.href="suppliers.php"</script>';
     }
     else{
         echo'<script>alert("Delete Failed")</script>';
