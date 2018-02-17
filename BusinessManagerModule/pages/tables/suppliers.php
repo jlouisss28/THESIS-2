@@ -21,12 +21,11 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+   <!-- datatable lib -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
 
   <!-- Google Font -->
   <link rel="stylesheet"
@@ -211,7 +210,7 @@
         </li>
   <!---------------------------------------------------- USER ACCOUNTS MENU -------------------------------------------------------------->
         <li>
-              <a href="../forms/general.php">
+              <a href="../forms/useraccounts.php">
                   <i class="fa fa-tags"></i><span>Manage Accounts</span>  
               </a>
           </li>
@@ -225,30 +224,30 @@
             </span>
           </a>
           <ul class="treeview-menu">
-			<li><a href="data.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-			<li><a href="data2.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+			<li><a href="medicalSupplies.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
+			<li><a href="officeSupplies.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
         <!--------------------------------------------------- PURCHASES -------------------------------------------------->
           <li>
-              <a href="data5.php">
+              <a href="purchases.php">
                   <i class="fa fa-tags"></i><span>Purchases</span>  
               </a>
           </li>
         <!--------------------------------------------------- ISSUED SUPPLIES -------------------------------------------------->
-            <li><a href="data6.php">
+            <li><a href="issuedSupplies.php">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
 		<!---------------------------------------------------- SUPPLIERS MENU -------------------------------------------------------------->
         <li class="active">
-          <a href="data3.php">
+          <a href="suppliers.php">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>
 		<!---------------------------------------------------- DEPARTMENTS MENU -------------------------------------------------------------->
         <li>
-          <a href="data4.php">
+          <a href="departments.php">
             <i class="fa fa-building"></i> <span>Departments</span>
           </a>
         </li>
@@ -300,13 +299,6 @@
               <!-- <h3 class="box-title">Office Supplies</h3> -->
                 <table style="float:right;">
                     <tr>
-             
-                        <th>
-
-                        <form name="form1" method="post" action="editSuppliers.php" >
-                        <button type="submit" class="btn btn-primary btn-block btn-info">Edit</button></th>
-                        </form>
-                        
                         <th><button type="submit" class="btn btn-primary btn-block btn-warning" data-toggle="modal" data-target="#modal-info">Add</button>
                         
                         <form name="form1" method="post" action="php/supplierAdd.php" >
@@ -366,43 +358,13 @@
                                 </div>
                               </form>
                               </th>
-                        <th><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">
-                            Delete</button>
-                            <div class="modal modal-danger fade" id="modal-danger">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Delete</h4>
-                                  </div>
-                                  <div class="modal-body">
-                                    <h4>Are you sure to delete the items?</h4>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-outline">Delete</button>
-                                  </div>
-                                </div>
-                                <!-- /.modal-content -->
-                              </div>
-                              <!-- /.modal-dialog -->
-                            </div>
-                            <!-- /.modal --></th>
+                        
                     </tr>
                 </table> 
             </div>
             <!-- /.box-header -->
               <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <?php
-                    require_once("../../../db.php");
-                    $sql = "SELECT suppliers_id, company_name, supplier_contact, address, supplier_status, supplier_product, supplierRemarks FROM suppliers WHERE supplier_status = 'Active'";
-                    $result = $conn->query($sql);
-                    $sql2 = "SELECT suppliers_id, company_name, supplier_contact, address, supplier_status, supplier_product, supplierRemarks FROM suppliers WHERE supplier_status = 'Inactive'";
-                    $result2 = $conn->query($sql2);
-                ?>
-
+              <table id="example" class="display" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>Supplier Name</th>
@@ -414,182 +376,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php if ($result->num_rows > 0) {
-                      while($row = $result->fetch_assoc()) { ?>
-                        <tr>
-                          <td><?php echo $row["company_name"]; ?></td>
-                          <td><?php echo $row["supplier_contact"]; ?></td>
-                          <td><?php echo $row["address"]; ?></td>
-                          <td><?php echo $row["supplier_product"]; ?></td>
-                          <td><center>
-                                <label class="switch">
-                                  <input type="checkbox" checked disabled readonly>
-                                  <span class="slider round"></span>
-                                </label>
-                              </center>
-                          </td>
-                          <td><?php echo $row["supplierRemarks"]; ?></td>
-                          <td>
-                            <!-- EDIT -->
-
-                            <input type="text" name="suppEdit" hidden value="<?php echo $row["suppliers_id"]; ?>">
-                                <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#modal-info2">
-                                <i class="fa fa-fw fa-pencil-square-o"></i></button>
-                                <!-- EDIT MODAL -->
-                                <form action="php/supplierEdit.php" method="post">
-                                <div class="modal fade" id="modal-info2">
-                                  <div class="modal-dialog">
-                                    <div class="modal-content">
-                                      
-                                      <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span></button>
-                                        <div class="margin">
-                                            <h3>Edit</h3>
-                                          </div>
-                                      </div>
-                                        <!-- end of modal header -->
-                                        
-                                      <div class="modal-body">
-                                        <div class="box-body">
-
-                                          <table class="table table-bordered">
-                                            
-                                              <tr>
-                                                <th>Supplier Name: </th>
-                                              
-                                                <td>
-                                                  <input type="text" name="compName" value="<?php echo $row["company_name"]; ?>" placeholder="Supplier Name" required>
-                                                </td>
-
-                                              </tr>
-                                              <tr>
-                                                <th>Contact: </th>
-                                                
-                                                <td>
-                                                  <input type="text" name="compContact" value="<?php echo $row["supplier_contact"]; ?>" placeholder="Contact Number" required>
-                                                </td>
-                                              </tr>
-                                              <tr>  
-                                                <th>Address: </th>
-
-                                                <td>
-                                                  <input type="text" name="compAddress" value="<?php echo $row["address"]; ?>" placeholder="Supplier Address" required>
-                                                </td>
-                                              </tr>
-                                              <tr>  
-                                                <th>Supplier Type: </th>
-
-                                                <td>
-                                                  <input type="text" name="compProduct" value="<?php echo $row["supplier_product"]; ?>" placeholder="Supplier Type" required>
-                                                </td>
-                                              </tr>
-                                              <tr>  
-                                                <th>Status: </th>
-
-                                                <td>
-                                                  <label class="switch">
-                                                    <input type="checkbox" name="compStatus" checked required>
-                                                    <span class="slider round"></span>
-                                                  </label>
-                                                </td>
-                                              </tr>
-                                               <tr>  
-                                                <th>Remarks: </th>
-
-                                                <td>
-                                                  <input type="text" name="compRemarks" value="<?php echo $row["supplierRemarks"]; ?>" placeholder="Remarks">
-                                                </td>
-                                              </tr>
-                                            </table>
-                                        </div>
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
-                                        <button type="submit" name="editSuppliers" class="btn btn-primary">Edit</button>
-                                      </div>
-                                    </form>
-                                      
-                                    </div>
-                                    <!-- /.modal-content -->
-                                  </div>
-                                  <!-- /.modal-dialog -->
-                                </div>
-
-                              <!-- DELETE -->
-                              
-                                <input type="text" name="suppDelete" hidden value="<?php echo $row["suppliers_id"]; ?>">
-                                <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger2">
-                                <i class="fa fa-fw fa-trash"></i></button>
-                                <!-- DELETE MODAL -->
-                                <form action="php/supplierDelete.php" method="get">
-                                <div class="modal modal-danger fade" id="modal-danger2">
-                                  <div class="modal-dialog">
-                                    <div class="modal-content">
-                                      
-                                      <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title">Delete</h4>
-                                      </div>
-                                      <div class="modal-body">
-                                        <h4>Are you sure to delete the items?</h4>
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                                    
-                                          <input type="text" name="suppDelete" hidden value="<?php echo $row["suppliers_id"]; ?>">
-                                          <button type="submit" class="btn btn-outline">Delete</button>
-                                        </div>
-                                        
-                                      </div>
-                                      </div>
-                                    </div>
-                                  </form>
-                          </td>
-                        </tr>
-
-                    <?php 
-                        }
-                      }
-
-                    ?>
-                    <?php if ($result2->num_rows > 0) {
-                      while($row = $result2->fetch_assoc()) { ?>
-                        <tr>
-                          <td><?php echo $row["company_name"]; ?></td>
-                          <td><?php echo $row["supplier_contact"]; ?></td>
-                          <td><?php echo $row["address"]; ?></td>
-                          <td><?php echo $row["supplier_product"]; ?></td>
-                          <td><center>
-                                <label class="switch">
-                                  <input type="checkbox" disabled readonly>
-                                  <span class="slider round"></span>
-                                </label>
-                              </center>
-                          </td>
-                          <td><?php echo $row["supplierRemarks"]; ?></td>
-                          <td>
-                            <form action="php/supplierEdit.php" method="get">
-                                <input type="text" name="suppEdit" hidden value="<?php echo $row["suppliers_id"]; ?>">
-                                <button type="submit" class="btn-info">
-                                <i class="fa fa-fw fa-pencil-square-o"></i></button>
-                              </form>
-
-
-                            <form action="php/supplierDelete.php" method="get">
-                                <input type="text" name="suppDelete" hidden value="<?php echo $row["suppliers_id"]; ?>">
-                                <button type="submit" class="btn-danger">
-                                <i class="fa fa-fw fa-trash"></i></button>
-                              </form>
-                          </td>
-                        </tr>
-                    <?php 
-                        }
-                      }
-                    ?>
-                </tbody>
+                
                 <tfoot>
                   <tr>
                     <th>Supplier Name</th>
@@ -598,12 +385,11 @@
                     <th>Supplier Type</th>
                     <th>Status</th>
                     <th>Remarks</th>
+                    <th></th>
                   </tr>
                 </tfoot>
             </table>
 
-                                
-         
             </div>
 
             <!-- /.box-body -->
@@ -730,19 +516,7 @@ input:checked + .slider:before {
     <!-- bootstrap time picker -->
 <script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- page script -->
-<script>
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
-    </script>
+
 <script>
 <!-- date and time -->
   $(function () {
@@ -768,5 +542,81 @@ input:checked + .slider:before {
     })
   })
 </script>
+
+<!--create modal dialog for display detail info for edit on button cell click-->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div id="content-data"></div>
+            </div>
+        </div>
+   
+    <script>
+        $(document).ready(function(){
+            var dataTable=$('#example').DataTable({
+                "processing": true,
+                "serverSide":true,
+                "ajax":{
+                    url:"php/supplierFetch.php",
+                    type:"post"
+                }
+            });
+        });
+    </script>
+
+    <!--script js for get edit data-->
+    <script>
+        $(document).on('click','#getEdit',function(e){
+            e.preventDefault();
+            var per_id=$(this).data('id');
+            //alert(per_id);
+            $('#content-data').html('');
+            $.ajax({
+                url:'php/supplierEdit.php',
+                type:'POST',
+                data:'id='+per_id,
+                dataType:'html'
+            }).done(function(data){
+                $('#content-data').html('');
+                $('#content-data').html(data);
+            }).final(function(){
+                $('#content-data').html('<p>Error</p>');
+            });
+        });
+    </script>
 </body>
 </html>
+
+<?php
+$con=mysqli_connect('localhost','root','','itproject');
+if(isset($_POST['btnEdit'])){
+    $new_id=mysqli_real_escape_string($con,$_POST['txtid']);
+    $new_supplierName=mysqli_real_escape_string($con,$_POST['txtsuppliername']);
+    $new_supplierContact=mysqli_real_escape_string($con,$_POST['txtcontactno']);
+    $new_supplierAddress=mysqli_real_escape_string($con,$_POST['txtaddress']);
+    $new_supplierProduct=mysqli_real_escape_string($con,$_POST['txtprodtype']);
+    $new_supplierStatus=mysqli_real_escape_string($con,$_POST['txtstatus']);
+    $new_supplierRemarks=mysqli_real_escape_string($con,$_POST['txtremarks']);
+
+    $sqlupdate="UPDATE suppliers SET company_name='$new_supplierName', supplier_contact='$new_supplierContact', address='$new_supplierAddress', supplier_product='$new_supplierProduct', supplier_status='$new_supplierStatus', supplier_remarks='$new_supplierRemarks' WHERE suppliers_id='$new_id' ";
+    $result_update=mysqli_query($con,$sqlupdate);
+
+    if($result_update){
+        echo '<script>window.location.href="data3.php"</script>';
+    }
+    else{
+        echo '<script>alert("Update Failed")</script>';
+    }
+}
+
+if(isset($_GET['delete'])){
+    $id=$_GET['delete'];
+    $sqldelete="DELETE FROM suppliers WHERE suppliers_id='$id'";
+    $result_delete=mysqli_query($con,$sqldelete);
+    if($result_delete){
+        echo'<script>window.location.href="data3.php"</script>';
+    }
+    else{
+        echo'<script>alert("Delete Failed")</script>';
+    }
+}
+?>
