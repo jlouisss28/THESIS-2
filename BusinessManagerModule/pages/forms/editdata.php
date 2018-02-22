@@ -74,7 +74,7 @@ if(isset($_REQUEST['id'])){
                 </form>
             </div>
             <<div class="modal-footer">
-                <a href="index.php"><button type="button" class="btn btn-danger">Cancel</button> </a>
+                <a href="useraccounts.php"><button type="button" class="btn btn-danger">Cancel</button> </a>
                 <button type="submit" class="btn btn-primary" name="btnEdit">Save</button>
             </div>
         </div>
