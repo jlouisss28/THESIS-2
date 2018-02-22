@@ -26,6 +26,10 @@
     <!-- Select2 -->
   <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
 
+   <!-- datatable lib -->
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -58,7 +62,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index.html" class="logo">
+    <a href="../../dashboard.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>MDC</span>
       <!-- logo for regular state and mobile devices -->
@@ -265,13 +269,13 @@
         <li class="header">Inventory System</li>
 	<!-- DASHBOARD MENU -->
          <li>
-          <a href="../../index.html">
+          <a href="../../dashboard.php">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
 		<!-- MANAGE ACCOUNTS MENU -->
         <li>
-          <a href="../forms/general.php">
+          <a href="../forms/manageAccounts.php">
             <i class="fa fa-group"></i> <span>Manage Accounts</span>
           </a>
         </li>
@@ -284,30 +288,30 @@
             </span>
           </a>
           <ul class="treeview-menu">
-			<li class ="active"><a href="data.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-			<li><a href="data2.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+			<li class ="active"><a href="medicalSupplies.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
+			<li><a href="officeSupplies.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
         <!-- PURCHASES -->
           <li>
-              <a href="data5.html">
+              <a href="purchases.php">
                   <i class="fa fa-tags"></i><span>Purchases</span>  
               </a>
           </li>
         <!-- ISSUED SUPPLIES -->
-            <li><a href="data6.php">
+            <li><a href="issuedSupplies.php">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
 		<!-- SUPPLIERS MENU -->
         <li>
-          <a href="data3.php">
+          <a href="suppliers.php">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>
 		<!-- DEPARTMENTS MENU -->
         <li>
-          <a href="data4.php">
+          <a href="departments.php">
             <i class="fa fa-building"></i> <span>Departments</span>
           </a>
         </li>
@@ -587,11 +591,8 @@
             </div>
               
       <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
-         <?php // RETRIEVE or Display Medical Supplies
-         include("../../../db.php");
-          $sql = "SELECT supply_id, supply_description, quantity_in_stock, expiration_date, unit, CONCAT(reorder_level,' ', unit) AS 'Reorder Level', unit_price, good_condition, damaged FROM supplies WHERE supply_type='Medical' ORDER BY supply_description ASC";
-          $result = $conn->query($sql);  ?>
+        <table id="example" class="table table-bordered table-striped">
+         
           <thead>
             <tr>
              <!-- <th>Date Received</th>
@@ -608,52 +609,8 @@
                   <th> Action</th> 
             </tr>
         </thead>
-        <tbody>
-        <?php
-          while($row = $result->fetch_assoc()) { ?>
-            <tr>
-              <td>                      <?php echo $row["expiration_date"]; ?>   </td>
-              <td>                      <?php echo $row["supply_description"]; ?></td>
-              <td align="right">        <?php echo $row["quantity_in_stock"]; ?> </td>
-              <td>                      <?php echo $row["unit"]; ?>              </td>
-              <td align="right">&#8369; <?php echo $row["unit_price"]; ?>        </td>
-              <td align="center">       <?php echo $row["Reorder Level"]; ?>     </td>
-              <td>                      <?php echo $row["good_condition"]; ?>    </td>
-              <td>                      <?php echo $row["damaged"]; ?>           </td>
-              <td>
-                  <form action="php/suppliesFunctions.php" method="post">
-                  <button type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modal-danger">
-                  <i class="fa fa-fw fa-trash"> </i>
-                  </button>
-          
-                  <div class="modal modal-danger fade" id="modal-danger">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span></button>
-                        </div>
-                        <div class="modal-body">
-                          <h3>Are you sure to delete the item?&hellip;</h3>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-outline">
-                          <input type="text" name="medDelete" hidden value="<?php echo $row["supply_id"]; ?>">Delete</button>
-                        </div>
-                      </div>
-                      <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                  </div>
-                  <!-- /.modal -->
-                  </form>
-              </td>           
-            </tr>
-          <?php 
-              }
-          ?>
-        </tbody>
+        
+
         <tfoot>
            <tr>
              <!-- <th>Date Received</th>
@@ -682,9 +639,8 @@
             <!--- PRINT AND PDF -->
               <div class="row no-print">
         <div class="col-xs-12">
-          <a href="../examples/medicalSuppliesPrint.php" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-            <i class="fa fa-download"></i> Generate PDF
+          <button type="button" class="btn btn-default pull-right" style="margin-right: 1px;"><i class="fa fa-print"></i>
+            <a href="../examples/medicalSuppliesPrint.php"> Print</a>
           </button>
         </div>
       </div>
@@ -738,23 +694,6 @@
 <script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
  
 
-
-<!-- page script -->
-<script>
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
-    </script>
-
-
 <script>
  // date and time 
   $(function () {
@@ -783,5 +722,47 @@
     })
   })
 </script>
+
+<!--create modal dialog for display detail info for edit on button cell click-->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div id="content-data"></div>
+            </div>
+        </div>
+   
+    <script>
+        $(document).ready(function(){
+            var dataTable=$('#example').DataTable({
+                'autoWidth' : false,
+                "processing": true,
+                "serverSide": true,
+                "ajax":{
+                    url:"php/medicalSuppliesFetch.php",
+                    type:"post"
+                }
+            });
+        });
+    </script>
+
+    <!--script js for get edit data-->
+    <script>
+        $(document).on('click','#getEdit',function(e){
+            e.preventDefault();
+            var per_id=$(this).data('id');
+            //alert(per_id);
+            $('#content-data').html('');
+            $.ajax({
+                url:'php/medicalSuppliesEdit.php',
+                type:'POST',
+                data:'id='+per_id,
+                dataType:'html'
+            }).done(function(data){
+                $('#content-data').html('');
+                $('#content-data').html(data);
+            }).final(function(){
+                $('#content-data').html('<p>Error</p>');
+            });
+        });
+    </script>
 </body>
 </html>
