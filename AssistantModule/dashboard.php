@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Assistant | Dashboard</title>
+  <title>Business Manager | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -25,8 +25,7 @@
   <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+
    <!-- DataTables -->
   <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
@@ -43,6 +42,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+
+
 <div class="wrapper">
 
   <header class="main-header">
@@ -73,7 +74,49 @@
                 </a>
             </li>
           <!-- Messages: style can be found in dropdown.less-->
-          
+                   
+          <!-- Notifications: style can be found in dropdown.less -->
+          <li class="dropdown notifications-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-warning">10</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header"><i class="fa fa-warning text-yellow"></i> You have 10 notifications</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+                  <li>
+                    <a href="#">
+                        Assistant 1 logged in the system.
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                       Assistant 1 edited the the unit price of the ink supply in the office supplies.
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                       Assistant 1 logged out.
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="#">
+                       You logged in.
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      You issued 31 pieces of tissue from the medical supplies to Cardiac Department.
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="footer"><a href="pages/examples/invoice.php">View all Logs</a></li>
+            </ul>
+          </li>
           <!-- Tasks: style can be found in dropdown.less -->
           <li class="dropdown tasks-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -148,7 +191,7 @@
                 </ul>
               </li>
               <li class="footer">
-                <a href="index.html">View all charts</a>
+                <a href="data.php">View all supplies</a>
               </li>
             </ul>
           </li>
@@ -156,7 +199,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-128x128.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">Assistant</span>
+              <span class="hidden-xs">Business Manager</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -164,7 +207,7 @@
                 <img src="dist/img/user2-128x128.png" class="img-circle" alt="User Image">
 
                 <p>
-                 Assistant
+                 Business Manager
                   <small>Member since Oct. 2017</small>
                 </p>
               </li>
@@ -176,6 +219,10 @@
                 <div class="pull-right">
                   <a href="../index.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
+                <div class="pull-left">
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                            Change Password</button>
+                  </div>
               </li>
             </ul>
           </li>
@@ -183,6 +230,56 @@
       </div>
     </nav>
   </header>
+    <div class="modal fade" id="modal-default">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">Change Password</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="form-group">
+                                                          <label for="exampleInputEmail1">Enter New Password</label>
+                                                          <input type="email" class="form-control">
+                                                        </div>
+                                                      <div class="form-group">
+                                                          <label for="exampleInputEmail1">Confirm New Password</label>
+                                                          <input type="email" class="form-control">
+                                                        </div>
+                                                      <div class="form-group">
+                                                          <label for="exampleInputEmail1">Security Question: Who is you favorite superhero?</label>
+                                                          <input type="email" class="form-control" placeholder="Answer">
+                                                        </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-warning">Save Password</button>
+                                  </div>
+                                </div>
+                                <!-- /.modal-content -->
+                              </div>
+                              <!-- /.modal-dialog -->
+                            </div>
+                            <!-- /.modal -->
+                            <!-- MODAL -->
+                                    <div class="modal fade" id="modal-warning">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <h4>New Password Saved!</h4>
+                                  </div>
+                                </div>
+                                <!-- /.modal-content -->
+                              </div>
+                              <!-- /.modal-dialog -->
+                            </div>
+                            <!-- /.modal -->
+                            
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -193,7 +290,7 @@
           <img src="dist/img/user2-128x128.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Assistant</p>
+          <p>Business Manager</p>
           <a href="#"><i class="fa fa-circle text-success"></i>Active</a>
         </div>
       </div>
@@ -217,8 +314,12 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-
-
+          
+		<!---------------------------------------------------- MANAGE ACCOUNTS MENU -------------------------------------------------------------->
+        <li>
+          <a href="pages/forms/useraccounts.php">
+              <i class="fa fa-group"></i> <span>Manage Accounts</span> </a>
+        </li>
 		<!---------------------------------------------------- SUPPLIES MENU -------------------------------------------------------------->
         <li class="treeview">
           <a href="#">
@@ -228,30 +329,30 @@
             </span>
           </a>
           <ul class="treeview-menu">
-			<li><a href="pages/tables/data.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-			<li><a href="pages/tables/data2.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+			<li><a href="pages/tables/medicalSupplies.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
+			<li><a href="pages/tables/officeSupplies.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
         <!--------------------------------------------------- PURCHASES -------------------------------------------------->
           <li>
-              <a href="pages/tables/data5.php">
+              <a href="pages/tables/purchases.php">
                   <i class="fa fa-tags"></i><span>Purchases</span>  
               </a>
           </li>
         <!--------------------------------------------------- ISSUED SUPPLIES -------------------------------------------------->
-            <li><a href="pages/tables/data6.php">
+            <li><a href="pages/tables/issuedSupplies.php">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
 		<!---------------------------------------------------- SUPPLIERS MENU -------------------------------------------------------------->
         <li>
-          <a href="pages/tables/data3.php">
+          <a href="pages/tables/suppliers.php">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>
 		<!---------------------------------------------------- DEPARTMENTS MENU -------------------------------------------------------------->
         <li>
-          <a href="pages/tables/data4.php">
+          <a href="pages/tables/departments.php">
             <i class="fa fa-building"></i> <span>Departments</span>
           </a>
         </li>
@@ -266,7 +367,12 @@
           </a>
         </li>
 		
-
+		<!---------------------------------------------------- INVOICE MENU -------------------------------------------------------------->
+        <li>
+          <a href="pages/examples/logs.php">
+            <i class="fa fa-print"></i> <span>Logs</span>
+          </a>
+        </li>
           <!---------------------------------------------------- LOCKSCREEN MENU -------------------------------------------------------------->
         <li>
           <a href="pages/examples/lockscreen.php">
@@ -353,9 +459,10 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
+              
               <?php
                   require_once("../db.php");
-                  $sql = "SELECT COUNT(*) AS total FROM deliveries JOIN supplies JOIN suppliers JOIN purchaseorder WHERE delivery_status = 'In Transit'";
+                  $sql = "SELECT DISTINCT COUNT(*) AS total FROM deliveries JOIN supplies JOIN suppliers JOIN purchase_orders WHERE delivery_status = 'In Transit'";
                   $result = $conn->query($sql);    
               ?>
                 <?php if ($result->num_rows > 0) {
@@ -518,7 +625,7 @@
               <table id="example5" class="table table-bordered table-striped">
                 <?php
                   require_once("../db.php");
-                  $sql = "SELECT delivery_date, supply_description, brand_name, company_name, grand_total, unit, unit_price, total_amount, delivery_status FROM deliveries JOIN supplies JOIN suppliers JOIN purchase_orders WHERE delivery_status = 'In Transit'";
+                  $sql = "SELECT DISTINCT supply_description, brand_name, delivery_date, company_name, grand_total, unit, unit_price, purchase_orders.total_amount, delivery_status FROM deliveries JOIN supplies JOIN suppliers JOIN purchase_orders WHERE delivery_status = 'In Transit'";
                   $result = $conn->query($sql);    
                 ?>
                 <thead>
@@ -531,9 +638,10 @@
                   <th>Unit</th>
                   <th>Unit Price</th>
                   <th>Total Amount</th>
-                  <th>Delivery Status</th>
+                  
                   <th>Good Condition</th>
                   <th>Damaged</th>
+                  <th>Delivery Status</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -548,19 +656,28 @@
                       <td><?php echo $row["unit"]; ?></td>
                       <td><?php echo $row["unit_price"]; ?></td>
                       <td><?php echo $row["total_amount"]; ?></td>
+                      
+                      <td><?php echo $row["good_condition"]; ?></td>
+                      <td><?php echo $row["damaged"]; ?></td>
+
                       <td>
                         <div class="btn-group">
-                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span class="caret"></span>
-                          </button>
-                          <ul class="dropdown-menu">
-                            <li><a href="#">Full</a></li>
-                            <li><a href="#">Partial</a></li>
-                          </ul>
+                          
+
+                          <form action="delivery.php" method="get">
+                            <input type="text" name="fullDelivery" hidden value="Full">
+                            <button type="submit" class="btn btn-success">Full </button>
+                          </form> 
+
+                          <form action="delivery.php" method="get">
+                            <input type="text" name="partialDelivery" hidden value="Partial">
+                            <button type="submit" class="btn btn-warning">Partial </button>
+                          </form> 
+
                         </div>
+
+
                       </td>
-                      <td></td>
-                      <td></td>
                     </tr>
                   <?php 
                       }
@@ -577,9 +694,10 @@
                   <th>Unit</th>
                   <th>Unit Price</th>
                   <th>Total Amount</th>
-                  <th>Delivery Status</th>
+                  
                   <th>Good Condition</th>
                   <th>Damaged</th>
+                  <th>Delivery Status</th>
                 </tr> 
                 </tfoot>
               </table>
@@ -601,6 +719,7 @@
                   <th>Supplier</th>
                   <th>Quantity</th>
                   <th>Unit</th>
+                  <th>Shelf Life</th>
                   <th></th>
                 </tr>
                 </thead>

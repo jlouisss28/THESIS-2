@@ -29,12 +29,12 @@ if(isset($_REQUEST['id'])){
                 <form class="form-horizontal" method="post">
                     <div class="box-body">
                         <div class="form-group">
-                             <div class="form-group">
                             <label hidden="true" class="col-sm-4 control-label" for="txtid">Suppliers ID</label>
                             <div class="col-sm-6">
                                 <input type="hidden" class="form-control" id="txtid" name="txtid" hidden value="<?php echo $per_id;?>" readonly>
                             </div>
-                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-sm-4 control-label" for="txtsuppliername">Supplier Name</label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" id="txtsuppliername" name="txtsuppliername" value="<?php echo $per_supplierName;?>">

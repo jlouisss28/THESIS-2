@@ -317,7 +317,7 @@
           
 		<!---------------------------------------------------- MANAGE ACCOUNTS MENU -------------------------------------------------------------->
         <li>
-          <a href="pages/forms/general.php">
+          <a href="pages/forms/useraccounts.php">
               <i class="fa fa-group"></i> <span>Manage Accounts</span> </a>
         </li>
 		<!---------------------------------------------------- SUPPLIES MENU -------------------------------------------------------------->
@@ -329,36 +329,36 @@
             </span>
           </a>
           <ul class="treeview-menu">
-			<li><a href="pages/tables/data.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-			<li><a href="pages/tables/data2.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+			<li><a href="pages/tables/medicalSupplies.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
+			<li><a href="pages/tables/officeSupplies.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
         <!--------------------------------------------------- PURCHASES -------------------------------------------------->
           <li>
-              <a href="pages/tables/data5.php">
+              <a href="pages/tables/purchases.php">
                   <i class="fa fa-tags"></i><span>Purchases</span>  
               </a>
           </li>
         <!--------------------------------------------------- ISSUED SUPPLIES -------------------------------------------------->
-            <li><a href="pages/tables/data6.php">
+            <li><a href="pages/tables/issuedSupplies.php">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
 		<!---------------------------------------------------- SUPPLIERS MENU -------------------------------------------------------------->
         <li>
-          <a href="pages/tables/data3.php">
+          <a href="pages/tables/suppliers.php">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>
 		<!---------------------------------------------------- DEPARTMENTS MENU -------------------------------------------------------------->
         <li>
-          <a href="pages/tables/data4.php">
+          <a href="pages/tables/departments.php">
             <i class="fa fa-building"></i> <span>Departments</span>
           </a>
         </li>
 		<!---------------------------------------------------- CALENDAR MENU -------------------------------------------------------------->
         <li>
-          <a href="pages/calendar.html">
+          <a href="pages/calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red">3</small>
@@ -369,7 +369,7 @@
 		
 		<!---------------------------------------------------- INVOICE MENU -------------------------------------------------------------->
         <li>
-          <a href="pages/examples/invoice.php">
+          <a href="pages/examples/logs.php">
             <i class="fa fa-print"></i> <span>Logs</span>
           </a>
         </li>
@@ -459,9 +459,10 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
+              
               <?php
                   require_once("../db.php");
-                  $sql = "SELECT COUNT(*) AS total FROM deliveries JOIN supplies JOIN suppliers JOIN purchaseorder WHERE delivery_status = 'In Transit'";
+                  $sql = "SELECT DISTINCT COUNT(*) AS total FROM deliveries JOIN supplies JOIN suppliers JOIN purchase_orders WHERE delivery_status = 'In Transit'";
                   $result = $conn->query($sql);    
               ?>
                 <?php if ($result->num_rows > 0) {
@@ -624,7 +625,7 @@
               <table id="example5" class="table table-bordered table-striped">
                 <?php
                   require_once("../db.php");
-                  $sql = "SELECT delivery_date, supply_description, brand_name, company_name, grand_total, unit, unit_price, total_amount, delivery_status FROM deliveries JOIN supplies JOIN suppliers JOIN purchase_orders WHERE delivery_status = 'In Transit'";
+                  $sql = "SELECT DISTINCT supply_description, brand_name, delivery_date, company_name, grand_total, unit, unit_price, purchase_orders.total_amount, delivery_status FROM deliveries JOIN supplies JOIN suppliers JOIN purchase_orders WHERE delivery_status = 'In Transit'";
                   $result = $conn->query($sql);    
                 ?>
                 <thead>
@@ -637,9 +638,10 @@
                   <th>Unit</th>
                   <th>Unit Price</th>
                   <th>Total Amount</th>
-                  <th>Delivery Status</th>
+                  
                   <th>Good Condition</th>
                   <th>Damaged</th>
+                  <th>Delivery Status</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -654,19 +656,28 @@
                       <td><?php echo $row["unit"]; ?></td>
                       <td><?php echo $row["unit_price"]; ?></td>
                       <td><?php echo $row["total_amount"]; ?></td>
+                      
+                      <td><?php echo $row["good_condition"]; ?></td>
+                      <td><?php echo $row["damaged"]; ?></td>
+
                       <td>
                         <div class="btn-group">
-                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span class="caret"></span>
-                          </button>
-                          <ul class="dropdown-menu">
-                            <li><a href="#">Full</a></li>
-                            <li><a href="#">Partial</a></li>
-                          </ul>
+                          
+
+                          <form action="delivery.php" method="get">
+                            <input type="text" name="fullDelivery" hidden value="Full">
+                            <button type="submit" class="btn btn-success">Full </button>
+                          </form> 
+
+                          <form action="delivery.php" method="get">
+                            <input type="text" name="partialDelivery" hidden value="Partial">
+                            <button type="submit" class="btn btn-warning">Partial </button>
+                          </form> 
+
                         </div>
+
+
                       </td>
-                      <td></td>
-                      <td></td>
                     </tr>
                   <?php 
                       }
@@ -683,9 +694,10 @@
                   <th>Unit</th>
                   <th>Unit Price</th>
                   <th>Total Amount</th>
-                  <th>Delivery Status</th>
+                  
                   <th>Good Condition</th>
                   <th>Damaged</th>
+                  <th>Delivery Status</th>
                 </tr> 
                 </tfoot>
               </table>

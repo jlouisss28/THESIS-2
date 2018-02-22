@@ -262,6 +262,13 @@
           </a>
         </li>
 
+        <!---------------------------------------------------- INVOICE MENU -------------------------------------------------------------->
+        <li>
+          <a href="pages/examples/logs.php">
+            <i class="fa fa-print"></i> <span>Logs</span>
+          </a>
+        </li>
+
 <!---------------------------------------------------- LOCKSCREEN MENU -------------------------------------------------------------->
         <li>
           <a href="../examples/lockscreen.php">
@@ -387,10 +394,8 @@
       <!-- /.row -->
           <div class="row no-print">
         <div class="col-xs-12">
-          <a href="../examples/printSuppliers.php" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-          <button type="button" class="btn btn-primary pull-right" style=s"margin-right: 5px;">
-            <i class="fa fa-download"></i> Generate PDF
-          </button>
+          <a href="../examples/suppliersPrint.php" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+          
         </div>
       </div>
     
