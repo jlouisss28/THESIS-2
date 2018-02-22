@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <title>Business Manager | Data</title>
+   <title>Business Manager | Issued Supplies</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -55,7 +55,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../dashboard.html" class="logo">
+    <a href="../../dashboard.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>MDC</span>
       <!-- logo for regular state and mobile devices -->
@@ -121,7 +121,7 @@
                   </li>
                 </ul>
               </li>
-              <li class="footer"><a href="../invoice.html">View all Logs</a></li>
+              <li class="footer"><a href="../examples/invoice.php">View all Logs</a></li>
             </ul>
           </li>
           <!-- Tasks: style can be found in dropdown.less -->
@@ -198,7 +198,7 @@
                 </ul>
               </li>
               <li class="footer">
-                <a href="../../dashboard.html">View all charts</a>
+                <a href="../../dashboard.php">View all charts</a>
               </li>
             </ul>
           </li>
@@ -336,31 +336,31 @@
             </span>
           </a>
           <ul class="treeview-menu">
-			<li><a href="data.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-			<li><a href="data2.html"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+			<li><a href="medicalSupplies.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
+			<li><a href="officeSupplies.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
         <!--------------------------------------------------- PURCHASES -------------------------------------------------->
           <li>
-              <a href="data5.html">
+              <a href="data5.php">
                   <i class="fa fa-tags"></i><span>Purchases</span>  
               </a>
           </li>
         <!--------------------------------------------------- ISSUED SUPPLIES -------------------------------------------------->
             <li class="active">
-                <a href="data6.html">
+                <a href="issuedSupplies.php">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
 		<!---------------------------------------------------- SUPPLIERS MENU -------------------------------------------------------------->
         <li>
-          <a href="data3.html">
+          <a href="suppliers.php">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>
 		<!---------------------------------------------------- DEPARTMENTS MENU -------------------------------------------------------------->
         <li>
-          <a href="data4.html">
+          <a href="data4.php">
             <i class="fa fa-building"></i> <span>Departments</span>
           </a>
         </li>
@@ -376,13 +376,13 @@
         </li>
 		<!---------------------------------------------------- INVOICE MENU -------------------------------------------------------------->
         <li>
-          <a href="../examples/invoice.html">
+          <a href="../examples/invoice.php">
             <i class="fa fa-print"></i> <span>Logs</span>
           </a>
         </li>
 <!---------------------------------------------------- LOCKSCREEN MENU -------------------------------------------------------------->
         <li>
-          <a href="../examples/lockscreen.html">
+          <a href="../examples/lockscreen.php">
             <i class="fa fa-lock"></i> <span>Lockscreen</span>
           </a>
         </li>
@@ -459,8 +459,8 @@
                           <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                          <li><a href="php/issuedBaguio.php">Baguio City</a></li>
-                          <li><a href="php/branchLA.php">La Trinidad</a></li>
+                        <li><a href="php/issuedBaguio.php">Baguio City</a></li>
+                        <li><a href="php/issuedLA.php">La Trinidad</a></li>
                         <li><a href="php/issuedSLU.php">SLU Hospital</a></li>
                         </ul>
                       </div></th>
@@ -484,7 +484,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <?php
                     require_once("../../../db.php");
-                    $sql = "SELECT * FROM issuedsupplies";
+                    $sql = "SELECT * from issuedsupplies";
                     $result = $conn->query($sql);
                   ?>
                     <thead>
@@ -537,10 +537,7 @@
         <!-- this row will not appear when printing -->
       <div class="row no-print">
         <div class="col-xs-12">
-          <a href="../examples/invoice-print6.php" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-            <i class="fa fa-download"></i> Generate PDF
-          </button>
+          <a href="../examples/invoice-print6.php" target="_blank" class="btn btn-default pull-right"><i class="fa fa-print"></i> Print</a>
         </div>
       </div>
         
