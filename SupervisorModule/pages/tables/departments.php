@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <title>Supervisor | Suppliers</title>
+ <title>Supervisor | Departments</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -54,23 +54,24 @@
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <li class= "user user-menu">
+         <li class= "user user-menu">
                     <a class = "dropdown-toggle">
                         <span class="hidden-xs" id="demo"></span>
                         <script>
-                            var d = new Date().toString();
-							d=d.split(' ').slice(0, 6).join(' ');
-							document.getElementById("demo").innerHTML = d;
+                           var d = new Date().toString();
+							  d=d.split(' ').slice(0, 6).join(' ');
+							  document.getElementById("demo").innerHTML = d;
                         </script>
                     </a>
                 </li>
-         
           
+         
+         
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user2-128x128.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">Supervisor</span>
+                <span class="hidden-xs">Supervisor</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -81,10 +82,10 @@
                  Supervisor
                   <small>Member since Oct. 2017</small>
                 </p>
-                </li>
+              </li>
               <!-- Menu Footer-->
               <li class="user-footer">
-            
+          
                 <div class="pull-right">
                   <a href="../examples/login.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
@@ -92,7 +93,6 @@
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
-
         </ul>
       </div>
     </nav>
@@ -127,7 +127,7 @@
         <li class="header">Inventory System</li>
 	<!---------------------------------------------------- DASHBOARD MENU -------------------------------------------------------------->
          <li>
-          <a href="../../index.php">
+          <a href="../../dashboard.php">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
@@ -187,9 +187,9 @@
             <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
           </ul>
         </li> -->
-	
+
 		<!---------------------------------------------------- SUPPLIES MENU -------------------------------------------------------------->
-        <li class ="treeview">
+        <li class = "treeview">
           <a href="#">
             <i class="fa fa-briefcase"></i> <span>Supplies</span>
             <span class="pull-right-container">
@@ -197,25 +197,25 @@
             </span>
           </a>
           <ul class="treeview-menu">
-			<li><a href="data.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-			<li><a href="data2.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+			<li><a href="medicalSupplies.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
+			<li><a href="officeSupplies.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
     
         <!--------------------------------------------------- ISSUED SUPPLIES -------------------------------------------------->
-            <li><a href="data6.php">
+            <li><a href="issuedSupplies.php">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
 		<!---------------------------------------------------- SUPPLIERS MENU -------------------------------------------------------------->
-        <li class="active">
-          <a href="data3.php">
+        <li>
+          <a href="suppliers.php">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>
 		<!---------------------------------------------------- DEPARTMENTS MENU -------------------------------------------------------------->
-        <li>
-          <a href="data4.php">
+        <li class = "active">
+          <a href="departments.php">
             <i class="fa fa-building"></i> <span>Departments</span>
           </a>
         </li>
@@ -284,76 +284,89 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <b>Suppliers</b>
+        <b>Departments</b>
         <!-- <small>advanced tables</small> -->
       </h1>
         
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Suppliers</a></li>
+        <li><a href="#">Office Supplies</a></li>
         <li class="active">Data tables</li>
       </ol>
     </section>
 
     <!-- Main content -->
       <section class="content">
-          <div class="row">
+      <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
               <!-- <h3 class="box-title">Office Supplies</h3> -->
-                
+                <table style="float: left;">
+                    <tr>
+                        <th> <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Branch
+                          <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Baguio City</a></li>
+                          <li><a href="#">La Trinidad</a></li>
+                        </ul>
+                      </div></th>
+                    </tr>
+                </table> 
+           
             </div>
             <!-- /.box-header -->
-              <div class="box-body">
-			   <table id="example1" class="table table-bordered table-striped">
-            
-        <?php
-            require_once("../../../db.php");
-            $sql = "SELECT companyName, supplierContact, supplierAddr, supplierStatus, supplierProduct, supplierRemarks FROM suppliers";
-            $result = $conn->query($sql);
-        ?>
-            
-        <thead>
-         <tr>
-            <th>Supplier Name</th>
-            <th>Contact</th>
-            <th>Address</th>
-            <th>Product</th>
-            <th>Status</th>
-            <th>Remarks</th>
-        </tr>
-        </thead>
-        <tbody>
-            
-        <?php
-        
-            while($row = $result->fetch_assoc()){ ?>
-
-            <tr>
-                <td><?php echo $row["companyName"]; ?></td>
-                <td><?php echo $row["supplierContact"]; ?></td>
-                <td><?php echo $row["supplierAddr"]; ?></td>
-                <td><?php echo $row["supplierProduct"]; ?></td>
-                <td><?php echo $row["supplierStatus"]; ?></td>
-                <td><?php echo $row["supplierRemarks"]; ?></td>
-            </tr>
-            <?php
-        } ?>
-      </tbody>
-            
-        <tfoot>
-          <tr>
-            <th>Supplier Name</th>
-            <th>Contact</th>
-            <th>Address</th>
-            <th>Product</th>
-            <th>Status</th>
-            <th>Remarks</th>
-          </tr>
-        </tfoot>
-        </table>
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Department Name</th>
+                  <th>Branch Location</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Clinical Laboratory Department</td>
+                  <td>Baguio City</td>
+                </tr>
+                <tr>
+                  <td>Imaging Department</td>
+                  <td>Baguio City</td>
+                </tr>
+                <tr>
+                  <td>Cardiac Department</td>
+                  <td>Baguio City</td>
+                </tr>
+                <tr>
+                  <td>Endoscopy Department</td>
+                  <td>Baguio City</td>
+                </tr>
+                <tr>
+                  <td>Management Department</td>
+                  <td>Baguio City</td>
+                </tr>
+                <tr>
+                  <td>Clinical Laboratory Department</td>
+                  <td>La Trinidad</td>
+                </tr>
+                <tr>
+                  <td>Imaging Department</td>
+                  <td>La Trinidad</td>
+                </tr>
+                <tr>
+                  <td>Endoscopy Unit</td>
+                  <td>SLU Hospital, Baguio City</td>
+                </tr>
+                <tr>
+                  <td>Imaging Department</td>
+                  <td>Baguio City</td>
+                </tr>
+                </tbody>
+              </table>
             </div>
+            <!-- /.box-body -->
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
@@ -361,15 +374,6 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-          <div class="row no-print">
-        <div class="col-xs-12">
-          <a href="../examples/invoice-print4.php" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-            <i class="fa fa-download"></i> Generate PDF
-          </button>
-        </div>
-      </div>
-    
     </section>
     <!-- /.content -->
   </div>
@@ -387,66 +391,6 @@
 </div>
 <!-- ./wrapper -->
 
-<style>
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 24px;
-}
-
-/* Hide default HTML checkbox */
-.switch input {display:none;}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 24px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}    
-</style>
 <!-- jQuery 3 -->
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->

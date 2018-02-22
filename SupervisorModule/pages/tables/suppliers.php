@@ -1,14 +1,9 @@
-<?php 
-$conn =mysqli_connect("localhost","root","");
-mysqli_select_db($conn, "itproject");
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <title>Supervisor | Medical Supplies</title>
+ <title>Supervisor | Suppliers</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -24,12 +19,6 @@ mysqli_select_db($conn, "itproject");
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
-    <!-- daterange picker -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
-      <!-- Bootstrap time Picker -->
-  <link rel="stylesheet" href="../../plugins/timepicker/bootstrap-timepicker.min.css">
-    <!-- Select2 -->
-      <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,24 +30,8 @@ mysqli_select_db($conn, "itproject");
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
- <style>
-    .example-modal .modal {
-      position: relative;
-      top: auto;
-      bottom: auto;
-      right: auto;
-      left: auto;
-      display: block;
-      z-index: 1;
-    }
-
-    .example-modal .modal {
-      background: transparent !important;
-    }
-  </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-
 <div class="wrapper">
 
   <header class="main-header">
@@ -81,7 +54,7 @@ mysqli_select_db($conn, "itproject");
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-         <li class= "user user-menu">
+          <li class= "user user-menu">
                     <a class = "dropdown-toggle">
                         <span class="hidden-xs" id="demo"></span>
                         <script>
@@ -91,127 +64,8 @@ mysqli_select_db($conn, "itproject");
                         </script>
                     </a>
                 </li>
-          <!-- Notifications: style can be found in dropdown.less -->
-          <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                      page and may cause design problems
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-red"></i> 5 new members joined
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-user text-red"></i> You changed your username
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="footer"><a href="#">View all</a></li>
-            </ul>
-          </li>
-          <!-- Tasks: style can be found in dropdown.less -->
-          <li class="dropdown tasks-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-flag-o"></i>
-              <span class="label label-danger">9</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 9 tasks</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
-                        Design some buttons
-                        <small class="pull-right">20%</small>
-                      </h3>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">20% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
-                        Create a nice theme
-                        <small class="pull-right">40%</small>
-                      </h3>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">40% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
-                        Some task I need to do
-                        <small class="pull-right">60%</small>
-                      </h3>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
-                        Make beautiful transitions
-                        <small class="pull-right">80%</small>
-                      </h3>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">80% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                </ul>
-              </li>
-              <li class="footer">
-                <a href="#">View all tasks</a>
-              </li>
-            </ul>
-          </li>
+         
+          
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -227,7 +81,7 @@ mysqli_select_db($conn, "itproject");
                  Supervisor
                   <small>Member since Oct. 2017</small>
                 </p>
-              </li>
+                </li>
               <!-- Menu Footer-->
               <li class="user-footer">
             
@@ -236,7 +90,9 @@ mysqli_select_db($conn, "itproject");
                 </div>
               </li>
             </ul>
-          </li>    
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+
         </ul>
       </div>
     </nav>
@@ -331,16 +187,9 @@ mysqli_select_db($conn, "itproject");
             <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
           </ul>
         </li> -->
-		<!---------------------------------------------------- MANAGE ACCOUNTS MENU -------------------------------------------------------------->
-<!--
-        <li>
-          <a href="../forms/general.html">
-            <i class="fa fa-group"></i> <span>Manage Accounts</span>
-          </a>
-        </li>
--->
+	
 		<!---------------------------------------------------- SUPPLIES MENU -------------------------------------------------------------->
-        <li class="active treeview">
+        <li class ="treeview">
           <a href="#">
             <i class="fa fa-briefcase"></i> <span>Supplies</span>
             <span class="pull-right-container">
@@ -348,30 +197,25 @@ mysqli_select_db($conn, "itproject");
             </span>
           </a>
           <ul class="treeview-menu">
-			<li class ="active"><a href="data.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-			<li><a href="data2.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+			<li><a href="medicalSupplies.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
+			<li><a href="officeSupplies.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
-        <!--------------------------------------------------- PURCHASES -------------------------------------------------->
-          <li>
-              <a href="data5.php">
-                  <i class="fa fa-tags"></i><span>Purchases</span>  
-              </a>
-          </li>
+    
         <!--------------------------------------------------- ISSUED SUPPLIES -------------------------------------------------->
-            <li><a href="data6.php">
+            <li><a href="issuedSupplies.php">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
 		<!---------------------------------------------------- SUPPLIERS MENU -------------------------------------------------------------->
-        <li>
-          <a href="data3.php">
+        <li class="active">
+          <a href="suppliers.php">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>
 		<!---------------------------------------------------- DEPARTMENTS MENU -------------------------------------------------------------->
         <li>
-          <a href="data4.php">
+          <a href="departments.php">
             <i class="fa fa-building"></i> <span>Departments</span>
           </a>
         </li>
@@ -385,12 +229,7 @@ mysqli_select_db($conn, "itproject");
             </span>
           </a>
         </li>
-<!---------------------------------------------------- INVOICE MENU -------------------------------------------------------------->
-        <li>
-          <a href="../examples/invoice.php">
-            <i class="fa fa-print"></i> <span>Logs</span>
-          </a>
-        </li>
+
 <!---------------------------------------------------- LOCKSCREEN MENU -------------------------------------------------------------->
         <li>
           <a href="../examples/lockscreen.php">
@@ -445,84 +284,75 @@ mysqli_select_db($conn, "itproject");
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-          <b>Medical Supplies</b>
-        <!-- <small>Supplies</small> -->
+        <b>Suppliers</b>
+        <!-- <small>advanced tables</small> -->
       </h1>
+        
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Medical Supplies</a></li>
+        <li><a href="#">Suppliers</a></li>
         <li class="active">Data tables</li>
       </ol>
     </section>
 
     <!-- Main content -->
-    <section class="content">
-      <div class="row">
+      <section class="content">
+          <div class="row">
         <div class="col-xs-12">
-
           <div class="box">
-              
-            <div class="box-body">
-              
-        <?php
-        $res = mysqli_query($conn, "SELECT supplydesc, unitInStock, unit, unitPrice, reorderLevel FROM supplies WHERE supplyType='Medical' ");
-        ?>
+            <div class="box-header">
+              <!-- <h3 class="box-title">Office Supplies</h3> -->
                 
-        <table id="example1" class="table table-bordered table-striped">
-          <?php
-          echo "<thead>";
-          echo "<tr>";
-           // echo "<th>"; echo "Date Received"; echo "</th>";
-           // echo "<th>"; echo "Time Received"; echo "</th>";
-           // echo "<th>"; echo "Expiration Date"; echo "</th>";
-            echo "<th>"; echo "Description"; echo "</th>";
-           // echo "<th>"; echo "Supplier"; echo "</th>";
-            echo "<th>"; echo "Quantity In Stock"; echo "</th>";
-            echo "<th>"; echo "Unit"; echo "</th>";
-            echo "<th>"; echo "Unit Price"; echo "</th>";
-           // echo "<th>"; echo "Total Amount"; echo "</th>";
-            echo "<th>"; echo "Reorder Level"; echo "</th>";
-          echo "</tr>";
-        echo "</thead>";
-        echo "<tbody>";
-        while($row = mysqli_fetch_array($res)) {
-          echo "<tr>";
-            echo "<td>"; echo $row['supplydesc']; echo "</td>";
-            echo "<td>"; echo $row['unitInStock']; echo "</td>";
-            echo "<td>"; echo $row['unit']; echo "</td>";
-            echo "<td>"; echo $row['unitPrice']; echo "</td>";
-            echo "<td>"; echo $row['reorderLevel']; echo "</td>";
-            // echo "<td>"; echo $row['']; echo "</td>";
-            // echo "<td>"; echo $row['']; echo "</td>";
-            // echo "<td>"; echo $row['']; echo "</td>";
-            // echo "<td>"; echo $row['']; echo "</td>";
-            // echo "<td>"; echo $row['']; echo "</td>";
-            // echo "<td>"; 
-            //        echo "<center>"; echo"<input type="checkbox">"; echo "</center>";
-            // echo "</td>";
-          echo "</tr>";
-        }
+            </div>
+            <!-- /.box-header -->
+              <div class="box-body">
+			   <table id="example1" class="table table-bordered table-striped">
+            
+        <?php
+            require_once("../../../db.php");
+            $sql = "SELECT companyName, supplierContact, supplierAddr, supplierStatus, supplierProduct, supplierRemarks FROM suppliers";
+            $result = $conn->query($sql);
+        ?>
+            
+        <thead>
+         <tr>
+            <th>Supplier Name</th>
+            <th>Contact</th>
+            <th>Address</th>
+            <th>Product</th>
+            <th>Status</th>
+            <th>Remarks</th>
+        </tr>
+        </thead>
+        <tbody>
+            
+        <?php
+        
+            while($row = $result->fetch_assoc()){ ?>
 
-        echo "</tbody>";
-        echo "<tfoot>";
-          echo "<tr>";
-            // echo "<th>"; echo "Date Received"; echo "</th>";
-           // echo "<th>"; echo "Time Received"; echo "</th>";
-           // echo "<th>"; echo "Expiration Date"; echo "</th>";
-            echo "<th>"; echo "Description"; echo "</th>";
-           // echo "<th>"; echo "Supplier"; echo "</th>";
-            echo "<th>"; echo "Quantity In Stock"; echo "</th>";
-            echo "<th>"; echo "Unit"; echo "</th>";
-            echo "<th>"; echo "Unit Price"; echo "</th>";
-           // echo "<th>"; echo "Total Amount"; echo "</th>";
-            echo "<th>"; echo "Reorder Level"; echo "</th>";
-          echo "</tr>";
-        echo "</tfoot>";
-        echo "</table>";
-        mysqli_close($conn);
-      
-    ?>
-              
+            <tr>
+                <td><?php echo $row["companyName"]; ?></td>
+                <td><?php echo $row["supplierContact"]; ?></td>
+                <td><?php echo $row["supplierAddr"]; ?></td>
+                <td><?php echo $row["supplierProduct"]; ?></td>
+                <td><?php echo $row["supplierStatus"]; ?></td>
+                <td><?php echo $row["supplierRemarks"]; ?></td>
+            </tr>
+            <?php
+        } ?>
+      </tbody>
+            
+        <tfoot>
+          <tr>
+            <th>Supplier Name</th>
+            <th>Contact</th>
+            <th>Address</th>
+            <th>Product</th>
+            <th>Status</th>
+            <th>Remarks</th>
+          </tr>
+        </tfoot>
+        </table>
             </div>
             <!-- /.box-body -->
           </div>
@@ -531,16 +361,12 @@ mysqli_select_db($conn, "itproject");
         <!-- /.col -->
       </div>
       <!-- /.row -->
-            <!----------- PRINT AND PDF ----->
-              <div class="row no-print">
+          <div class="row no-print">
         <div class="col-xs-12">
-          <a href="../examples/invoice-print2.php" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-            <i class="fa fa-download"></i> Generate PDF
-          </button>
+          <a href="../examples/invoice-print4.php" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
         </div>
       </div>
-        <!--------- END OF PRINT AND PDF ----->
+    
     </section>
     <!-- /.content -->
   </div>
@@ -558,6 +384,66 @@ mysqli_select_db($conn, "itproject");
 </div>
 <!-- ./wrapper -->
 
+<style>
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}    
+</style>
 <!-- jQuery 3 -->
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -569,25 +455,10 @@ mysqli_select_db($conn, "itproject");
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
-<!-- Select2 -->
-<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
-<!-- InputMask -->
-<script src="../../plugins/input-mask/jquery.inputmask.js"></script>
-<script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
-
-<!-- bootstrap datepicker -->
-<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<!-- bootstrap color picker -->
-<script src="../../bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-<!-- bootstrap time picker -->
-<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-    <!-- bootstrap time picker -->
-<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- page script -->
 <script>
   $(function () {
@@ -599,31 +470,6 @@ mysqli_select_db($conn, "itproject");
       'ordering'    : true,
       'info'        : true,
       'autoWidth'   : false
-    })
-  })
-    </script>
-<script>
-<!-- date and time -->
-  $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2()
-
-    //Date picker
-    $('#datepicker').datepicker({
-      autoclose: true
-    })
-    //Date picker
-    $('#datepicker2').datepicker({
-      autoclose: true
-    })
-    //Date picker
-    $('#datepicker3').datepicker({
-      autoclose: true
-    })
-      
-    //Timepicker
-    $('.timepicker').timepicker({
-      showInputs: false
     })
   })
 </script>
