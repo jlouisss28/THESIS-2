@@ -442,7 +442,7 @@
                     <tr>
                         <th><button type="submit" class="btn btn-primary btn-block btn-warning" data-toggle="modal" data-target="#modal-info">Add</button>
                         
-                        <form name="form1" method="post" action="suppliesFunctions.php">
+                        <form name="form1" method="post" action="adduseraccounts.php">
                         <div class="modal fade" id="modal-info">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
@@ -636,7 +636,7 @@ input:checked + .slider:before {
                 "processing": true,
                 "serverSide":true,
                 "ajax":{
-                    url:"fetch.php",
+                    url:"fetchuseraccounts.php",
                     type:"post"
                 }
             });
@@ -651,7 +651,7 @@ input:checked + .slider:before {
             //alert(per_id);
             $('#content-data').html('');
             $.ajax({
-                url:'editdata.php',
+                url:'edituseraccounts.php',
                 type:'POST',
                 data:'id='+per_id,
                 dataType:'html'
