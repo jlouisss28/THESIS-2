@@ -3,28 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <title>Assistant | Data2</title>
+   <title>Assistant | Data</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../../bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- DataTables -->
-  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="../../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../../../dist/css/skins/_all-skins.min.css">
     <!-- daterange picker -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="../../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
       <!-- Bootstrap time Picker -->
-  <link rel="stylesheet" href="../../plugins/timepicker/bootstrap-timepicker.min.css">
+  <link rel="stylesheet" href="../../../plugins/timepicker/bootstrap-timepicker.min.css">
     <!-- Select2 -->
-      <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
+      <link rel="stylesheet" href="../../../bower_components/select2/dist/css/select2.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,13 +36,28 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+ <style>
+    .example-modal .modal {
+      position: relative;
+      top: auto;
+      bottom: auto;
+      right: auto;
+      left: auto;
+      display: block;
+      z-index: 1;
+    }
+
+    .example-modal .modal {
+      background: transparent !important;
+    }
+  </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index.html" class="logo">
+    <a href="../../../dashboard.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>MDC</span>
       <!-- logo for regular state and mobile devices -->
@@ -60,15 +75,58 @@
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-         <li class="user user-menu">
-                <a class="dropdown-toggle">
-                    <span class="hidden-xs" id="demo"></span>
-                    <script>
-                        var d = new Date();
-                        document.getElementById("demo").innerHTML = d.toUTCString();
-                    </script>
-                </a>
-            </li>
+         <li class= "user user-menu">
+                    <a class = "dropdown-toggle">
+                        <span class="hidden-xs" id="demo"></span>
+                        <script>
+                            var d = new Date();
+                            document.getElementById("demo").innerHTML = d.toUTCString();
+                        </script>
+                    </a>
+                </li>
+          <!-- Notifications: style can be found in dropdown.less -->
+          <li class="dropdown notifications-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-warning">10</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have 10 notifications</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
+                      page and may cause design problems
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-users text-red"></i> 5 new members joined
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-shopping-cart text-green"></i> 25 sales made
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-user text-red"></i> You changed your username
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="footer"><a href="#">View all</a></li>
+            </ul>
+          </li>
           <!-- Tasks: style can be found in dropdown.less -->
           <li class="dropdown tasks-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -150,13 +208,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../../dist/img/user2-128x128.png" class="user-image" alt="User Image">
+              <img src="../../../dist/img/user2-128x128.png" class="user-image" alt="User Image">
               <span class="hidden-xs">Assistant</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="../../dist/img/user2-128x128.png" class="img-circle" alt="User Image">
+                <img src="../../../dist/img/user2-128x128.png" class="img-circle" alt="User Image">
 
                 <p>
                  Assistant
@@ -165,13 +223,13 @@
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
-         
+            
                 <div class="pull-right">
-                  <a href="../examples/login.html" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../../examples/index.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
-          </li>
+          </li>    
         </ul>
       </div>
     </nav>
@@ -183,10 +241,10 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../../dist/img/user2-128x128.png" class="img-circle" alt="User Image">
+          <img src="../../../dist/img/user2-128x128.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Assistant</p>
+          <p>Business Manager</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Active</a>
         </div>
       </div>
@@ -204,19 +262,19 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Inventory System</li>
-  <!-- DASHBOARD MENU -->
+	<!-- DASHBOARD MENU -->
          <li>
-          <a href="../../dashboard.php">
+          <a href="../../../dashboard.php">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
-    <!-- MANAGE ACCOUNTS MENU -->
+		<!-- MANAGE ACCOUNTS MENU -->
         <li>
-          <a href="../forms/manageAccounts.php">
+          <a href="../../forms/general.php">
             <i class="fa fa-group"></i> <span>Manage Accounts</span>
           </a>
         </li>
-    <!-- SUPPLIES MENU -->
+		<!-- SUPPLIES MENU -->
         <li class="active treeview">
           <a href="#">
             <i class="fa fa-briefcase"></i> <span>Supplies</span>
@@ -225,36 +283,36 @@
             </span>
           </a>
           <ul class="treeview-menu">
-      <li><a href="medicalSupplies.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-      <li class ="active"><a href="officeSupplies.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+			<li><a href="../medicalSupplies.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
+			<li class ="active"><a href="../officeSupplies.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
         <!-- PURCHASES -->
           <li>
-              <a href="purchases.html">
+              <a href="../purchases.php">
                   <i class="fa fa-tags"></i><span>Purchases</span>  
               </a>
           </li>
         <!-- ISSUED SUPPLIES -->
-            <li><a href="issuedSupplies.php">
+            <li><a href="../issuedSupplies.php">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
-    <!--- SUPPLIERS MENU -->
+		<!-- SUPPLIERS MENU -->
         <li>
-          <a href="suppliers.php">
+          <a href="../suppliers.php">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>
-    <!-- DEPARTMENTS MENU -->
+		<!-- DEPARTMENTS MENU -->
         <li>
-          <a href="data4.html">
+          <a href="../departments.php">
             <i class="fa fa-building"></i> <span>Departments</span>
           </a>
         </li>
-    <!-- CALENDAR MENU -->
+		<!-- CALENDAR MENU -->
         <li>
-          <a href="../calendar.html">
+          <a href="../../calendar.html">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red">3</small>
@@ -264,13 +322,13 @@
         </li>
 <!-- INVOICE MENU -->
         <li>
-          <a href="../examples/invoice.html">
+          <a href="../../examples/invoice.html">
             <i class="fa fa-print"></i> <span>Logs</span>
           </a>
         </li>
 <!-- LOCKSCREEN MENU -->
         <li>
-          <a href="../examples/lockscreen.html">
+          <a href="../../examples/lockscreen.php">
             <i class="fa fa-lock"></i> <span>Lockscreen</span>
           </a>
         </li>
@@ -284,34 +342,30 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <b>Office Supplies</b>
-        <!-- <small>advanced tables</small> -->
+          <b>Office Supplies</b>
+        <!-- <small>Supplies</small> -->
       </h1>
-        
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Office Supplies</a></li>
-        <li class="active">Data tables</li>
+        <li><a href="#">Medical Supplies</a></li>
+        <li class="active">Supplies</li>
       </ol>
     </section>
 
     <!-- Main content -->
-      <section class="content">
+    <section class="content">
       <div class="row">
         <div class="col-xs-12">
-            
+
           <div class="box">
             <div class="box-header">
-              <!-- <h3 class="box-title">Office Supplies</h3> -->
+              <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
                 <table style="float: left;">
                     <tr>
                         <th> <div class="btn-group">
                         <select name="dropdown" onchange="location =this.value;">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Supplies
-                          <span class="caret"></span>
-                        </button>
-                          <option><b>All Supplies</b></option>
-                          <option value="php/officeTotalQty.php">Total Quantity</optiom>
+                          <option><b>Total Quantity</b></optiom>
+                          <option value="../officeSupplies.php">All Supplies</option>
                         </select>
                       </div></th>
                     </tr>
@@ -319,7 +373,8 @@
                 <table style="float:right;">
                     <tr>
                         <th><button type="submit" class="btn btn-primary btn-block btn-warning" data-toggle="modal" data-target="#modal-info">Add</button>
-                        <form name="form1" method="post" action="php/suppliesFunctions.php" >
+                        
+                        <form name="form1" method="post" action="suppliesFunctions.php">
                         <div class="modal fade" id="modal-info">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
@@ -402,7 +457,7 @@
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn btn-primary" name="addOfficeSupply">Save Supply</button>
+                                        <button type="submit" class="btn btn-primary" name="addMedSupply">Save Supply</button>
                                       </div>
                                     </div>
                                     <!-- /.modal-content -->
@@ -410,14 +465,16 @@
                                   </div>
                                   <!-- /.modal-dialog -->
                                 </div>
-
-                                
                                 </form>
-                              </th>
-                    
+                            </th> 
+                              
+
+                            <!--- END OF ADD -->
+                        <!---  ISSUE BUTTON -->
                         <th><button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
                                         Issue To
                                       </button>
+                                <form name ="form2" method="post" action="suppliesFunctions.php">
                                 <div class="modal fade" id="modal-default">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
@@ -430,121 +487,102 @@
                                       </div>
                                         <!-- end of modal header -->
                                       <div class="modal-body">
-                                        <!-- Date and Time -->
+                                              <!-- Date and Time -->
                                                  <div class="form-group">
                                                     <label>Issue Date</label>
-
                                                     <div class="input-group">
                                                       <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                       </div>
-                                                      <input type="text" class="form-control pull-right" id="datepicker3">
+                                                      <input type="text" class="form-control pull-right" id="datepicker3" name="date">
                                                     </div>
                                                     <!-- /.input group -->
                                                   </div>
                                           <!-- /.form group -->
                                               <div class="form-group">
                                                   <label for="exampleInputEmail1">Description</label>
-                                                  <input type="email" class="form-control">
-                                                </div>
-                                              <div class="form-group">
-                                                  <label for="exampleInputEmail1">Supplier</label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="email" class="form-control" name="description">
                                                 </div>
                                               <div class="form-group">
                                                   <label for="exampleInputEmail1">Quantity</label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="email" class="form-control" name="quantity">
                                                 </div>
                                               <div class="form-group">
                                                   <label for="exampleInputEmail1">Unit</label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="email" class="form-control" name="unit">
                                             </div>
                                             <div class="form-group">
                                                   <label for="exampleInputEmail1">Price</label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="email" class="form-control" name="price">
                                             </div>
-                                              <div class="department">
-                                                <select name = "department">
-                                                <option value="">Select a Department</option>
-                                                <?php
-                                                  require("../../../db.php");
-                                                  $sql = "SELECT * FROM departments";
-                                                  $results = mysqli_query($conn, $sql);
-
-                                                  foreach($results as $department) { 
-                                                ?>
-                                                <option value="<?php echo $department["department_id"]; ?>" name="dep"><?php echo $department["department_name"]; ?></option>
-                                                <?php 
-                                                  }
-                                                ?>
-                                              </select>
-
-                                              <select name = "department">
-                                                <option value=" ">Select a branch</option>
-                                                <?php
-                                                  require("../../../db.php");
-                                                  $sql = "SELECT * FROM departments";
-                                                  $results = mysqli_query($conn, $sql);
-
-                                                  foreach($results as $branch) { 
-                                                ?>
-                                                <option value="<?php echo $branch["department_id"]; ?>" name="brn"><?php echo $branch["branch_location"]; ?></option>
-                                                <?php 
-                                                  }
-                                                ?>
-                                              </select>
+                                            <div class="btn-group">
+                                              <button type="button" class="btn btn-default">Department</button>
+                                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                              </button>
+                                              <ul class="dropdown-menu">
+                                              <li><input type="radio" name="radio" value="radio0">Cardiac, Baguio City</li>
+                                              <li><input type="radio" name="radio" value="radio1">Cardiac, La Trinidad</li>
+                                              <li><input type="radio" name="radio" value="radio2">Endoscopy, SLU Baguio City</li>
+                                              <li><input type="radio" name="radio" value="radio3">Imaging, Baguio City</li>
+                                              <li><input type="radio" name="radio" value="radio4">Imaging, La Trinidad</li>
+                                              <li><input type="radio" name="radio" value="radio5">Clinical Laboratory, Baguio City</li>
+                                              <li><input type="radio" name="radio" value="radio6">Clinical Laboratory, La Trinidad</li>
+                                              <li><input type="radio" name="radio" value="radio7">Management, Baguio City</li>
+                                              </ul>
                                           </div>
+                                          
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-primary">Issue Supplies</button>
+                                        <button type="button" class="btn btn-primary" name="medIssueTo">Issue Supplies</button>
                                       </div>
                                     </div>
                                     <!-- /.modal-content -->
                                   </div>
                                   <!-- /.modal-dialog -->
                                 </div>
+                              </form>
                                 <!-- /.modal --></th>
                     </tr>
-                </table> 
+                </table>      
             </div>
-            <!-- /.box-header -->
+              
             <div class="box-body">
-              <table id="example" class="table table-bordered table-striped">
-         
+        <table id="example1" class="table table-bordered table-striped">
+         <?php // RETRIEVE or Display Medical Supplies
+         include("../../../../db.php");
+          $sql = "SELECT supply_description, unit, FORMAT(SUM(quantity_in_stock),0) AS 'Total Quantity', CONCAT('₱', FORMAT(SUM(quantity_in_stock * unit_price), 2)) AS 'Total Amount'
+            FROM supplies WHERE supply_type='Office' AND quantity_in_stock IS NOT NULL
+            GROUP BY supply_description;";
+          $result = $conn->query($sql);  ?>
           <thead>
             <tr>
-             <!-- <th>Date Received</th>
-                  <th>Time Received</th> -->
-                  <th>Expiration Date</th> 
+             <!--     <th>Date Received</th>
+                  <th>Time Received</th>
+                  <th>Expiration Date</th> --> 
                   <th>Description</th>
-                  <th>Quantity in Stock</th>
+                  <th>Total Quantity in Stock</th>
                   <th>Unit</th>
-                  <th>Unit Price</th>
-             <!-- <th>Total Amount</th> -->
-                  <th>Reorder Level</th>
-                  <th>Good Condition</th>
-                  <th>Damaged</th>
-                  <th> Action</th> 
+                  <th>Total Amount</th>
             </tr>
         </thead>
-        
+        <tbody>
+        <?php
+          while($row = $result->fetch_assoc()) { ?>
+            <tr>
+            <!-- <td><?php // echo $row["expirationDate"]; ?></td> -->
 
-        <tfoot>
-           <tr>
-             <!-- <th>Date Received</th>
-                  <th>Time Received</th> -->
-                  <th>Expiration Date</th> 
-                  <th>Description</th>
-                  <th>Quantity in Stock</th>
-                  <th>Unit</th>
-                  <th>Unit Price</th>
-             <!-- <th>Total Amount</th> -->
-                  <th>Reorder Level</th>
-                  <th>Good Condition</th>
-                  <th>Damaged</th>
-                  <th> Action</th> 
-            </tr> 
+            <td><?php echo $row["supply_description"]; ?></td>
+            <td align="right"><?php echo $row["Total Quantity"]; ?></td>
+            <td><?php echo $row["unit"]; ?></td>
+            <td align="right"><?php echo $row["Total Amount"]; ?></td>
+        </tr> 
+        <?php
+          }
+        ?>
+      </tbody>
         </tfoot>
       </table>              
             </div>
@@ -555,18 +593,21 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-                <div class="row no-print">
+            <!-- PRINT AND PDF -->
+              <div class="row no-print">
         <div class="col-xs-12">
-          <button type="button" class="btn btn-default pull-right" style="margin-right: 1px;"><i class="fa fa-print"></i>
-            <a href="../examples/officeSuppliesPrint.php"> Print</a>
+          <a href="../../examples/officeSuppliesTotalQtyPrint.php" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
+            <i class="fa fa-download"></i> Generate PDF
           </button>
         </div>
       </div>
+        <!-- END OF PRINT AND PDF -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-   <footer class="main-footer">
+  <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
     </div>
@@ -580,38 +621,51 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
-<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- DataTables -->
-<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="../../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
-<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<script src="../../../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- Select2 -->
-<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="../../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- InputMask -->
-<script src="../../plugins/input-mask/jquery.inputmask.js"></script>
-<script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="../../../plugins/input-mask/jquery.inputmask.js"></script>
+<script src="../../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="../../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
 
 <!-- bootstrap datepicker -->
-<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="../../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- bootstrap color picker -->
-<script src="../../bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<script src="../../../bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 <!-- bootstrap time picker -->
-<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="../../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
+<script src="../../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
+<script src="../../../dist/js/demo.js"></script>
     <!-- bootstrap time picker -->
-<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
-
+<script src="../../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<!-- page script -->
 <script>
-  //date and time
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+    </script>
+<script>
+<!-- date and time -->
   $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()
@@ -620,9 +674,11 @@
     $('#datepicker').datepicker({
       autoclose: true
     })
+    //Date picker
     $('#datepicker2').datepicker({
       autoclose: true
     })
+    //Date picker
     $('#datepicker3').datepicker({
       autoclose: true
     })
@@ -633,46 +689,5 @@
     })
   })
 </script>
-<!--create modal dialog for display detail info for edit on button cell click-->
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-                <div id="content-data"></div>
-            </div>
-        </div>
-   
-    <script>
-        $(document).ready(function(){
-            var dataTable=$('#example').DataTable({
-                'autoWidth' : false,
-                "processing": true,
-                "serverSide": true,
-                "ajax":{
-                    url:"php/officeSuppliesFetch.php",
-                    type:"post"
-                }
-            });
-        });
-    </script>
-
-    <!--script js for get edit data-->
-    <script>
-        $(document).on('click','#getEdit',function(e){
-            e.preventDefault();
-            var per_id=$(this).data('id');
-            //alert(per_id);
-            $('#content-data').html('');
-            $.ajax({
-                url:'php/officeSuppliesEdit.php',
-                type:'POST',
-                data:'id='+per_id,
-                dataType:'html'
-            }).done(function(data){
-                $('#content-data').html('');
-                $('#content-data').html(data);
-            }).final(function(){
-                $('#content-data').html('<p>Error</p>');
-            });
-        });
-    </script>
 </body>
 </html>

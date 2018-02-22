@@ -221,70 +221,19 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Inventory System</li>
-	<!---------------------------------------------------- DASHBOARD MENU -------------------------------------------------------------->
+  <!-- DASHBOARD MENU -->
          <li>
-          <a href="../../index.html">
+          <a href="../../dashboard.php">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
-          <!-- <li class="treeview">
-          <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>Charts</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Layout Options</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-            <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-          </ul>
-        </li>
+    <!-- MANAGE ACCOUNTS MENU -->
         <li>
-          <a href="pages/widgets.html">
-            <i class="fa fa-th"></i> <span>Widgets</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
-            </span>
+          <a href="../forms/manageAccounts.php">
+            <i class="fa fa-group"></i> <span>Manage Accounts</span>
           </a>
         </li>
-       
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>UI Elements</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-            <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-            <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-            <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-            <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-          </ul>
-        </li> -->
-	
-		<!---------------------------------------------------- SUPPLIES MENU -------------------------------------------------------------->
+    <!-- SUPPLIES MENU -->
         <li class="active treeview">
           <a href="#">
             <i class="fa fa-briefcase"></i> <span>Supplies</span>
@@ -293,34 +242,34 @@
             </span>
           </a>
           <ul class="treeview-menu">
-			<li class ="active"><a href="data.html"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-			<li><a href="data2.html"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+      <li class ="active"><a href="medicalSupplies.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
+      <li><a href="officeSupplies.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
-        <!--------------------------------------------------- PURCHASES -------------------------------------------------->
+        <!-- PURCHASES -->
           <li>
-              <a href="data5.html">
+              <a href="purchases.php">
                   <i class="fa fa-tags"></i><span>Purchases</span>  
               </a>
           </li>
-        <!--------------------------------------------------- ISSUED SUPPLIES -------------------------------------------------->
-            <li><a href="data6.html">
+        <!-- ISSUED SUPPLIES -->
+            <li><a href="issuedSupplies.php">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
-		<!---------------------------------------------------- SUPPLIERS MENU -------------------------------------------------------------->
+    <!-- SUPPLIERS MENU -->
         <li>
-          <a href="data3.html">
+          <a href="suppliers.php">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>
-		<!---------------------------------------------------- DEPARTMENTS MENU -------------------------------------------------------------->
+    <!-- DEPARTMENTS MENU -->
         <li>
-          <a href="data4.html">
+          <a href="departments.php">
             <i class="fa fa-building"></i> <span>Departments</span>
           </a>
         </li>
-		<!---------------------------------------------------- CALENDAR MENU -------------------------------------------------------------->
+    <!-- CALENDAR MENU -->
         <li>
           <a href="../calendar.html">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -330,51 +279,18 @@
             </span>
           </a>
         </li>
-
-<!---------------------------------------------------- LOCKSCREEN MENU -------------------------------------------------------------->
+<!-- INVOICE MENU -->
+        <li>
+          <a href="../examples/invoice.html">
+            <i class="fa fa-print"></i> <span>Logs</span>
+          </a>
+        </li>
+<!-- LOCKSCREEN MENU -->
         <li>
           <a href="../examples/lockscreen.html">
             <i class="fa fa-lock"></i> <span>Lockscreen</span>
           </a>
         </li>
-        <!-- <li class="treeview">
-          <a href="#">
-            <i class="fa fa-share"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Level One
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                <li class="treeview">
-                  <a href="#"><i class="fa fa-circle-o"></i> Level Two
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-          </ul>
-        </li>
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-        <li class="header">LABELS</li>
-        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li> -->
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -391,7 +307,7 @@
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Medical Supplies</a></li>
-        <li class="active">Data tables</li>
+        <li class="active">Supplies</li>
       </ol>
     </section>
 
@@ -405,12 +321,22 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
                 <table style="float: left;">
                     <tr>
+                        <th> <div class="dropdownButton">
+                        <select name="dropdown" onchange="location =this.value;">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Supplies
+                          <span class="caret"></span>
+                        </button>
+                          <option><b>All Supplies</b></option>
+                          <option value="php/medTotalQty.php">Total Quantity</optiom>
+                        </select>
+                      </div></th>
                     </tr>
-                </table>  
+                </table> 
                 <table style="float:right;">
                     <tr>
-                        <th><button type="submit" class="btn btn-primary btn-block btn-info">Edit</button></th>
                         <th><button type="submit" class="btn btn-primary btn-block btn-warning" data-toggle="modal" data-target="#modal-info">Add</button>
+                        
+                        <form name="addSupply" method="post" action="php/suppliesFunctions.php">
                         <div class="modal fade" id="modal-info">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
@@ -424,107 +350,113 @@
                                         <!-- end of modal header -->
                                       <div class="modal-body">
                                         <div class="box-body">
-                                 <!-- DATE -->
-                                                 <div class="form-group">
+
+                                                  <!-- DATE -->
+                                                <!-- <div class="form-group">
                                                     <label>Date Received</label>
-                                                <div class="input-group date">
+                                                <div class="input-group date"/>
                                                   <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                   </div>
-                                                  <input type="text" class="form-control pull-right" id="datepicker">
+                                                  <input type="date" class="form-control pull-right" id="datepicker" required />
                                                 </div>
-                                                <!-- /.input group -->
-                                              </div>
+                                                     /.input group
+                                              </div> -->
                                             
-                                            <!-- TIME -->
+                                            <!-- TIME 
                                                 <div class="bootstrap-timepicker">
                                                 <div class="form-group">
                                                   <label>Time Received</label>
 
                                                   <div class="input-group">
-                                                    <input type="text" class="form-control timepicker">
+                                                    <input type="time" class="form-control timepicker" required />
 
                                                     <div class="input-group-addon">
                                                       <i class="fa fa-clock-o"></i>
                                                     </div>
                                                   </div>
-                                                  <!-- /.input group -->
+                                                       /.input group
                                                 </div>
-                                                <!-- /.form group -->
-                                              </div>
+                                                      /.form group
+                                              </div> -->
                                           <!-- /.form group -->
                                             <div class="form-group">
                                                   <label for="exampleInputEmail1">Description</label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="text" class="form-control" id="Description" name="Description" required />
                                                 </div>
-                                              <div class="form-group">
+                                              
+                                              <!-- <div class="form-group">
                                                   <label for="exampleInputEmail1">Supplier</label>
-                                                  <input type="email" class="form-control">
-                                                </div>
+                                                  <input type="text" class="form-control" name=Supplier""
+                                                  required />
+                                                </div> -->
                                               <div class="form-group">
                                                   <label for="exampleInputEmail1">Quantity</label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="number" class="form-control" id="Quantity" name="Quantity" required />
                                                 </div>
                                               <div class="form-group">
                                                   <label for="exampleInputEmail1">Unit</label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="text" class="form-control" id="Unit" name="Unit" required />
                                                 </div>
                                               <div class="form-group">
                                                   <label for="exampleInputEmail1">Unit Price</label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="number" class="form-control" id="priceUnit" name="priceUnit" required />
                                                 </div>
                                               <!-- Date and Time -->
-                                                 <div class="form-group">
+                                                <div class="form-group">
                                                     <label>Expiration Date</label>
 
                                                     <div class="input-group">
                                                       <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                       </div>
-                                                      <input type="text" class="form-control pull-right" id="datepicker2">
+                                                      <input type="text" class="form-control pull-right" id="datepicker2" name="expirationDate">
                                                     </div>
-                                                    <!-- /.input group -->
-                                                  </div>
-                                 
+                                                          <!-- /.input group --> 
+                                                  </div>                                
                                         </div>
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-primary">Save Supply</button>
+                                        <button type="button" class="btn btn-primary" class="btn btn-success" data-toggle="modal" data-target="#modal-success">Save Supply</button>
                                       </div>
                                     </div>
                                     <!-- /.modal-content -->
+                                    
                                   </div>
                                   <!-- /.modal-dialog -->
-                                </div></th>
-                        <th><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">
-                            Delete</button>
-                            <div class="modal modal-danger fade" id="modal-danger">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Delete</h4>
-                                  </div>
-                                  <div class="modal-body">
-                                    <h4>Are you sure to delete the items?</h4>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-outline">Delete</button>
-                                  </div>
                                 </div>
-                                <!-- /.modal-content -->
-                              </div>
-                              <!-- /.modal-dialog -->
-                            </div>
-                            <!-- /.modal --></th>
-                        
-    <!----------------------------------  ISSUE BUTTON -->
+
+                                <div class="modal modal-success fade" id="modal-success">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <h3>Are you sure to add this item?&hellip;</h3>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                                          <button type="submit" class="btn btn-outline" name="addMedSupply">Save changes</button>
+
+                                        </div>
+                                      </div>
+                                      <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                  </div>
+                                  <!-- /.modal -->
+                                </form>
+                            </th> 
+                              
+                            <!--- END OF ADD -->
+                        <!---  ISSUE BUTTON -->
                         <th><button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
                                         Issue To
                                       </button>
+                                <form name ="form2" method="post" action="suppliesFunctions.php">
                                 <div class="modal fade" id="modal-default">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
@@ -540,225 +472,116 @@
                                               <!-- Date and Time -->
                                                  <div class="form-group">
                                                     <label>Issue Date</label>
-
                                                     <div class="input-group">
                                                       <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                       </div>
-                                                      <input type="text" class="form-control pull-right" id="datepicker3">
+                                                      <input type="text" class="form-control pull-right" id="datepicker3" name="date">
                                                     </div>
                                                     <!-- /.input group -->
                                                   </div>
                                           <!-- /.form group -->
                                               <div class="form-group">
                                                   <label for="exampleInputEmail1">Description</label>
-                                                  <input type="email" class="form-control">
-                                                </div>
-                                              <div class="form-group">
-                                                  <label for="exampleInputEmail1">Supplier</label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="text" class="form-control" name="description">
                                                 </div>
                                               <div class="form-group">
                                                   <label for="exampleInputEmail1">Quantity</label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="number" class="form-control" name="quantity">
                                                 </div>
                                               <div class="form-group">
                                                   <label for="exampleInputEmail1">Unit</label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="text" class="form-control" name="unit">
                                             </div>
                                             <div class="form-group">
                                                   <label for="exampleInputEmail1">Price</label>
-                                                  <input type="email" class="form-control">
+                                                  <input type="number" class="form-control" name="price">
                                             </div>
-                                              <div class="btn-group">
-                                              <button type="button" class="btn btn-default">Department</button>
-                                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                                <span class="caret"></span>
-                                                <span class="sr-only">Toggle Dropdown</span>
-                                              </button>
-                                              <ul class="dropdown-menu">
-                                              <li><a href="#">Cardiac</a></li>
-                                              <li><a href="#">Endoscopy</a></li>
-                                              <li><a href="#">Imaging</a></li>
-                                              <li><a href="#">Clinical Laboratory</a></li>
-                                              <li><a href="#">Management</a></li>
-                                              </ul>
-                                          </div>
-                                          <div class="btn-group">
-                                              <button type="button" class="btn btn-default">Branch</button>
-                                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                                <span class="caret"></span>
-                                                <span class="sr-only">Toggle Dropdown</span>
-                                              </button>
-                                              <ul class="dropdown-menu">
-                                              <li><a href="#">Baguio City</a></li>
-                                              <li><a href="#">La Trinidad</a></li>
-                                                  <li><a href="#">SLU Hospital</a></li>
-                                                  </ul>
+                                            <div class="department">
+                                                <select name = "department">
+                                                <option value="">Select a Department</option>
+                                                <?php
+                                                  require("../../../db.php");
+                                                  $sql = "SELECT * FROM departments";
+                                                  $results = mysqli_query($conn, $sql);
+
+                                                  foreach($results as $department) { 
+                                                ?>
+                                                <option value="<?php echo $department["department_id"]; ?>" name="dep"><?php echo $department["department_name"]; ?></option>
+                                                <?php 
+                                                  }
+                                                ?>
+                                              </select>
+
+                                              <select name = "department">
+                                                <option value="">Select a branch</option>
+                                                <?php
+                                                  require("../../../db.php");
+                                                  $sql = "SELECT * FROM departments";
+                                                  $results = mysqli_query($conn, $sql);
+
+                                                  foreach($results as $branch) { 
+                                                ?>
+                                                <option value="<?php echo $branch["department_id"]; ?>" name="brn"><?php echo $branch["branch_location"]; ?></option>
+                                                <?php 
+                                                  }
+                                                ?>
+                                              </select>
                                           </div>
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-primary">Issue Supplies</button>
+                                        <button type="submit" class="btn btn-primary" name="medIssueTo">Issue Supplies</button>
                                       </div>
                                     </div>
                                     <!-- /.modal-content -->
                                   </div>
                                   <!-- /.modal-dialog -->
                                 </div>
+                              </form>
                                 <!-- /.modal --></th>
                     </tr>
                 </table>      
             </div>
               
-           <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Date Received</th>
-                  <th>Time Received</th>
-                  <th>Expiration Date</th>
-                  <th>Description</th>
-                  <th>Supplier</th>
-                  <th>Quantity in Stock</th>
-                  <th>Unit</th>
-                  <th>Unit Price</th>
-                    <th>Total Amount</th>
-                  <th>Reorder Level</th>
-                  <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>2017-10-01</td>
-                  <td>07:01 A.M.</td>
-                  <td>2020-02-26</td>
-                  <td>Red Tap Tubes</td>
-                  <td>Mercury Drug</td>
-                  <td>100</td>
-                  <td>boxes</td>
-
-                  <td>&#8369; 100.00</td>
-                    <td>&#8369; 10,000.00</td>
-                  <td>50 boxes</td>
-                  <td>
-                    <center><input type="checkbox"></center>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2017-10-01</td>
-                  <td>06:32 P.M.</td>
-                  <td>2020-02-26</td>
-                  <td>Violet Tap Tubes</td>
-                  <td>St. Joseph Drugstore</td>
-                  <td>100</td>
-                  <td>boxes</td>
-       
-                  <td>&#8369; 100.00</td>
-                    <td>&#8369; 10,000.00</td>
-                  <td>50 boxes</td>
-                  <td>
-                    <center><input type="checkbox"></center>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2017-10-01</td>
-                  <td>03:03 P.M.</td>
-                  <td>2021-04-17</td>
-                  <td>Cotton</td>
-                  <td>Mercury Drug</td>
-                  <td>300</td>
-                  <td>boxes</td>
-               
-                  <td>&#8369; 23.00</td>
-                    <td>&#8369; 6,900.00</td>
-                  <td>50 boxes</td>
-                  <td>
-                    <center><input type="checkbox"></center>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2017-10-01</td>
-                  <td>08:16 A.M.</td>
-                  <td>2020-02-26</td>
-                  <td>Syringe</td>
-                  <td>Mercury Drug</td>
-                  <td>20</td>
-                  <td>boxes</td>
-                
-                  <td>&#8369; 100.00</td>
-                    <td>&#8369; 2,000.00</td>
-                  <td>40 boxes</td>
-                  <td>
-                    <center><input type="checkbox"></center>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2017-10-01</td>
-                  <td>12:16 P.M.</td>
-                  <td>2040-12-18</td>
-                  <td>Alcohol</td>
-                  <td>Mercury Drug</td>
-                  <td>80</td>
-                  <td>boxes</td>
+      <div class="box-body">
+        <table id="example" class="table table-bordered table-striped">
          
-                  <td>&#8369; 35.00</td>
-                    <td>&#8369; 2,800.00</td>
-                  <td>45 boxes</td>
-                  <td>
-                    <center><input type="checkbox"></center>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2017-10-01</td>
-                  <td>01:35 P.M.</td>
-                  <td>2019-05-12</td>
-                  <td>Face Mask</td>
-                  <td>Curamed Pharmacy</td>
-                  <td>15</td>
-                  <td>boxes</td>
-             
-                  <td>&#8369; 120.00</td>
-                  <td>&#8369; 1,800.00</td>
-                  <td>20 boxes</td>
-                  <td>
-                    <center><input type="checkbox"></center>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2017-10-01</td>
-                  <td>04:24 P.M.</td>
-                  <td>2024-05-10</td>
-                  <td>Gauze</td>
-                  <td>St. Joseph Drugstore</td>
-                  <td>100</td>
-                  <td>boxes</td>
-       
-                  <td>&#8369; 10.00</td>
-                    <td>&#8369; 1,000.00</td>
-                  <td>36 boxes</td>
-                  <td>
-                    <center><input type="checkbox"></center>
-                  </td>
-                </tr>
-                </tbody>
-                <tfoot>
-                   <tr>
-                  <th>Date Received</th>
-                  <th>Time Received</th>
-                  <th>Expiration Date</th>
+          <thead>
+            <tr>
+             <!-- <th>Date Received</th>
+                  <th>Time Received</th> -->
+                  <th>Expiration Date</th> 
                   <th>Description</th>
-                  <th>Supplier</th>
                   <th>Quantity in Stock</th>
                   <th>Unit</th>
                   <th>Unit Price</th>
-                    <th>Total Amount</th>   
+             <!-- <th>Total Amount</th> -->
                   <th>Reorder Level</th>
-                  <th></th>
-                </tr> 
-                </tfoot>
-              </table>
+                  <th>Good Condition</th>
+                  <th>Damaged</th>
+                  <th> Action</th> 
+            </tr>
+        </thead>
+        
 
+        <tfoot>
+           <tr>
+             <!-- <th>Date Received</th>
+                  <th>Time Received</th> -->
+                  <th>Expiration Date</th> 
+                  <th>Description</th>
+                  <th>Quantity in Stock</th>
+                  <th>Unit</th>
+                  <th>Unit Price</th>
+             <!-- <th>Total Amount</th> -->
+                  <th>Reorder Level</th>
+                  <th>Good Condition</th>
+                  <th>Damaged</th>
+                  <th> Action</th> 
+            </tr> 
+        </tfoot>
+      </table>              
             </div>
             <!-- /.box-body -->
           </div>
@@ -767,14 +590,15 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
+            <!--- PRINT AND PDF -->
               <div class="row no-print">
         <div class="col-xs-12">
-          <a href="../examples/invoice-print2.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-            <i class="fa fa-download"></i> Generate PDF
+          <button type="button" class="btn btn-default pull-right" style="margin-right: 1px;"><i class="fa fa-print"></i>
+            <a href="../examples/medicalSuppliesPrint.php"> Print</a>
           </button>
         </div>
       </div>
+        <!-- END OF PRINT AND PDF -->
     </section>
     <!-- /.content -->
   </div>
@@ -809,9 +633,7 @@
 <script src="../../plugins/input-mask/jquery.inputmask.js"></script>
 <script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<!-- date-range-picker -->
-<script src="../../bower_components/moment/min/moment.min.js"></script>
-<script src="../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+
 <!-- bootstrap datepicker -->
 <script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- bootstrap color picker -->
@@ -822,37 +644,30 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-<!-- page script -->
+    <!-- bootstrap time picker -->
+<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
+ 
+
 <script>
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
-    </script>
-<script>
-<!-- date and time -->
+ // date and time 
   $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()
 
     //Date picker
     $('#datepicker').datepicker({
-      autoclose: true
+      autoclose: true,
+      format : 'yyyy-mm-dd'
     })
     //Date picker
     $('#datepicker2').datepicker({
-      autoclose: true
+      autoclose: true,
+      format : 'yyyy-mm-dd'
     })
     //Date picker
     $('#datepicker3').datepicker({
-      autoclose: true
+      autoclose: true,
+      format : 'yyyy-mm-dd'
     })
       
     //Timepicker
@@ -861,5 +676,47 @@
     })
   })
 </script>
+
+<!--create modal dialog for display detail info for edit on button cell click-->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div id="content-data"></div>
+            </div>
+        </div>
+   
+    <script>
+        $(document).ready(function(){
+            var dataTable=$('#example').DataTable({
+                'autoWidth' : false,
+                "processing": true,
+                "serverSide": true,
+                "ajax":{
+                    url:"php/medicalSuppliesFetch.php",
+                    type:"post"
+                }
+            });
+        });
+    </script>
+
+    <!--script js for get edit data-->
+    <script>
+        $(document).on('click','#getEdit',function(e){
+            e.preventDefault();
+            var per_id=$(this).data('id');
+            //alert(per_id);
+            $('#content-data').html('');
+            $.ajax({
+                url:'php/medicalSuppliesEdit.php',
+                type:'POST',
+                data:'id='+per_id,
+                dataType:'html'
+            }).done(function(data){
+                $('#content-data').html('');
+                $('#content-data').html(data);
+            }).final(function(){
+                $('#content-data').html('<p>Error</p>');
+            });
+        });
+    </script>
 </body>
 </html>

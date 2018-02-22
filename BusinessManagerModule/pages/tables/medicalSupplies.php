@@ -353,7 +353,7 @@
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Medical Supplies</a></li>
-        <li class="active">Data tables</li>
+        <li class="active">Supplies</li>
       </ol>
     </section>
 
