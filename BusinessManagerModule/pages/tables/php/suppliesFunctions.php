@@ -49,23 +49,79 @@
         header("Location: ../officeSupplies.php");
   }  // end of add Medical Supply
 
-  // DELETE FOR MEDICAL SUPPLIES
-  $desc_id = $_GET['medDelete'];
-  $sql = $conn->prepare("DELETE FROM supplies WHERE supply_id='$desc_id'");
-  //$sql->bind_param("s", $desc_id); 
-  $sql->execute();
-  $sql->close(); 
-  $conn->close();
-  header('location: ../medicalSupplies.php'); // end of Medical Delete
+    //DELETE MEDICAL SUPPLIES
+  if(isset($_GET['medDelete'])){
+    $id=$_GET['medDelete'];
+    $sqldelete="DELETE FROM supplies WHERE supply_id='$id'";
+    $result_delete=mysqli_query($conn,$sqldelete);
+    if($result_delete){
+        echo'<script>window.location.href="../medicalSupplies.php"</script>';
+    }
+    else{
+        echo'<script>alert("Delete Failed")</script>';
+    }
+}// END OF DELETE MEDICAL SUPPLIES
 
-  // DELETE FOR OFFICE SUPPLIES
-  $desc_id = $_GET['officeDelete'];
-  $sql = $conn->prepare("DELETE FROM supplies WHERE supply_ID='$desc_id'");
-  //$sql->bind_param("s", $desc_id); 
-  $sql->execute();
-  $sql->close(); 
-  $conn->close();
-  header('location: ../officeSupplies.php');   
+    //DELETE OFFICE SUPPLIES
+  if(isset($_GET['offDelete'])){
+    $id=$_GET['offDelete'];
+    $sqldelete="DELETE FROM supplies WHERE supply_id='$id'";
+    $result_delete=mysqli_query($conn,$sqldelete);
+    if($result_delete){
+        echo'<script>window.location.href="../officeSupplies.php"</script>';
+    }
+    else{
+        echo'<script>alert("Delete Failed")</script>';
+    }
+}// END OF DELETE OFFICE SUPPLIES
+
+    //EDIT FOR MEDICAL SUPPLIES
+if(isset($_POST['medEdit'])){
+    $new_id=mysqli_real_escape_string($conn,$_POST['txtid']);
+    $new_supplyDescription=mysqli_real_escape_string($conn,$_POST['txtsupplyDescription']);
+    $new_supplyUnit=mysqli_real_escape_string($conn,$_POST['txtUnit']);
+    $new_supplyQuantityInStock=mysqli_real_escape_string($conn,$_POST['txtQuantityInStock']);
+    $new_supplyUnitPrice=mysqli_real_escape_string($conn,$_POST['txtUnitPrice']);
+    $new_supplyReorderLevel=mysqli_real_escape_string($conn,$_POST['txtReorderLevel']);
+    $new_supplyExpirationDate=mysqli_real_escape_string($conn,$_POST['txtExpirationDate']);
+    $new_supplyGoodCondition=mysqli_real_escape_string($conn,$_POST['txtGoodCondition']);
+    $new_supplyDamaged=mysqli_real_escape_string($conn,$_POST['txtDamaged']);
+
+    $sqlupdate="UPDATE supplies SET supply_description='$new_supplyDescription', unit='$new_supplyUnit', quantity_in_stock='$new_supplyQuantityInStock', unit_price='$new_supplyUnitPrice', reorder_level='$new_supplyReorderLevel', expiration_date='$new_supplyExpirationDate', good_condition='$new_supplyGoodCondition', damaged='$new_supplyDamaged' WHERE supply_id='$new_id' ";
+    $result_update=mysqli_query($conn,$sqlupdate);
+
+    if($result_update){
+        echo '<script>window.location.href="../medicalSupplies.php"</script>';
+    }
+    else{
+        echo '<script>alert("Update Failed")</script>';
+    }
+} // END OF MEDICAL EDIT
+
+
+//EDIT FOR OFFICE SUPPLIES
+if(isset($_POST['offEdit'])){
+    $new_id=mysqli_real_escape_string($conn,$_POST['txtid']);
+    $new_supplyDescription=mysqli_real_escape_string($conn,$_POST['txtsupplyDescription']);
+    $new_supplyUnit=mysqli_real_escape_string($conn,$_POST['txtUnit']);
+    $new_supplyQuantityInStock=mysqli_real_escape_string($conn,$_POST['txtQuantityInStock']);
+    $new_supplyUnitPrice=mysqli_real_escape_string($conn,$_POST['txtUnitPrice']);
+    $new_supplyReorderLevel=mysqli_real_escape_string($conn,$_POST['txtReorderLevel']);
+    $new_supplyExpirationDate=mysqli_real_escape_string($conn,$_POST['txtExpirationDate']);
+    $new_supplyGoodCondition=mysqli_real_escape_string($conn,$_POST['txtGoodCondition']);
+    $new_supplyDamaged=mysqli_real_escape_string($conn,$_POST['txtDamaged']);
+
+    $sqlupdate="UPDATE supplies SET supply_description='$new_supplyDescription', unit='$new_supplyUnit', quantity_in_stock='$new_supplyQuantityInStock', unit_price='$new_supplyUnitPrice', reorder_level='$new_supplyReorderLevel', expiration_date='$new_supplyExpirationDate', good_condition='$new_supplyGoodCondition', damaged='$new_supplyDamaged' WHERE supply_id='$new_id' ";
+    $result_update=mysqli_query($conn,$sqlupdate);
+
+    if($result_update){
+        echo '<script>window.location.href="../officeSupplies.php"</script>';
+    }
+    else{
+        echo '<script>alert("Update Failed")</script>';
+    }
+} // END OF OFFICE EDIT
+
 
   // ISSUE TO FOR MEDICAL SUPPLIES
    if (isset($_POST['medIssueTo'])) {
@@ -88,4 +144,4 @@
       $connection->close();
       header("Location: ../medicalSupplies.php");
   } 
-?>
+

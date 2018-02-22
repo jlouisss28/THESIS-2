@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <title>Business Manager | Data</title>
+   <title>Business Manager | Medical Supplies Total</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -289,24 +289,24 @@
         </li>
         <!-- PURCHASES -->
           <li>
-              <a href="../data5.php">
+              <a href="../purchases.php">
                   <i class="fa fa-tags"></i><span>Purchases</span>  
               </a>
           </li>
         <!-- ISSUED SUPPLIES -->
-            <li><a href="../data6.php">
+            <li><a href="../issuedSupplies.php">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
 		<!-- SUPPLIERS MENU -->
         <li>
-          <a href="../data3.php">
+          <a href="../suppliers.php">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>
 		<!-- DEPARTMENTS MENU -->
         <li>
-          <a href="../data4.php">
+          <a href="../departments.php">
             <i class="fa fa-building"></i> <span>Departments</span>
           </a>
         </li>
@@ -365,7 +365,7 @@
                         <th> <div class="btn-group">
                         <select name="dropdown" onchange="location =this.value;">
                           <option><b>Total Quantity</b></optiom>
-                          <option value="../data.php">All Supplies</option>
+                          <option value="../medicalSupplies.php">All Supplies</option>
                         </select>
                       </div></th>
                     </tr>
@@ -553,9 +553,9 @@
         <table id="example1" class="table table-bordered table-striped">
          <?php // RETRIEVE or Display Medical Supplies
          include("../../../../db.php");
-          $sql = "SELECT supply_description, unit, SUM(quantity_in_stock) AS 'Total Quantity', SUM(unit_price*quantity_in_stock) AS 'Total Amount'
-                  FROM supplies WHERE supply_type='Medical' AND quantity_in_stock IS NOT NULL
-                  GROUP BY supply_description; ";
+          $sql = "SELECT supply_description, unit, FORMAT(SUM(quantity_in_stock),0) AS 'Total Quantity', CONCAT('₱', FORMAT(SUM(quantity_in_stock * unit_price), 2)) AS 'Total Amount'
+            FROM supplies WHERE supply_type='Medical' AND quantity_in_stock IS NOT NULL
+            GROUP BY supply_description;";
           $result = $conn->query($sql);  ?>
           <thead>
             <tr>
@@ -577,7 +577,7 @@
             <td><?php echo $row["supply_description"]; ?></td>
             <td align="right"><?php echo $row["Total Quantity"]; ?></td>
             <td><?php echo $row["unit"]; ?></td>
-            <td align="right">&#8369;<?php echo $row["Total Amount"]; ?></td>
+            <td align="right"><?php echo $row["Total Amount"]; ?></td>
             </tr>
           <?php 
               }

@@ -25,6 +25,9 @@
   <link rel="stylesheet" href="../../plugins/timepicker/bootstrap-timepicker.min.css">
     <!-- Select2 -->
       <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
+     <!-- datatable lib -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -249,13 +252,13 @@
         <li class="header">Inventory System</li>
 	<!-- DASHBOARD MENU -->
          <li>
-          <a href="../../dashboard.html">
+          <a href="../../dashboard.php">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
 		<!-- MANAGE ACCOUNTS MENU -->
         <li>
-          <a href="../forms/general.html">
+          <a href="../forms/manageAccounts.php">
             <i class="fa fa-group"></i> <span>Manage Accounts</span>
           </a>
         </li>
@@ -268,24 +271,24 @@
             </span>
           </a>
           <ul class="treeview-menu">
-			<li><a href="data.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-			<li class ="active"><a href="data2.html"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+			<li><a href="medicalSupplies.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
+			<li class ="active"><a href="officeSupplies.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
         <!-- PURCHASES -->
           <li>
-              <a href="data5.html">
+              <a href="purchases.html">
                   <i class="fa fa-tags"></i><span>Purchases</span>  
               </a>
           </li>
         <!-- ISSUED SUPPLIES -->
-            <li><a href="data6.html">
+            <li><a href="issuedSupplies.php">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
 		<!--- SUPPLIERS MENU -->
         <li>
-          <a href="data3.html">
+          <a href="suppliers.php">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>
@@ -553,11 +556,8 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-          <?php // RETRIEVE or Display Medical Supplies
-         include("../../../db.php");
-          $sql = "SELECT supply_id, supply_description, quantity_in_stock, expiration_date, unit, CONCAT(reorder_level,' ', unit) AS 'Reorder Level', unit_price, good_condition, damaged FROM supplies WHERE supply_type='Office' ORDER BY supply_description ASC";
-          $result = $conn->query($sql);  ?>
+              <table id="example" class="table table-bordered table-striped">
+         
           <thead>
             <tr>
              <!-- <th>Date Received</th>
@@ -571,55 +571,14 @@
                   <th>Reorder Level</th>
                   <th>Good Condition</th>
                   <th>Damaged</th>
-                  <th> Action</th>  
+                  <th> Action</th> 
             </tr>
         </thead>
-        <tbody>
-        <?php
-          while($row = $result->fetch_assoc()) { ?>
-            <tr>
-            <td>                      <?php echo $row["expiration_date"]; ?>   </td>
-            <td>                      <?php echo $row["supply_description"]; ?></td>
-            <td>                      <?php echo $row["quantity_in_stock"]; ?> </td>
-            <td>                      <?php echo $row["unit"]; ?>              </td>
-            <td align="right">&#8369; <?php echo $row["unit_price"]; ?>        </td>
-            <td align="center">       <?php echo $row["Reorder Level"]; ?>     </td>
-            <td>                      <?php echo $row["good_condition"]; ?>    </td>
-            <td>                      <?php echo $row["damaged"]; ?>           </td>
-            <td>
-              <form action="php/suppliesFunctions.php" method="post">
-                <button type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modal-danger">
-                <i class="fa fa-fw fa-trash"> </i>
-                </button>
         
-                <div class="modal modal-danger fade" id="modal-danger">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span></button>
-                      </div>
-                      <div class="modal-body">
-                        <h3>Are you sure to delete the item?&hellip;</h3>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-outline">
-                        <input type="text" name="officeDelete" hidden value="<?php echo $row["supply_id"]; ?>">Delete</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </td>           
-            </tr>
-          <?php 
-              }
-          ?>
-        </tbody>
+
         <tfoot>
            <tr>
-            <!--  <th>Date Received</th>
+             <!-- <th>Date Received</th>
                   <th>Time Received</th> -->
                   <th>Expiration Date</th> 
                   <th>Description</th>
@@ -631,9 +590,9 @@
                   <th>Good Condition</th>
                   <th>Damaged</th>
                   <th> Action</th> 
-        </tr> 
+            </tr> 
         </tfoot>
-      </table>
+      </table>              
             </div>
             <!-- /.box-body -->
           </div>
@@ -644,9 +603,8 @@
       <!-- /.row -->
                 <div class="row no-print">
         <div class="col-xs-12">
-          <a href="../examples/officeSuppliesPrint.php" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-            <i class="fa fa-download"></i> Generate PDF
+          <button type="button" class="btn btn-default pull-right" style="margin-right: 1px;"><i class="fa fa-print"></i>
+            <a href="../examples/officeSuppliesPrint.php"> Print</a>
           </button>
         </div>
       </div>
@@ -678,31 +636,25 @@
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
 <!-- Select2 -->
 <script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- InputMask -->
 <script src="../../plugins/input-mask/jquery.inputmask.js"></script>
 <script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<!-- date-range-picker -->
-<script src="../../bower_components/moment/min/moment.min.js"></script>
-<script src="../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+
 <!-- bootstrap datepicker -->
 <script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- bootstrap color picker -->
 <script src="../../bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 <!-- bootstrap time picker -->
 <script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
-    
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-<!-- page script -->
+    <!-- bootstrap time picker -->
+<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 
 <script>
   //date and time
@@ -727,18 +679,47 @@
     })
   })
 </script>
-<script>
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
-</script>
+<!--create modal dialog for display detail info for edit on button cell click-->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div id="content-data"></div>
+            </div>
+        </div>
+   
+    <script>
+        $(document).ready(function(){
+            var dataTable=$('#example').DataTable({
+                'autoWidth' : false,
+                "processing": true,
+                "serverSide": true,
+                "ajax":{
+                    url:"php/officeSuppliesFetch.php",
+                    type:"post"
+                }
+            });
+        });
+    </script>
+
+    <!--script js for get edit data-->
+    <script>
+        $(document).on('click','#getEdit',function(e){
+            e.preventDefault();
+            var per_id=$(this).data('id');
+            //alert(per_id);
+            $('#content-data').html('');
+            $.ajax({
+                url:'php/officeSuppliesEdit.php',
+                type:'POST',
+                data:'id='+per_id,
+                dataType:'html'
+            }).done(function(data){
+                $('#content-data').html('');
+                $('#content-data').html(data);
+            }).final(function(){
+                $('#content-data').html('<p>Error</p>');
+            });
+        });
+    </script>
+
 </body>
 </html>
