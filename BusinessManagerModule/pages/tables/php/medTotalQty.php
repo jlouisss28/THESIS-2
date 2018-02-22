@@ -606,9 +606,8 @@
             <!-- PRINT AND PDF -->
               <div class="row no-print">
         <div class="col-xs-12">
-          <a href="../../examples/medicalSuppliesTotalQtyPrint.php" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-            <i class="fa fa-download"></i> Generate PDF
+          <button type="button" class="btn btn-default pull-right" style="margin-right: 5px;">
+          <a href="../../examples/medicalSuppliesTotalQtyPrint.php"><i class="fa fa-print"></i> Print</a>
           </button>
         </div>
       </div>
