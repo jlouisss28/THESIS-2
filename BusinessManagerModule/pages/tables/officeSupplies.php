@@ -210,7 +210,7 @@
               <li class="user-footer">
          
                 <div class="pull-right">
-                  <a href="../../../logout.php"  class="btn btn-default btn-flat">Sign out</a>
+                 
                 </div>
               </li>
             </ul>
