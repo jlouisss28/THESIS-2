@@ -217,7 +217,7 @@
               <li class="user-footer">
         
                 <div class="pull-right">
-                  <a href="../index.php" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
                 <div class="pull-left">
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
