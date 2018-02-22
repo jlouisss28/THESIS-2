@@ -19,6 +19,6 @@ $connection=mysqli_connect('localhost','root','','itproject');
   }
   $sql->close();   
   $connection->close();
-  header("Location: index.php");
+  header("Location: useraccounts.php");
   } 
 ?>

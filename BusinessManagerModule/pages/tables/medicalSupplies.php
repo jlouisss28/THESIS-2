@@ -230,7 +230,7 @@
               <li class="user-footer">
             
                 <div class="pull-right">
-                  <a href="../examples/login.html" class="btn btn-default btn-flat">Sign out</a>
+                 
                 </div>
               </li>
             </ul>
