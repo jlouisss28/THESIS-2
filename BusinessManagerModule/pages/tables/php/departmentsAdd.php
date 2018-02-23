@@ -15,5 +15,5 @@ mysqli_select_db($connection, "itproject");
   $sql->close();   
   $connection->close();
   } 
-  header("Location: ../data4.php");
+  header("Location: ../departments.php");
 ?>
