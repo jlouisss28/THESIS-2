@@ -1,4 +1,4 @@
-<!--?php 
+<?php 
 	$conn =mysqli_connect('localhost','root','', 'itproject');
 
 	//$del_id = $_GET['suppDelete'];
@@ -13,13 +13,13 @@
 		//$conn->close();
 	//	header('location:../data3.php');
 	//}
-	$desc = $conn->escape_string($_GET['purDelete']);
-	$sql = "DELETE from purchase_orders WHERE description='$desc'"; 
+	$del_id = $conn->escape_string($_GET['suppDelete']);
+	$sql = "DELETE FROM suppliers WHERE suppliers_ID='$del_id'";
 	if($result = mysqli_query($conn, $sql)) {
       echo' "Deleted Successfully"';
     } else {
       echo' "Problem in Deleting the Record"';
     }
 
-	//header("Location: ../purchases.php");
+	//header("Location: ../data3.php");
 ?>
