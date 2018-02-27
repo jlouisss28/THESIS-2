@@ -163,7 +163,7 @@
               <li class="user-footer">
             
                 <div class="pull-right">
-                  <a href="../../../logout.php" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../../../index.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -261,7 +261,12 @@
             </span>
           </a>
         </li>
-
+    <!---------------------------------------------------- INVOICE MENU -------------------------------------------------------------->
+        <li>
+          <a href="pages/examples/invoice.php">
+            <i class="fa fa-print"></i> <span>Logs</span>
+          </a>
+        </li>
 <!---------------------------------------------------- LOCKSCREEN MENU -------------------------------------------------------------->
         <li>
           <a href="../examples/lockscreen.php">
@@ -306,7 +311,7 @@
                         <ul class="dropdown-menu">
                           <li><a href="#">All Branches</a></li>
                           <li><a href="php/branchBaguio.php">Baguio City</a></li>
-                          <li><a href="php/branchBaguio.php">La Trinidad</a></li>
+                          <li><a href="php/branchLA.php">La Trinidad</a></li>
                         </ul>
                       </div></th>
                     </tr>

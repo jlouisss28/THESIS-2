@@ -12,7 +12,7 @@ $col = array(
     5   =>  'user_id',
 );  //create column like table in database
 
-$sql ="SELECT * FROM departments";
+$sql ="SELECT * FROM departments WHERE branch_location = 'Baguio City'";
 $query=mysqli_query($con,$sql);
 
 $totalData=mysqli_num_rows($query);
@@ -20,7 +20,7 @@ $totalData=mysqli_num_rows($query);
 $totalFilter=$totalData;
 
 //Search
-$sql ="SELECT * FROM departments WHERE 1=1";
+$sql ="SELECT * FROM departments WHERE 1=1 AND branch_location = 'Baguio City'";
 if(!empty($request['search']['value'])){
     $sql.=" OR department_id Like '".$request['search']['value']."%' ";
     $sql.=" OR department_name Like '".$request['search']['value']."%' ";
@@ -49,7 +49,7 @@ while($row=mysqli_fetch_array($query)){
 
            //create event on click in button edit in cell datatable for display modal dialog           $row[0] is id in table on database
     $subdata[]='<button type="button" id="getEdit" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal" data-id="'.$row[0].'"><i class="glyphicon glyphicon-pencil">&nbsp;</i>Edit</button>
-             <a href="departments.php?delete='.$row[0].'" onclick="return confirm(\'Are You Sure ?\')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash">&nbsp;</i>Delete</a>';
+             <a href="branchLA.php?delete='.$row[0].'" onclick="return confirm(\'Are You Sure ?\')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash">&nbsp;</i>Delete</a>';
     $data[]=$subdata;
 }
 

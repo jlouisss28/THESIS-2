@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Assistant | Departments</title>
-    <meta charset="utf-8">
+  <title>Business Manager | Departments</title>
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -20,12 +21,11 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../../dist/css/skins/_all-skins.min.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+   <!-- datatable lib -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
 
   <!-- Google Font -->
   <link rel="stylesheet"
@@ -33,9 +33,10 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-<header class="main-header">
+
+  <header class="main-header">
     <!-- Logo -->
-    <a href="../../dashboard.html" class="logo">
+    <a href="../../../dashboard.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>MDC</span>
       <!-- logo for regular state and mobile devices -->
@@ -53,59 +54,17 @@
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-         <li class= "user user-menu">
+          <li class= "user user-menu">
                     <a class = "dropdown-toggle">
                         <span class="hidden-xs" id="demo"></span>
                         <script>
-                            var d = new Date();
-                            document.getElementById("demo").innerHTML = d.toUTCString();
+                          var d = new Date().toString();
+                          d=d.split(' ').slice(0, 6).join(' ');
+                          document.getElementById("demo").innerHTML = d;
                         </script>
                     </a>
                 </li>
-          
-          <!-- Notifications: style can be found in dropdown.less -->
-          <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                      page and may cause design problems
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-red"></i> 5 new members joined
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-user text-red"></i> You changed your username
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="footer"><a href="#">View all</a></li>
-            </ul>
-          </li>
+         
           <!-- Tasks: style can be found in dropdown.less -->
           <li class="dropdown tasks-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -187,29 +146,30 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../../dist/img/user2-128x128.png" class="user-image" alt="User Image">
-                <span class="hidden-xs">Business Manager</span>
+              <img src="../../../dist/img/user2-128x128.png" class="user-image" alt="User Image">
+              <span class="hidden-xs">Business Manager</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="../../dist/img/user2-128x128.png" class="img-circle" alt="User Image">
+                <img src="../../../dist/img/user2-128x128.png" class="img-circle" alt="User Image">
 
                 <p>
                  Business Manager
-                  <small>Member since Oct. 2017</small>
+                  <small>Member since </small>
                 </p>
-              </li>
+                </li>
               <!-- Menu Footer-->
               <li class="user-footer">
-          
+            
                 <div class="pull-right">
-                  <a href="../examples/login.html" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../../../../logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
+
         </ul>
       </div>
     </nav>
@@ -221,7 +181,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../../dist/img/user2-128x128.png" class="img-circle" alt="User Image">
+          <img src="../../../dist/img/user2-128x128.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Business Manager</p>
@@ -242,76 +202,21 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Inventory System</li>
-  <!---------------------------------------------------- DASHBOARD MENU -------------------------------------------------------------->
+	<!---------------------------------------------------- DASHBOARD MENU -------------------------------------------------------------->
          <li>
-          <a href="../../dashboard.html">
+          <a href="../../../dashboard.php">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
-          <!-- <li class="treeview">
-          <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>Charts</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Layout Options</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-            <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-          </ul>
-        </li>
+  <!---------------------------------------------------- USER ACCOUNTS MENU -------------------------------------------------------------->
         <li>
-          <a href="pages/widgets.html">
-            <i class="fa fa-th"></i> <span>Widgets</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
-            </span>
-          </a>
-        </li>
-       
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>UI Elements</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-            <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-            <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-            <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-            <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-          </ul>
-        </li> -->
-    <!---------------------------------------------------- MANAGE ACCOUNTS MENU -------------------------------------------------------------->
-        <li>
-          <a href="../forms/general.html">
-            <i class="fa fa-group"></i> <span>Manage Accounts</span>
-          </a>
-        </li>
-    <!---------------------------------------------------- SUPPLIES MENU -------------------------------------------------------------->
-        <li class = "treeview">
+              <a href="../../forms/useraccounts.php">
+                  <i class="fa fa-tags"></i><span>Manage Accounts</span>  
+              </a>
+          </li>
+	
+		<!---------------------------------------------------- SUPPLIES MENU -------------------------------------------------------------->
+        <li class ="treeview">
           <a href="#">
             <i class="fa fa-briefcase"></i> <span>Supplies</span>
             <span class="pull-right-container">
@@ -319,36 +224,36 @@
             </span>
           </a>
           <ul class="treeview-menu">
-      <li><a href="data.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
-      <li><a href="data2.html"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
+			<li><a href="../medicalSupplies.php"><i class= "fa fa-medkit"></i> Medical Supplies</a></li>
+			<li><a href="../officeSupplies.php"><i class="fa fa-pencil-square-o"></i> Office Supplies</a></li>
           </ul>
         </li>
         <!--------------------------------------------------- PURCHASES -------------------------------------------------->
           <li>
-              <a href="data5.html">
+              <a href="../purchases.php">
                   <i class="fa fa-tags"></i><span>Purchases</span>  
               </a>
           </li>
         <!--------------------------------------------------- ISSUED SUPPLIES -------------------------------------------------->
-            <li><a href="data6.html">
+            <li><a href="../issuedSupplies.php">
                 <i class="fa fa-truck"></i><span>Issued Supplies</span> 
                 </a>
           </li>
-    <!---------------------------------------------------- SUPPLIERS MENU -------------------------------------------------------------->
+		<!---------------------------------------------------- SUPPLIERS MENU -------------------------------------------------------------->
         <li>
-          <a href="data3.html">
+          <a href="../suppliers.php">
             <i class="fa fa-user"></i> <span>Suppliers</span>
           </a>
         </li>
-    <!---------------------------------------------------- DEPARTMENTS MENU -------------------------------------------------------------->
-        <li class = "active">
-          <a href="../data4.php">
+		<!---------------------------------------------------- DEPARTMENTS MENU -------------------------------------------------------------->
+        <li class="active">
+          <a href="../departments.php">
             <i class="fa fa-building"></i> <span>Departments</span>
           </a>
         </li>
-    <!---------------------------------------------------- CALENDAR MENU -------------------------------------------------------------->
+		<!---------------------------------------------------- CALENDAR MENU -------------------------------------------------------------->
         <li>
-          <a href="../calendar.html">
+          <a href="../../calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red">3</small>
@@ -356,56 +261,20 @@
             </span>
           </a>
         </li>
-    <!---------------------------------------------------- INVOICE MENU -------------------------------------------------------------->
+        <!---------------------------------------------------- INVOICE MENU -------------------------------------------------------------->
         <li>
-          <a href="../examples/invoice.html">
+          <a href="../../examples/logs.php">
             <i class="fa fa-print"></i> <span>Logs</span>
           </a>
         </li>
+
 <!---------------------------------------------------- LOCKSCREEN MENU -------------------------------------------------------------->
         <li>
-          <a href="../examples/lockscreen.html">
+          <a href="../../examples/lockscreen.php">
             <i class="fa fa-lock"></i> <span>Lockscreen</span>
           </a>
         </li>
-        <!-- <li class="treeview">
-          <a href="#">
-            <i class="fa fa-share"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Level One
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                <li class="treeview">
-                  <a href="#"><i class="fa fa-circle-o"></i> Level Two
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-          </ul>
-        </li>
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-        <li class="header">LABELS</li>
-        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li> -->
+        
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -427,33 +296,31 @@
       </ol>
     </section>
 
-
     <!-- Main content -->
       <section class="content">
-      <div class="row">
+          <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
               <!-- <h3 class="box-title">Office Supplies</h3> -->
-                <table style="float: left;">
+              <table style="float: left;">
                     <tr>
                         <th> <div class="btn-group">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Branch
                           <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                          <li><a href="../data4.php">All Branches</a></li>
+                          <li><a href="../departments.php">All Branches</a></li>
                           <li><a href="#">Baguio City</a></li>
                           <li><a href="branchLA.php">La Trinidad</a></li>
                         </ul>
                       </div></th>
                     </tr>
-                </table> 
+                </table>
                 <table style="float:right;">
-                    <tr>
-   
-                        <th><button type="submit" class="btn btn-primary btn-block btn-info">Edit</button></th>
+                    <tr>                    
                         <th><button type="submit" class="btn btn-primary btn-block btn-warning" data-toggle="modal" data-target="#modal-info">Add</button>
+                        <form name="form1" method="post" action="departmentsAdd.php" >
                         <div class="modal fade" id="modal-info">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
@@ -468,80 +335,64 @@
                                       <div class="modal-body">
                                         <div class="box-body">
                                           <table class="table table-bordered table-striped">
-                                            <thead>
-                                            <tr>
-                                                <th>Department Name</th>
-                                            </tr>
-                                            </thead>
                                             <tbody>
                                             <tr>
                                               <td><div class="form-group">
-                                                  <label for="exampleInputEmail1"></label>
-                                                  <input type="email" class="form-control">
+                                                  <label for="exampleInputEmail1">Department Name</label>
+                                                  <input type="text" class="form-control" name="depName" required />
                                                 </div></td>
                                             </tr>
                                                
-                                                             <th> <div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Branch
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Baguio City</a></li>
-                          <li><a href="#">La Trinidad</a></li>
-                        </ul>
-                      </div></th>
+                                                             <th> 
+                                                             <div class="form-group">
+                                                  <label for="exampleInputEmail1">Branch Location</label>
+                                                  <br>
+                                                  <input type="radio" name="branch" value="Baguio City"> Baguio City <br>
+                                                  <input type="radio" name="branch" value="La Trinidad"> La Trinidad <br>
+                                                </div> 
+                                             </th>
                                             </tbody>
                                           </table>
                                         </div>
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-primary">Save Department</button>
+                                        <button type="submit" class="btn btn-primary" name="addDep">Save Department</button>
                                       </div>
                                     </div>
                                     <!-- /.modal-content -->
                                   </div>
                                   <!-- /.modal-dialog -->
-                                </div></th>
+                                </div>
+                                </form>
+                                </th>
                     </tr>
-                </table> 
+                </table>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                  <?php
-                  
-                  include ('../../../../db.php');
-                  
-                  echo'
-                    <thead>
-                        <tr>
-                            <th>Department Name</th>
-                            <th>Branch Location</th>
-                        </tr>
-                    </thead>
-                  ';
-                  
-                  $sql = "SELECT department_name, branch_location FROM departments WHERE branch_location LIKE '%Baguio City%'";
-                  $result = mysqli_query($conn, $sql);
-                  if ($result = mysqli_query($conn, $sql)){
-                      while ($row = mysqli_fetch_row($result)){
-                          echo'
-                            <tbody>
-                                <tr>
-                                    <td>'.$row[0].'</td>
-                                    <td>'.$row[1].'</td>
-                                </tr>
-                                
-                            </tbody>
-                          ';
-                      }
-                  }
-                  
-                  ?>
+              <div class="box-body">
+              <table id="example" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Department Name</th>
+                        <th>Branch Location</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
                 
-              </table>
+                <tfoot>
+                  <tr>
+                    <th>Department Name</th>
+                        <th>Branch Location</th>
+                        <th>Action</th>
+                    
+                  </tr>
+                </tfoot>
+            </table>
+
             </div>
+
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
@@ -549,6 +400,15 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
+          <div class="row no-print">
+        <div class="col-xs-12">
+          <a href="../../examples/printDepartments.php" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+          <button type="button" class="btn btn-primary pull-right" style=s"margin-right: 5px;">
+            <i class="fa fa-download"></i> Generate PDF
+          </button>
+        </div>
+      </div>
+    
     </section>
     <!-- /.content -->
   </div>
@@ -566,6 +426,66 @@
 </div>
 <!-- ./wrapper -->
 
+<style>
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}    
+</style>
 <!-- jQuery 3 -->
 <script src="../../../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -577,23 +497,123 @@
 <script src="../../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- Select2 -->
+<script src="../../../bower_components/select2/dist/js/select2.full.min.js"></script>
+<!-- InputMask -->
+<script src="../../../plugins/input-mask/jquery.inputmask.js"></script>
+<script src="../../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="../../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
+
+<!-- bootstrap datepicker -->
+<script src="../../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- bootstrap color picker -->
+<script src="../../../bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- bootstrap time picker -->
+<script src="../../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../../dist/js/demo.js"></script>
+    <!-- bootstrap time picker -->
+<script src="../../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- page script -->
+
 <script>
+<!-- date and time -->
   $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    })
+    //Date picker
+    $('#datepicker2').datepicker({
+      autoclose: true
+    })
+    //Date picker
+    $('#datepicker3').datepicker({
+      autoclose: true
+    })
+      
+    //Timepicker
+    $('.timepicker').timepicker({
+      showInputs: false
     })
   })
 </script>
+
+<!--create modal dialog for display detail info for edit on button cell click-->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div id="content-data"></div>
+            </div>
+        </div>
+   
+    <script>
+        $(document).ready(function(){
+            var dataTable=$('#example').DataTable({
+                "processing": true,
+                "serverSide":true,
+                "ajax":{
+                    url:"departmentsBaguioFetch.php",
+                    type:"post"
+                }
+            });
+        });
+    </script>
+
+    <!--script js for get edit data-->
+    <script>
+        $(document).on('click','#getEdit',function(e){
+            e.preventDefault();
+            var per_depId=$(this).data('id');
+            //alert(per_id);
+            $('#content-data').html('');
+            $.ajax({
+                url:'departmentsEdit.php',
+                type:'POST',
+                data:'id='+per_depId,
+                dataType:'html'
+            }).done(function(data){
+                $('#content-data').html('');
+                $('#content-data').html(data);
+            }).final(function(){
+                $('#content-data').html('<p>Error</p>');
+            });
+        });
+    </script>
 </body>
 </html>
+
+<?php
+$con=mysqli_connect('localhost','root','','itproject');
+if(isset($_POST['btnEdit'])){
+    $new_id=mysqli_real_escape_string($con,$_POST['txtid']);
+    $new_depName=mysqli_real_escape_string($con,$_POST['txtdepartmentname']);
+    $new_branchLoc=mysqli_real_escape_string($con,$_POST['txtlocation']);
+
+    $sqlupdate="UPDATE departments SET department_name='$new_depName', branch_location='$new_branchLoc' WHERE department_id='$new_id' ";
+    $result_update=mysqli_query($con,$sqlupdate);
+
+    if($result_update){
+        echo '<script>window.location.href="branchLA.php"</script>';
+    }
+    else{
+        echo '<script>alert("Update Failed")</script>';
+    }
+}
+
+if(isset($_GET['delete'])){
+    $id=$_GET['delete'];
+    $sqldelete="DELETE FROM departments WHERE department_id='$id'";
+    $result_delete=mysqli_query($con,$sqldelete);
+    if($result_delete){
+        echo'<script>window.location.href="branchLA.php"</script>';
+    }
+    else{
+        echo'<script>alert("Delete Failed")</script>';
+    }
+}
+?>
