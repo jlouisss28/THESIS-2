@@ -1,9 +1,19 @@
+<?php
+//index.php
+include("database_connection.php");
+if(!isset($_SESSION["type"]))
+{
+ header("location:login.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Business Manager | General Form Elements</title>
+  <title>Business Manager | User Accounts</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -28,6 +38,8 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  
    <style>
     .example-modal .modal {
       position: relative;
@@ -214,7 +226,7 @@
               <li class="user-footer">
          
                 <div class="pull-right">
-                   <a href="../../../logout.php" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../../../logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -253,69 +265,14 @@
         <li class="header">Inventory System</li>
     <!---------------------------------------------------- DASHBOARD MENU -------------------------------------------------------------->
         <li>
-          <a href="../../index.html">
+          <a href="../../dashboard.php">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-          <!-- <li class="treeview">
-          <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>Charts</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Layout Options</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-            <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="pages/widgets.html">
-            <i class="fa fa-th"></i> <span>Widgets</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
-            </span>
-          </a>
-        </li>
-       
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>UI Elements</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-            <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-            <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-            <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-            <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-          </ul>
-        </li> -->
+         
         <!---------------------------------------------------- MANAGE ACCOUNTS MENU -------------------------------------------------------------->
         <li class="active">
-          <a href="general.html">
+          <a href="useraccounts.php">
             <i class="fa fa-group"></i> <span>Manage Accounts</span>
           </a>
         </li>
@@ -334,7 +291,7 @@
         </li>
         <!--------------------------------------------------- PURCHASES -------------------------------------------------->
           <li>
-              <a href="../tables/data5.html">
+              <a href="../tables/purchases.php">
                   <i class="fa fa-tags"></i><span>Purchases</span>  
               </a>
           </li>
@@ -357,7 +314,7 @@
         </li>
         <!---------------------------------------------------- CALENDAR MENU -------------------------------------------------------------->
         <li>
-          <a href="../calendar.html">
+          <a href="../calendar.php">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red">3</small>
@@ -367,7 +324,7 @@
         </li>
         <!---------------------------------------------------- INVOICE MENU -------------------------------------------------------------->
         <li>
-          <a href="../examples/invoice.html">
+          <a href="../examples/invoice.php">
             <i class="fa fa-print"></i> <span>Logs</span>
           </a>
         </li>
@@ -377,44 +334,7 @@
             <i class="fa fa-lock"></i> <span>Lockscreen</span>
           </a>
         </li>
-        <!-- <li class="treeview">
-          <a href="#">
-            <i class="fa fa-share"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Level One
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                <li class="treeview">
-                  <a href="#"><i class="fa fa-circle-o"></i> Level Two
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-          </ul>
-        </li>
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-        <li class="header">LABELS</li>
-        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li> -->
+      
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -435,96 +355,9 @@
     </section>
 
      <!-- Main content -->
-    <section class="content">
-      <div class="row">
-          <div class="col-xs-12">
-              <table style="float:right;">
-                    <tr>
-                        <th><button type="submit" class="btn btn-primary btn-block btn-warning" data-toggle="modal" data-target="#modal-info">Add</button>
-                        
-                        <form name="form1" method="post" action="adduseraccounts.php">
-                        <div class="modal fade" id="modal-info">
-                                  <div class="modal-dialog">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span></button>
-                                        <div class="margin">
-                                            <h3>Add User Account</h3>
-                                          </div>
-                                      </div>
-                                        <!-- end of modal header -->
-                                      <div class="modal-body">
-                                        <div class="box-body">
-                                               <div class="form-group">
-                                                  <label for="exampleInputEmail1">Username</label>
-                                                  <input type="text" class="form-control" name="username" required />
-                                                </div>
-                                                <div class="form-group">
-                                                  <label for="exampleInputEmail1">First Name</label>
-                                                  <input type="text" class="form-control" name="fname" required />
-                                                </div>
-                                                <div class="form-group">
-                                                  <label for="exampleInputEmail1">Last Name</label>
-                                                  <input type="text" class="form-control" name="lname" required />
-                                                </div>
-                                                <div class="form-group">
-                                                  <label for="exampleInputEmail1">Contact Number</label>
-                                                  <input type="number" class="form-control" name="user_contact" required />
-                                                </div>
-                                                <div class="form-group">
-                                                  <label for="exampleInputEmail1">Password</label>
-                                                  <input type="password" class="form-control" name="password" required />
-                                                </div>
-                                                <div class="form-group">
-                                                  <label for="exampleInputEmail1">Email</label>
-                                                  <input type="email" class="form-control" name="email" required />
-                                                </div>
-                     
-                                        </div>
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn btn-primary" name="addUser">Save User Account</button>
-                                      </div>
-                                    </div>
-                                    <!-- /.modal-content -->
-                                    
-                                  </div>
-                                  <!-- /.modal-dialog -->
-                                </div>
-                                </form>
-                            </th> 
-          <div class="box">
-    <div class="container">
 
+     
 
-<br>
-        <table id="example" class="display" cellspacing="0" width="100%">
-            <thead>
-            <tr>
-                <th>Userame</th>
-                <th>Password</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Contact Number</th>
-                <th>Email</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tfoot>
-            <tr>
-                <th>Userame</th>
-                <th>Password</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Contact Number</th>
-                <th>Email</th>
-                <th>Action</th>
-            </tr>
-            </tfoot>
-        </table>
-         
 <style>
 
 /* The switch - the box around the slider */
@@ -587,27 +420,8 @@ input:checked + .slider:before {
 }    
 </style>
         
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        <!-- left column -->
 
-                
-              </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
-    </div>
-    <strong>Copyright &copy; Bigornia, Cabalse, Calimlim, Calub, Duco, Malong, Siapno, Soy. </strong> All rights
-    reserved.
-  </footer>
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
-</div>
+
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
@@ -621,6 +435,70 @@ input:checked + .slider:before {
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 
+       
+   <?php
+   if($_SESSION["type"] == "user")
+   {
+    echo '<div align="center"><h2>Hi... Welcome User</h2></div>';
+   }
+   else
+   {
+   ?>
+   <div class="panel panel-default">
+    <div class="panel-body">
+     <span id="message"></span>
+     <div class="table-responsive" id="user_data">
+      
+     </div>
+     <script>
+     $(document).ready(function(){
+      
+      load_user_data();
+      
+      function load_user_data()
+      {
+       var action = 'fetch';
+       $.ajax({
+        url:'action.php',
+        method:'POST',
+        data:{action:action},
+        success:function(data)
+        {
+         $('#user_data').html(data);
+        }
+       });
+      }
+      
+      $(document).on('click', '.action', function(){
+       var user_id = $(this).data('user_id');
+       var user_status = $(this).data('user_status');
+       var action = 'change_status';
+       $('#message').html('');
+       if(confirm("Are you Sure you want to change status of this User?"))
+       {
+        $.ajax({
+         url:'action.php',
+         method:'POST',
+         data:{user_id:user_id, user_status:user_status, action:action},
+         success:function(data)
+         {
+          if(data != '')
+          {
+           load_user_data();
+           $('#message').html(data);
+          }
+         }
+        });
+       }
+       else
+       {
+        return false;
+       }
+      });
+      
+     });
+     </script>
+
         <!--create modal dialog for display detail info for edit on button cell click-->
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
@@ -628,22 +506,9 @@ input:checked + .slider:before {
             </div>
         </div>
     </div>
-   
 
-    <script>
-        $(document).ready(function(){
-            var dataTable=$('#example').DataTable({
-                "processing": true,
-                "serverSide":true,
-                "ajax":{
-                    url:"fetchuseraccounts.php",
-                    type:"post"
-                }
-            });
-        });
-    </script>
 
-    <!--script js for get edit data-->
+     <!--script js for get edit data-->
     <script>
         $(document).on('click','#getEdit',function(e){
             e.preventDefault();
@@ -651,19 +516,28 @@ input:checked + .slider:before {
             //alert(per_id);
             $('#content-data').html('');
             $.ajax({
-                url:'edituseraccounts.php',
+                url:'action.php',
                 type:'POST',
                 data:'id='+per_id,
                 dataType:'html'
             }).done(function(data){
                 $('#content-data').html('');
                 $('#content-data').html(data);
-            }).fial(function(){
+            }).final(function(){
                 $('#content-data').html('<p>Error</p>');
             });
         });
     </script>
-</body>
+
+
+    </div>
+   </div>
+   <?php
+   }
+   ?>
+
+</div>
+ </body>
 </html>
 
 <?php
@@ -678,7 +552,7 @@ if(isset($_POST['btnEdit'])){
     $new_email=mysqli_real_escape_string($con,$_POST['txtemail']);
 
     $sqlupdate="UPDATE users SET username='$new_username',
-                password='$new_password', lname='$new_lname', fname='$new_fname', user_contact='$new_usercontact', email='$new_email' WHERE user_id='$new_id' ";
+                password='$new_password', lname='$new_lname', fname='$new_fname', user_contact='$new_usercontact', user_email='$new_email' WHERE user_id='$new_id' ";
     $result_update=mysqli_query($con,$sqlupdate);
 
     if($result_update){
@@ -700,5 +574,5 @@ if(isset($_GET['delete'])){
         echo'<script>alert("Delete Failed")</script>';
     }
 }
-?>
 
+?>
