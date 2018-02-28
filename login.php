@@ -21,7 +21,8 @@
 
 
  if($query->rowCount() == 0){
-        echo "<h1> Username of Password Incorrect </h1>";
+    echo "<h1> ERROR </h1>";
+     // header("location: errorindex2.php");   
   //header('Location: index.php?err=1');
  }else{
 
@@ -45,10 +46,7 @@
         header('Location: SupervisorModule/dashboard.html');
         session_write_close();
         exit();
-     /* }elseif( $_SESSION['sess_userrole'] == "Supervisor" && $row["user_status"] == 'Active') {
-          # code... */
-      }
-      else{
+     }else{
         header("location: errorindex.php");
       }
   } 
