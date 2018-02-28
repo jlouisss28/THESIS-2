@@ -1,9 +1,9 @@
 <?php
     require('db.php');
-    session_start();
     
     $username="";
     $password="";
+    $message='';
 
     if(isset($_POST['username'])){
       $username = $_POST['username'];
@@ -21,7 +21,7 @@
 
 
  if($query->rowCount() == 0){
-        echo '<h1> ERROR </h1>';
+        echo "<h1> Username of Password Incorrect </h1>";
   //header('Location: index.php?err=1');
  }else{
 
@@ -33,15 +33,23 @@
       $_SESSION['sess_userrole'] = $row['user_type'];
         echo $_SESSION['sess_userrole'];
 
-      if( $_SESSION['sess_userrole'] == "BusinessManager"){
+      if( $_SESSION['sess_userrole'] == "BusinessManager" && $row["user_status"] == 'Active'){
        header('Location: BusinessManagerModule/dashboard.php');
        session_write_close();
-      }elseif( $_SESSION['sess_userrole'] == "Assistant"){
+       exit();
+      }elseif( $_SESSION['sess_userrole'] == "Assistant" && $row["user_status"] == 'Active'){
        header('Location: AssistantModule/dashboard.html');
        session_write_close();
-      }else{
+       exit();
+      }elseif( $_SESSION['sess_userrole'] == "Supervisor" && $row["user_status"] == 'Active'){
         header('Location: SupervisorModule/dashboard.html');
         session_write_close();
+        exit();
+     /* }elseif( $_SESSION['sess_userrole'] == "Supervisor" && $row["user_status"] == 'Active') {
+          # code... */
+      }
+      else{
+        header("location: errorindex.php");
       }
   } 
 ?>

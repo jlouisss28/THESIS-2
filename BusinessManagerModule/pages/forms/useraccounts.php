@@ -1,11 +1,6 @@
 <?php
 //index.php
 include("database_connection.php");
-if(!isset($_SESSION["type"]))
-{
- header("location:login.php");
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -435,15 +430,7 @@ input:checked + .slider:before {
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 
-       
-   <?php
-   if($_SESSION["type"] == "user")
-   {
-    echo '<div align="center"><h2>Hi... Welcome User</h2></div>';
-   }
-   else
-   {
-   ?>
+  
    <div class="panel panel-default">
     <div class="panel-body">
      <span id="message"></span>
@@ -532,9 +519,6 @@ input:checked + .slider:before {
 
     </div>
    </div>
-   <?php
-   }
-   ?>
 
 </div>
  </body>

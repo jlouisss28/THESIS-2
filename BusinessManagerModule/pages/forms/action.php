@@ -188,7 +188,7 @@ $connection=mysqli_connect('localhost','root','','itproject');
   $lname = $_POST['lname'];
   $user_contact = $_POST['user_contact'];
   $password = $_POST['password'];
-  $user_email = $_POST['email'];
+  $user_email = $_POST['user_email'];
   $sql->bind_param("ssssss", $username, $fname, $lname, $user_contact, $password, $user_email);
 
   if($sql->execute()) {

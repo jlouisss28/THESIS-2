@@ -26,6 +26,7 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+ 
 </head>
 <body class="hold-transition login-page">
 
@@ -50,7 +51,7 @@
       <div class="row" style="display: flex; align-items: center; justify-content: center;">
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" name="S1" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" name="login" class="btn btn-primary btn-block btn-flat">Sign In</button>
         </div>
         <!-- /.col -->
       </div>

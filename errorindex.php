@@ -47,7 +47,7 @@
         <input type="password" class="form-control" name="password" placeholder="Password" required/>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
-      <center><font color="red"><p>Username or Password is Incorrect!</p></font></center>
+      <center><font color="red"><p>User Inactive Please Contact the Admin</p></font></center>
       <div class="row" style="display: flex; align-items: center; justify-content: center;">
         <!-- /.col -->
 
