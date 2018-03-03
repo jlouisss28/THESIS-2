@@ -131,23 +131,37 @@
               <span class="label label-danger">9</span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have 9 tasks</li>
+                  <?php
+                    require_once("../../../db.php");
+                    $sql2 = "SELECT * from supplies where quantity_in_stock < reorder_level order by supply_description";
+                    $result2 = $conn->query($sql2);
+                  ?>
+              <li class="header">Items below reorder level</li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
                   <li><!-- Task item -->
                     <a href="#">
                       <h3>
-                        Tissue
-                        <small class="pull-right">20%</small>
+                    <?php 
+                      if ($result2->num_rows > 0) {
+                        while($row = $result2->fetch_assoc()) { ?>
+                          <?php echo $row["supply_description"]; 
+                                $newvalue = $row["quantity_in_stock"] * 100;
+                                $percentage = $newvalue / $row["reorder_level"];
+                          ?>
+                        <small class="pull-right"><?php echo $percentage ?>%</small>
                       </h3>
                       <div class="progress xs">
-                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
+                        <div class="progress-bar progress-bar-aqua" style="width: <?php echo $percentage ?>%" role="progressbar"
                              aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">20% </span>
                         </div>
                       </div>
                     </a>
+                    <?php
+                    }
+                    }
+                    ?>
                   </li>
                   <!-- end task item -->
                   <li><!-- Task item -->
@@ -165,35 +179,6 @@
                     </a>
                   </li>
                   <!-- end task item -->
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
-                        Joy Liquid Soap
-                        <small class="pull-right">60%</small>
-                      </h3>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">60%</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
-                        Red Tap Tubes
-                        <small class="pull-right">80%</small>
-                      </h3>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">80%</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
                   <!-- end task item -->
                 </ul>
               </li>

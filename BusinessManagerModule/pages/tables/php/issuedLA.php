@@ -484,7 +484,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <?php
                     require_once("../../../../db.php");
-                    $sql = "SELECT * FROM issuedsupplies where branch_location like '%La%'";
+                    $sql = "SELECT * FROM issuedsupplies where location like '%La%'";
                     $result = $conn->query($sql);
                   ?>
                     <thead>
