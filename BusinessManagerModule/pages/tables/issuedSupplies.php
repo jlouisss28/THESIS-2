@@ -128,58 +128,66 @@
           <li class="dropdown tasks-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-flag-o"></i>
-              <span class="label label-danger">9</span>
+              <span class="label label-danger">!</span><!--Add query to control flag notif value-->
             </a>
             <ul class="dropdown-menu">
                   <?php
                     require_once("../../../db.php");
-                    $sql2 = "SELECT * from supplies where quantity_in_stock < reorder_level order by supply_description";
+                    $sql2 = "select supply_description,SUM(quantity_in_stock) as `totalstock`,MAX(reorder_level) as `maximumreorder` from supplies group by supply_description having SUM(quantity_in_stock) < MAX(reorder_level)";
                     $result2 = $conn->query($sql2);
                   ?>
               <li class="header">Items below reorder level</li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
+                  <!-- Task item reorder levels-->
+                    <li>
                     <?php 
                       if ($result2->num_rows > 0) {
                         while($row = $result2->fetch_assoc()) { ?>
                           <?php echo $row["supply_description"]; 
-                                $newvalue = $row["quantity_in_stock"] * 100;
-                                $percentage = $newvalue / $row["reorder_level"];
+                                $newvalue = $row["totalstock"] * 100;
+                                $percentage = $newvalue / $row["maximumreorder"];
                           ?>
-                        <small class="pull-right"><?php echo $percentage ?>%</small>
-                      </h3>
+                      <small class="pull-right"><?php echo number_format($percentage) ?>%</small>
                       <div class="progress xs">
-                        <div class="progress-bar progress-bar-aqua" style="width: <?php echo $percentage ?>%" role="progressbar"
+                        <div class="progress-bar progress-bar-red" style="width: <?php echo $percentage ?>%" role="progressbar"
                              aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                         </div>
                       </div>
-                    </a>
                     <?php
                     }
                     }
                     ?>
                   </li>
-                  <!-- end task item -->
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
-                        5CC Syringe
-                        <small class="pull-right">40%</small>
-                      </h3>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">40% </span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                  <!-- end task item -->
+                  <!-- end task item expiration notification-->
+                    <li>Items nearing expiration</li>
+                    <?php
+                        require_once("../../../db.php");
+                        $sql3 = "SELECT supply_description,expiration_date from supplies where expiration_date > 0";
+                        $result3 = $conn->query($sql3);
+                        $strdatetoday = strtotime(date("Y/m/d"));
+                        $strdatefuture = $strdatetoday + 2588400;//today + 30 days
+                    ?>
+                    <table id="exp" class="table table-bordered table-striped">
+                    <small>
+                            <?php 
+                              if ($result3->num_rows > 0) {
+                                while($row = $result3->fetch_assoc()) {
+                                    $expdate = strtotime($row["expiration_date"]);
+                                if(($expdate >= $strdatetoday) && ($expdate <= $strdatefuture)) {
+                        ?>
+                                  <tr>
+                                  <td><?php echo $row["supply_description"]; ?></td>
+                                  <td><?php echo $row["expiration_date"]; ?></td>
+                                  </tr>
+                            <?php
+                                }
+                              }
+                            }
+                            ?>
+                    </small>
+                    </table>
                 </ul>
               </li>
               <li class="footer">
