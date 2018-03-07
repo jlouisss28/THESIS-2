@@ -175,8 +175,43 @@
                               if ($result3->num_rows > 0) {
                                 while($row = $result3->fetch_assoc()) {
                                     $expdate = strtotime($row["expiration_date"]);
+                                    $expvalue = abs((($expdate - $strdatetoday) / 2588400)*100);
                                 if(($expdate >= $strdatetoday) && ($expdate <= $strdatefuture)) {
-                        ?>
+                            ?>
+                                  <tr>
+                                  <td><?php echo $row["supply_description"]; ?></td>
+                                  <td><?php echo $row["expiration_date"]; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td><small class="pull-left"><?php echo number_format($expvalue) ?>%</small></td>
+                                    <td><div class="progress xs">
+                                      <div class="progress-bar progress-bar-red" style="width: <?php echo $expvalue ?>%" role="progressbar"
+                                           aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                      </div>
+                                    </div></td>
+                                  </tr>
+                            <?php
+                                }
+                              }
+                            }
+                            ?>
+                    </small>
+                    </table>
+                    <li>Expired Items</li>
+                    <?php
+                        require_once("../../../db.php");
+                        $sql4 = "SELECT supply_description,expiration_date from supplies where expiration_date > 0";
+                        $result4 = $conn->query($sql4);
+                        $strdatetoday = strtotime(date("Y/m/d"));
+                    ?>
+                    <table id="expdue" class="table table-bordered table-striped">
+                    <small>
+                            <?php 
+                              if ($result4->num_rows > 0) {
+                                while($row = $result4->fetch_assoc()) {
+                                    $expdate = strtotime($row["expiration_date"]);
+                                if($expdate < $strdatetoday){
+                            ?>
                                   <tr>
                                   <td><?php echo $row["supply_description"]; ?></td>
                                   <td><?php echo $row["expiration_date"]; ?></td>
