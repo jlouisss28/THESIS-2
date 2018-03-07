@@ -133,14 +133,14 @@
             <ul class="dropdown-menu">
                   <?php
                     require_once("../../../db.php");
-                    $sql2 = "select supply_description,SUM(quantity_in_stock) as `totalstock`,MAX(reorder_level) as `maximumreorder` from supplies group by supply_description having SUM(quantity_in_stock) < MAX(reorder_level)";
+                    $sql2 = "select supply_description,SUM(quantity_in_stock) as `totalstock`,MAX(reorder_level) as `maximumreorder` from supplies group by supply_description having SUM(quantity_in_stock) < MAX(reorder_level) order by SUM(quantity_in_stock)";
                     $result2 = $conn->query($sql2);
                   ?>
-              <li class="header">Items below reorder level</li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
                   <!-- Task item reorder levels-->
+                    <h5>Items below reorder level</h5>
                     <li>
                     <?php 
                       if ($result2->num_rows > 0) {
@@ -149,22 +149,43 @@
                                 $newvalue = $row["totalstock"] * 100;
                                 $percentage = $newvalue / $row["maximumreorder"];
                           ?>
+                        <!--Reorder level meter-->
+                      <?php
+                      if($percentage < 25){
+                      ?>
                       <small class="pull-right"><?php echo number_format($percentage) ?>%</small>
                       <div class="progress xs">
                         <div class="progress-bar progress-bar-red" style="width: <?php echo $percentage ?>%" role="progressbar"
                              aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                         </div>
                       </div>
+                      <?php
+                      }else if($percentage < 50){?>
+                      <small class="pull-right"><?php echo number_format($percentage) ?>%</small>
+                      <div class="progress xs">
+                        <div class="progress-bar progress-bar-yellow" style="width: <?php echo $percentage ?>%" role="progressbar"
+                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                      </div>
+                      <?php
+                      }else if($percentage < 100){?>
+                      <small class="pull-right"><?php echo number_format($percentage) ?>%</small>
+                      <div class="progress xs">
+                        <div class="progress-bar progress-bar-green" style="width: <?php echo $percentage ?>%" role="progressbar"
+                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                      </div>
                     <?php
+                      }
                     }
                     }
                     ?>
                   </li>
                   <!-- end task item expiration notification-->
-                    <li>Items nearing expiration</li>
+                    <h5>Items nearing expiration</h5>
                     <?php
                         require_once("../../../db.php");
-                        $sql3 = "SELECT supply_description,expiration_date from supplies where expiration_date > 0";
+                        $sql3 = "SELECT supply_description,expiration_date from supplies where expiration_date > 0 order by expiration_date";
                         $result3 = $conn->query($sql3);
                         $strdatetoday = strtotime(date("Y/m/d"));
                         $strdatefuture = $strdatetoday + 2588400;//today + 30 days
@@ -182,22 +203,47 @@
                                   <td><?php echo $row["supply_description"]; ?></td>
                                   <td><?php echo $row["expiration_date"]; ?></td>
                                   </tr>
-                                  <tr>
-                                    <td><small class="pull-left"><?php echo number_format($expvalue) ?>%</small></td>
+                                    <!--Expiration meter-->
+                                    <?php
+                                      if($expvalue < 25){
+                                    ?>
+                                    <tr>
+                                    <td><small class="pull-left"><?php echo number_format($expvalue) . "% to Exp"?></small></td>
                                     <td><div class="progress xs">
                                       <div class="progress-bar progress-bar-red" style="width: <?php echo $expvalue ?>%" role="progressbar"
                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                                       </div>
                                     </div></td>
-                                  </tr>
-                            <?php
+                                    </tr>
+                                    <?php
+                                      }else if($expvalue < 50){?>
+                                    <tr>
+                                    <td><small class="pull-left"><?php echo number_format($expvalue) . "% to Exp"?></small></td>
+                                    <td><div class="progress xs">
+                                      <div class="progress-bar progress-bar-yellow" style="width: <?php echo $expvalue ?>%" role="progressbar"
+                                           aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                      </div>
+                                    </div></td>
+                                    </tr>  
+                                    <?php
+                                      }else if($expvalue < 100){?>
+                                    <tr>
+                                    <td><small class="pull-left"><?php echo number_format($expvalue) . "% to Exp"?></small></td>
+                                    <td><div class="progress xs">
+                                      <div class="progress-bar progress-bar-green" style="width: <?php echo $expvalue ?>%" role="progressbar"
+                                           aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                      </div>
+                                    </div></td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    }
                                 }
                               }
-                            }
                             ?>
                     </small>
                     </table>
-                    <li>Expired Items</li>
+                    <h5>Expired Items</h5>
                     <?php
                         require_once("../../../db.php");
                         $sql4 = "SELECT supply_description,expiration_date from supplies where expiration_date > 0";
@@ -212,7 +258,7 @@
                                     $expdate = strtotime($row["expiration_date"]);
                                 if($expdate < $strdatetoday){
                             ?>
-                                  <tr>
+                                  <tr class="danger">
                                   <td><?php echo $row["supply_description"]; ?></td>
                                   <td><?php echo $row["expiration_date"]; ?></td>
                                   </tr>
