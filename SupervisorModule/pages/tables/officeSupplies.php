@@ -215,20 +215,15 @@
              <table id="example1" class="table table-bordered table-striped">
           <?php
             require_once("../../../db.php");
-            $sql = "SELECT supplydesc, unitInStock, unit, unitPrice, reorderLevel FROM supplies WHERE supplyType='Medical' ";
+            $sql = "SELECT supplydesc, unitInStock, unit, unitPrice, reorderLevel FROM supplies WHERE supplyType='Office' ";
             $result = $conn->query($sql);    
           ?>
           <thead>
             <tr>
-             <!--     <th>Date Received</th>
-                  <th>Time Received</th>
-                  <th>Expiration Date</th> -->
                   <th>Description</th>
-             <!--     <th>Supplier</th> -->
                   <th>Quantity in Stock</th>
                   <th>Unit</th>
                   <th>Unit Price</th>
-             <!--    <th>Total Amount</th> -->
                   <th>Reorder Level</th>
                   <th></th>
             </tr>
@@ -243,18 +238,7 @@
             <td><?php echo $row["unitPrice"]; ?></td>
             <td><?php echo $row["reorderLevel"]; ?></td>
             <td>
-<!--
-				<form action="php/medicalDelete.php" method="get">
-                <button type="submit" class="btn btn-xs btn-danger">
-                <i class="fa fa-fw fa-trash"></i></button>
-            </form>
--->
-				</td>
-           <!--  <td><?php // echo $row[""]; ?></td>
-            <td><?php // echo $row[""]; ?></td>
-            <td><?php // echo $row[""]; ?></td>
-            <td><?php // echo $row[""]; ?></td>
-            <td><center><input type="checkbox"></center></td> -->
+			</td>
             </tr>
           <?php 
               }
@@ -262,16 +246,11 @@
           ?>
         </tbody>
         <tfoot>
-           <tr>
-            <!--     <th>Date Received</th>
-            <th>Time Received</th>
-            <th>Expiration Date</th> -->
+			<tr>
             <th>Description</th>
-       <!--     <th>Supplier</th> -->
             <th>Quantity in Stock</th>
             <th>Unit</th>
             <th>Unit Price</th>
-       <!--    <th>Total Amount</th> -->
             <th>Reorder Level</th>
             <th></th>
         </tr> 

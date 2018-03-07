@@ -1,3 +1,8 @@
+<?php 
+$conn =mysqli_connect("localhost","root","");
+mysqli_select_db($conn, "itproject");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,7 +63,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index.html" class="logo">
+    <a href="../../dashboard.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>MDC</span>
       <!-- logo for regular state and mobile devices -->
@@ -265,7 +270,7 @@
         <li class="header">Inventory System</li>
 	<!-- DASHBOARD MENU -->
          <li>
-          <a href="../../index.html">
+          <a href="../../dashboard.php">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
@@ -379,65 +384,55 @@
                     </tr>
                 </table>    
             </div>
+		  
               
       <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
-         <?php // RETRIEVE or Display Medical Supplies
-         include("../../../db.php");
-          $sql = "SELECT supply_id, supply_description, quantity_in_stock, expiration_date, unit, CONCAT(reorder_level,' ', unit) AS 'Reorder Level', unit_price, good_condition, damaged FROM supplies WHERE supply_type='Medical' ORDER BY supply_description ASC";
-          $result = $conn->query($sql);  ?>
+
+		 <table id="example1" class="table table-bordered table-striped">
+			 
+			 <?php
+			 require_once("../../../db.php");
+			 $sql = "SELECT supplydesc, unitInStock, unit, unitPrice, reorderLevel FROM supplies WHERE supplyType='Medical' ";
+			 $result = $conn->query($sql);    
+          ?>
           <thead>
             <tr>
-             <!-- <th>Date Received</th>
-                  <th>Time Received</th> -->
-                  <th>Expiration Date</th> 
                   <th>Description</th>
                   <th>Quantity in Stock</th>
                   <th>Unit</th>
                   <th>Unit Price</th>
-             <!-- <th>Total Amount</th> -->
                   <th>Reorder Level</th>
-                  <th>Good Condition</th>
-                  <th>Damaged</th>
-                  <th> Action</th> 
+                  <th></th>
             </tr>
         </thead>
         <tbody>
-        <?php
+        <?php if ($result->num_rows > 0) {
           while($row = $result->fetch_assoc()) { ?>
             <tr>
-              <td>                      <?php echo $row["expiration_date"]; ?>   </td>
-              <td>                      <?php echo $row["supply_description"]; ?></td>
-              <td align="right">        <?php echo $row["quantity_in_stock"]; ?> </td>
-              <td>                      <?php echo $row["unit"]; ?>              </td>
-              <td align="right">&#8369; <?php echo $row["unit_price"]; ?>        </td>
-              <td align="center">       <?php echo $row["Reorder Level"]; ?>     </td>
-              <td>                      <?php echo $row["good_condition"]; ?>    </td>
-              <td>                      <?php echo $row["damaged"]; ?>           </td>
-              <td>
-              </td>           
+            <td><?php echo $row["supplydesc"]; ?></td>
+            <td><?php echo $row["unitInStock"]; ?></td>
+            <td><?php echo $row["unit"]; ?></td>
+            <td><?php echo $row["unitPrice"]; ?></td>
+            <td><?php echo $row["reorderLevel"]; ?></td>
+            <td>
+			</td>
             </tr>
           <?php 
               }
+            }
           ?>
         </tbody>
         <tfoot>
-           <tr>
-             <!-- <th>Date Received</th>
-                  <th>Time Received</th> -->
-                  <th>Expiration Date</th> 
-                  <th>Description</th>
-                  <th>Quantity in Stock</th>
-                  <th>Unit</th>
-                  <th>Unit Price</th>
-             <!-- <th>Total Amount</th> -->
-                  <th>Reorder Level</th>
-                  <th>Good Condition</th>
-                  <th>Damaged</th>
-                  <th> Action</th> 
-            </tr> 
+			<tr>
+            <th>Description</th>
+            <th>Quantity in Stock</th>
+            <th>Unit</th>
+            <th>Unit Price</th>
+            <th>Reorder Level</th>
+            <th></th>
+        </tr> 
         </tfoot>
-      </table>              
+      </table>     
             </div>
             <!-- /.box-body -->
           </div>
